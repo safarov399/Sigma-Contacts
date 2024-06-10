@@ -7,9 +7,10 @@ import androidx.room.PrimaryKey
 @Entity("contacts")
 data class ContactEntity(
 
-    @PrimaryKey(true) @ColumnInfo val id: Long,
+    @PrimaryKey(true) @ColumnInfo val id: Long = 0,
+    @ColumnInfo val contactsId: String,
     @ColumnInfo val name: String,
-    @ColumnInfo val numberList: HashSet<String>,
-    @ColumnInfo val emailList: HashSet<String>,
+    @ColumnInfo val number: String,
+    @ColumnInfo val email: String? = null,
     @ColumnInfo val profilePhoto: String? = null
 )
