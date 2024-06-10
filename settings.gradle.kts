@@ -21,4 +21,8 @@ dependencyResolutionManagement {
 
 rootProject.name = "Sigma Contacts"
 include(":app")
- 
+include(":feature")
+include(":common")
+include(":core")
+include(":feature:home")
+include(":feature:details")
