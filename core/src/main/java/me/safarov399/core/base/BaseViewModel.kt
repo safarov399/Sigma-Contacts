@@ -1,4 +1,4 @@
-package me.safarov399.core
+package me.safarov399.core.base
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

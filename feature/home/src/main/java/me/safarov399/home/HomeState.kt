@@ -1,7 +1,7 @@
 package me.safarov399.home
 
-import me.safarov399.core.data.Contact
+import me.safarov399.core.entity.ContactEntity
 
 data class HomeState(
-    val contacts: List<Contact>
+    val contactEntity: List<ContactEntity>
 )

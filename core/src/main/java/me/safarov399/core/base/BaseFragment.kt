@@ -1,4 +1,4 @@
-package me.safarov399.core
+package me.safarov399.core.base
 
 import android.os.Bundle
 import android.view.LayoutInflater

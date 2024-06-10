@@ -11,14 +11,13 @@
         android:id="@+id/profile_photo"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:contentDescription="Profile Photo"
+        android:contentDescription="@string/profile_photo"
         android:src="@drawable/profile_people_account"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:background="@drawable/image_background"
-
-
+        android:padding="7dp"
         />
     <TextView
         android:id="@+id/contact_name"
