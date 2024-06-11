@@ -7,10 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
+import dagger.hilt.android.AndroidEntryPoint
 import me.safarov399.core.adapter.ContactAdapter
 import me.safarov399.core.base.BaseFragment
 import me.safarov399.home.databinding.FragmentHomeBinding
 
+@AndroidEntryPoint
 class HomeFragment :
     BaseFragment<FragmentHomeBinding, HomeViewModel, HomeState, HomeEffect, HomeEvent>() {
 
@@ -24,6 +26,9 @@ class HomeFragment :
             }
         }
 
+    override fun onStateUpdate(state: HomeState) {
+        contactsAdapter?.submitList(state.contactEntity)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
