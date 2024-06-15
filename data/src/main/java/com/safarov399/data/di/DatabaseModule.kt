@@ -1,8 +1,9 @@
-package com.safarov399.data.db
+package com.safarov399.data.di
 
 import android.content.Context
 import androidx.room.Room
 import com.safarov399.data.dao.ContactDao
+import com.safarov399.data.db.AppDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -30,5 +31,7 @@ object DatabaseModule {
     ): ContactDao {
         return appDatabase.contactsDao()
     }
+
+
 
 }

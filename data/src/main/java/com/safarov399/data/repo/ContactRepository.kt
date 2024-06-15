@@ -13,6 +13,11 @@ class ContactRepository @Inject constructor(
         contactDao.insert(contactEntity)
     }
 
+    override fun insertContacts(contacts: List<ContactEntity>) {
+        contactDao.insertContacts(contacts)
+    }
+
+
     override fun getById(id: Long): Flow<ContactEntity> {
         return contactDao.getById(id)
     }

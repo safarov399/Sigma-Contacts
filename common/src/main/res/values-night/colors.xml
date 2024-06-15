@@ -3,6 +3,10 @@
     <color name="my_dark_primary">#000000</color>
     <color name="profile_photo_svg_background_color">@color/white</color>
     <color name="profile_photo_svg_line_color">@color/black</color>
+    <color name="contacts_dialog_background">#FF2F2F2F</color>
+    <color name="contacts_dialog_title_color">@color/white</color>
+    <color name="contacts_dialog_text_color">#FFD3D3D3</color>
+
 
 
 
