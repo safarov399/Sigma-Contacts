@@ -2,9 +2,7 @@ package me.safarov399.home
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.content.pm.PackageManager
 import android.provider.ContactsContract
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.viewModelScope
 import androidx.security.crypto.EncryptedSharedPreferences
 import com.safarov399.domain.usecase.GetAllContactsUseCase
@@ -47,8 +45,6 @@ class HomeViewModel @Inject constructor(
                     )
                 }.collect()
             }
-
-
         }
     }
 
