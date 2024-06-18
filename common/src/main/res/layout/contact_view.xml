@@ -24,11 +24,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingLeft="12dp"
-        android:fontFamily="sans-serif-medium"
+        android:fontFamily="@font/roboto_regular"
+        android:textSize="16sp"
         app:layout_constraintTop_toTopOf="@id/profile_photo"
         app:layout_constraintBottom_toBottomOf="@id/profile_photo"
         app:layout_constraintStart_toEndOf="@id/profile_photo"
-        android:text="Humbat Humbatov"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -18,7 +18,7 @@ class HomeSearchBar @JvmOverloads constructor(
 
     init {
         binding.searchBarSmartphoneIcon.setOnClickListener {
-            val dialog: AccountDialog = AccountDialog(context)
+            val dialog = AccountDialog(context)
             dialog.show()
         }
     }
