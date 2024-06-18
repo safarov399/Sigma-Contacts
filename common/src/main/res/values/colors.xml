@@ -8,10 +8,16 @@
     <color name="my_dark_primary">#000000</color>
     <color name="profile_photo_svg_background_color">@color/black</color>
     <color name="profile_photo_svg_line_color">@color/white</color>
-    <color name="contacts_dialog_background">@color/default_color</color>
-    <color name="contacts_dialog_text_color">#FF636363</color>
-    <color name="contacts_dialog_title_color">@color/black</color>
+    <color name="permission_dialog_background">@color/default_color</color>
+    <color name="permission_dialog_text_color">#FF636363</color>
+    <color name="permission_dialog_title_color">@color/black</color>
     <color name="search_bar_color">#FFEFEFEF</color>
+
+    <color name="account_dialog_background">#FFEFEFEF</color>
+    <color name="account_dialog_text">@color/black</color>
+    <color name="account_dialog_row_background_color">#FFFFFFFF</color>
+    <color name="account_dialog_device_background_color">#FFBBBBBB</color>
+    <color name="account_dialog_device_color">#FF000000</color>
 
 
 
