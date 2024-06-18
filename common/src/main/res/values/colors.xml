@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="default_color">#FFFFFFFF</color>
+    <color name="default_color_inverse">#FF000000</color>
+    <color name="gray">#FF666666</color>
+    <color name="my_dark_primary">#000000</color>
+    <color name="profile_photo_svg_background_color">@color/black</color>
+    <color name="profile_photo_svg_line_color">@color/white</color>
+    <color name="contacts_dialog_background">@color/default_color</color>
+    <color name="contacts_dialog_text_color">#FF636363</color>
+    <color name="contacts_dialog_title_color">@color/black</color>
+    <color name="search_bar_color">#FFEFEFEF</color>
+
+
+
+    <color name="purple">#FFA32CC4</color>
+    <color name="violet">#FF710193</color>
+    <color name="mauve">#FF7A4988</color>
+    <color name="lavender">#FFE39FF6</color>
+</resources>
