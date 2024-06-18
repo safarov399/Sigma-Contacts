@@ -5,6 +5,7 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
 import me.safarov399.common.databinding.HomeSearchBarBinding
+import me.safarov399.common.dialogs.AccountDialog
 
 class HomeSearchBar @JvmOverloads constructor(
     context: Context,
@@ -14,5 +15,12 @@ class HomeSearchBar @JvmOverloads constructor(
     private var binding = HomeSearchBarBinding.inflate(
         LayoutInflater.from(context), this, true
     )
+
+    init {
+        binding.searchBarSmartphoneIcon.setOnClickListener {
+            val dialog: AccountDialog = AccountDialog(context)
+            dialog.show()
+        }
+    }
 
 }

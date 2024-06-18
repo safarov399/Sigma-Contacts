@@ -1,4 +1,4 @@
-package me.safarov399.common
+package me.safarov399.common.dialogs
 
 import android.app.Dialog
 import android.content.Context
@@ -9,7 +9,7 @@ import android.view.View.VISIBLE
 import android.view.Window
 import me.safarov399.common.databinding.PermissionDialogBinding
 
-class PermissionRequestDialog(private var context: Context) : Dialog(context) {
+class PermissionRequestDialog(context: Context) : Dialog(context) {
 
     private val binding: PermissionDialogBinding
 

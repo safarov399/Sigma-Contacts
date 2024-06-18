@@ -1,4 +1,4 @@
-package me.safarov399.common
+package me.safarov399.common.custom_views
 
 import android.content.Context
 import android.util.AttributeSet
@@ -15,8 +15,5 @@ class ContactView @JvmOverloads constructor(
         LayoutInflater.from(context), this, true
     )
 
-    init {
-
-    }
 
 }

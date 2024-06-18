@@ -16,7 +16,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.widget.PopupMenu
 import androidx.core.content.ContextCompat
 import dagger.hilt.android.AndroidEntryPoint
-import me.safarov399.common.PermissionRequestDialog
+import me.safarov399.common.dialogs.PermissionRequestDialog
 import me.safarov399.core.adapter.ContactAdapter
 import me.safarov399.core.base.BaseFragment
 import me.safarov399.home.databinding.FragmentHomeBinding
