@@ -10,10 +10,13 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.widget.PopupMenu
 import androidx.core.content.ContextCompat
 import dagger.hilt.android.AndroidEntryPoint
-import me.safarov399.common.SigmaContactsDialog
+import me.safarov399.common.PermissionRequestDialog
 import me.safarov399.core.adapter.ContactAdapter
 import me.safarov399.core.base.BaseFragment
 import me.safarov399.home.databinding.FragmentHomeBinding
@@ -52,11 +55,14 @@ class HomeFragment :
         contactsAdapter = ContactAdapter()
         binding.homeRecyclerView.adapter = contactsAdapter
         askContactsPermission()
+        binding.homeSearchBar.findViewById<ImageView>(me.safarov399.common.R.id.search_bar_three_dots_icon).setOnClickListener {
+            showSelectPopup(it)
+        }
 
     }
 
     private fun askContactsPermissionDialog() {
-        val askContactsDialog = SigmaContactsDialog(requireContext())
+        val askContactsDialog = PermissionRequestDialog(requireContext())
         askContactsDialog.setTitle("Permission Required")
         askContactsDialog.setDescription("Please provide permission to access contacts so that they can be displayed.")
         askContactsDialog.setOkButtonText("Give permission")
@@ -71,8 +77,27 @@ class HomeFragment :
         askContactsDialog.show()
     }
 
+
+    private fun showSelectPopup(view: View) {
+        val popup = PopupMenu(requireContext(), view)
+        val popupMenuInflater = popup.menuInflater
+        popupMenuInflater.inflate(me.safarov399.common.R.menu.search_menu, popup.menu)
+        popup.setOnMenuItemClickListener {menuItem ->
+            when(menuItem.itemId) {
+                me.safarov399.common.R.id.select -> {
+                    Toast.makeText(requireContext(), "Select", Toast.LENGTH_SHORT).show()
+                }
+                me.safarov399.common.R.id.select_all -> {
+                    Toast.makeText(requireContext(), "Select all", Toast.LENGTH_SHORT).show()
+                }
+            }
+            true
+        }
+        popup.show()
+    }
+
     private fun goToSettingsDialog() {
-        val dialog = SigmaContactsDialog(requireContext())
+        val dialog = PermissionRequestDialog(requireContext())
         dialog.setTitle("Permission not granted")
         dialog.setDescription("Please go to settings to provide the contacts permission.")
         dialog.setOkButtonText("Go to settings")

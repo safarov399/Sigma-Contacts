@@ -9,7 +9,7 @@ import android.view.View.VISIBLE
 import android.view.Window
 import me.safarov399.common.databinding.PermissionDialogBinding
 
-class SigmaContactsDialog(private var context: Context) : Dialog(context) {
+class PermissionRequestDialog(private var context: Context) : Dialog(context) {
 
     private val binding: PermissionDialogBinding
 

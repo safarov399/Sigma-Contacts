@@ -3,6 +3,7 @@ package me.safarov399.home
 import android.annotation.SuppressLint
 import android.content.Context
 import android.provider.ContactsContract
+import android.provider.MediaStore
 import androidx.lifecycle.viewModelScope
 import androidx.security.crypto.EncryptedSharedPreferences
 import com.safarov399.domain.usecase.GetAllContactsUseCase
@@ -51,6 +52,7 @@ class HomeViewModel @Inject constructor(
 
     @SuppressLint("Range")
     private fun readContacts(): Flow<ArrayList<ContactEntity>> {
+
         val contactsList = arrayListOf<ContactEntity>()
         val cursor = context.contentResolver.query(
             ContactsContract.Contacts.CONTENT_URI,
