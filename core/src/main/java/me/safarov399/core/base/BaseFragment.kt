@@ -15,7 +15,7 @@ import kotlinx.coroutines.flow.onEach
 
 abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel<State, Effect, Event>, State, Effect, Event> : Fragment() {
 
-    lateinit var viewModel: VM
+    private lateinit var viewModel: VM
     lateinit var binding: VB
 
     abstract val getViewBinding: (LayoutInflater, ViewGroup?, Boolean) -> VB
