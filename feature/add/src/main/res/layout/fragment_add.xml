@@ -11,6 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/close"
+        android:layout_marginLeft="12dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/add_save_button"
         app:layout_constraintBottom_toBottomOf="@id/add_save_button"
@@ -21,15 +22,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Create contact"
+        android:textSize="20sp"
+        android:layout_marginLeft="16dp"
         app:layout_constraintStart_toEndOf="@id/add_exit_iv"
-        app:layout_constraintTop_toTopOf="@id/add_save_button"
-        app:layout_constraintBottom_toBottomOf="@id/add_save_button"/>
+        app:layout_constraintTop_toTopOf="@id/add_exit_iv"
+        app:layout_constraintBottom_toBottomOf="@id/add_exit_iv"/>
 
     <ImageView
         android:id="@+id/add_three_dots_iv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/three_dots_vertical"
+        android:layout_marginRight="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/add_save_button"
         app:layout_constraintBottom_toBottomOf="@id/add_save_button"/>
@@ -39,6 +43,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Save"
+        android:layout_marginRight="12dp"
         app:layout_constraintEnd_toStartOf="@id/add_three_dots_iv"
         app:layout_constraintTop_toTopOf="parent"
         />
