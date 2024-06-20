@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="add_contact_til_top_margin">12dp</dimen>
+    <dimen name="add_contact_til_top_margin_different_group">20dp</dimen>
+    <dimen name="add_input_right_margin">24dp</dimen>
+    <dimen name="add_input_left_margin">12dp</dimen>
+</resources>
