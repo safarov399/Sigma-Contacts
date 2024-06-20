@@ -41,6 +41,7 @@ android {
 dependencies {
 
     implementation(project(":feature:home"))
+    implementation(project(":feature:add"))
     implementation(project(":domain"))
     implementation(project(":data"))
 

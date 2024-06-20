@@ -1,4 +1,43 @@
 <resources>
     <string name="app_name">Sigma Contacts</string>
     <string name="profile_photo">Profile Photo</string>
+
+    <string-array name="add_phone_types">
+        <item>Mobile</item>
+        <item>Home</item>
+        <item>Work</item>
+        <item>Work Fax</item>
+        <item>Home Fax</item>
+        <item>Pager</item>
+        <item>Other</item>
+        <item>Custom</item>
+        <item>Callback</item>
+        <item>Car</item>
+        <item>Company Main</item>
+        <item>ISDN</item>
+        <item>Main</item>
+        <item>Other Fax</item>
+        <item>Radio</item>
+        <item>Telex</item>
+        <item>TTY TTD</item>
+        <item>Work Mobile</item>
+        <item>Work Pager</item>
+        <item>Assistant</item>
+        <item>MMS</item>
+    </string-array>
+
+    <string-array name="add_email_types">
+        <item>Home</item>
+        <item>Work</item>
+        <item>Other</item>
+        <item>Mobile</item>
+        <item>Custom</item>
+    </string-array>
+
+    <string-array name="add_date_types">
+        <item>Birthday</item>
+        <item>Anniversary</item>
+        <item>Other</item>
+        <item>Custom</item>
+    </string-array>
 </resources>

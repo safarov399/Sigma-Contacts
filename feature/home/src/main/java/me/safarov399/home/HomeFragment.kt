@@ -52,13 +52,20 @@ class HomeFragment :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        configureViews()
+
+    }
+
+    private fun configureViews() {
         contactsAdapter = ContactAdapter()
         binding.homeRecyclerView.adapter = contactsAdapter
         askContactsPermission()
         binding.homeSearchBar.findViewById<ImageView>(me.safarov399.common.R.id.search_bar_three_dots_icon).setOnClickListener {
             showSelectPopup(it)
         }
+        binding.homeFab.setOnClickListener {
 
+        }
     }
 
     private fun askContactsPermissionDialog() {

@@ -6,8 +6,8 @@ import android.provider.ContactsContract
 import android.provider.MediaStore
 import androidx.lifecycle.viewModelScope
 import androidx.security.crypto.EncryptedSharedPreferences
-import com.safarov399.domain.usecase.GetAllContactsUseCase
-import com.safarov399.domain.usecase.InsertAllContactsUseCase
+import me.safarov399.domain.usecase.GetAllContactsUseCase
+import me.safarov399.domain.usecase.InsertAllContactsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers

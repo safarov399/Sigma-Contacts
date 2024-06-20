@@ -9,7 +9,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/main_fragment_container_view"
-        android:name="me.safarov399.home.HomeFragment"
+        android:name="me.safarov399.add.AddFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
