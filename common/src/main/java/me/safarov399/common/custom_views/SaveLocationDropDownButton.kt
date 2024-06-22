@@ -16,12 +16,7 @@ class SaveLocationDropDownButton @JvmOverloads constructor(
         SaveLocationDropDownButtonBinding.inflate(LayoutInflater.from(context), this, true)
 
 
-    @SuppressLint("DiscouragedApi")
-    fun setDropDownResource(logo: String) {
-        binding.saveLocationDropDownViewDown.setImageResource(
-            context.resources.getIdentifier(
-                logo, "drawable", context.packageName
-            )
-        )
-    }
+
+
+
 }

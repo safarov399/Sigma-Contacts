@@ -3,6 +3,8 @@ package me.safarov399.home
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Color
+import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
@@ -10,6 +12,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import dagger.hilt.android.AndroidEntryPoint
@@ -17,7 +20,7 @@ import me.safarov399.bottom_sheet.SaveLocationFragment
 import me.safarov399.common.custom_views.SaveLocationDropDownButton
 import me.safarov399.common.dialogs.PermissionRequestDialog
 import me.safarov399.core.adapter.ContactAdapter
-import me.safarov399.core.base.BaseBottomSheet
+import me.safarov399.core.base.AppBottomSheet
 import me.safarov399.core.base.BaseFragment
 import me.safarov399.home.databinding.FragmentHomeBinding
 
@@ -52,6 +55,10 @@ class HomeFragment :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         configureViews()
+//        postEvent(
+//            HomeEvent.InsertSaveLocation
+//        )
+
 
     }
 
@@ -65,11 +72,29 @@ class HomeFragment :
         }
 
         binding.homeUtilityBar.findViewById<SaveLocationDropDownButton>(me.safarov399.common.R.id.utility_bar_drop_down).setOnClickListener {
-            val bottomSheet = BaseBottomSheet {
+            val bottomSheet = AppBottomSheet {
                 SaveLocationFragment()
             }
-            bottomSheet.show(parentFragmentManager, bottomSheet.tag)
+            if(!bottomSheet.isAdded) {
+                bottomSheet.show(parentFragmentManager, bottomSheet.tag)
+             selectSaveLocationDropDown()
+            }
+
         }
+    }
+
+    fun selectSaveLocationDropDown() {
+        binding.homeUtilityBar.findViewById<ImageView>(me.safarov399.common.R.id.save_location_drop_down_view_down).setImageDrawable(
+            resources.getDrawable(me.safarov399.common.R.drawable.drop_up)
+        )
+        binding.homeUtilityBar.setBackgroundDrawable(resources.getDrawable(me.safarov399.common.R.drawable.savelocation_drop_down_button_background))
+    }
+
+    fun unSelectSaveLocationDropDown() {
+        binding.homeUtilityBar.findViewById<ImageView>(me.safarov399.common.R.id.save_location_drop_down_view_down).setImageDrawable(
+            resources.getDrawable(me.safarov399.common.R.drawable.drop_down)
+        )
+        binding.homeUtilityBar.setBackgroundDrawable(null)
 
 
     }

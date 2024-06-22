@@ -1,14 +1,17 @@
 package me.safarov399.core.base
 
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import me.safarov399.common.custom_views.SaveLocationDropDownButton
+import me.safarov399.common.databinding.SaveLocationDropDownButtonBinding
 import me.safarov399.core.databinding.BaseBottomSheetBinding
 
-class BaseBottomSheet(
+class AppBottomSheet(
     private val fragmentFactory: (() -> Fragment)? = null
 ): BottomSheetDialogFragment() {
     private var binding: BaseBottomSheetBinding? = null
@@ -27,6 +30,7 @@ class BaseBottomSheet(
 
         if(fragmentFactory == null) {
             dismiss()
+
         }
         else {
             binding?.apply {
@@ -35,8 +39,8 @@ class BaseBottomSheet(
                 }.commit()
             }
         }
-
-
-
     }
+
+
+
 }

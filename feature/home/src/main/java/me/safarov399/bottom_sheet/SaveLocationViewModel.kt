@@ -32,7 +32,6 @@ class SaveLocationViewModel @Inject constructor (
                     }.collect()
                 }
             }
-
         }
     }
 }

@@ -3,6 +3,7 @@ package me.safarov399.home
 import android.annotation.SuppressLint
 import android.content.Context
 import android.provider.ContactsContract
+import android.util.Log
 import androidx.lifecycle.viewModelScope
 import androidx.security.crypto.EncryptedSharedPreferences
 import me.safarov399.domain.usecase.contact.GetAllContactsUseCase

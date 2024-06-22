@@ -1,17 +1,18 @@
 package me.safarov399.bottom_sheet
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import dagger.hilt.android.AndroidEntryPoint
 import me.safarov399.core.adapter.SaveLocationBottomSheetAdapter
 import me.safarov399.core.base.BaseFragment
+import me.safarov399.home.HomeFragment
 import me.safarov399.home.databinding.FragmentSaveLocationBinding
 
 @AndroidEntryPoint
-class SaveLocationFragment(
-) : BaseFragment<FragmentSaveLocationBinding, SaveLocationViewModel, SaveLocationState, SaveLocationEffect, SaveLocationEvent>() {
+class SaveLocationFragment : BaseFragment<FragmentSaveLocationBinding, SaveLocationViewModel, SaveLocationState, SaveLocationEffect, SaveLocationEvent>() {
 
     private var adapter: SaveLocationBottomSheetAdapter? = null
 
@@ -24,7 +25,6 @@ class SaveLocationFragment(
         super.onViewCreated(view, savedInstanceState)
         configureViews()
         postEvent(SaveLocationEvent.LoadAllSaveLocations)
-
     }
 
 
@@ -38,10 +38,13 @@ class SaveLocationFragment(
 
     override fun onStateUpdate(state: SaveLocationState) {
         adapter?.submitList(state.saves)
+        Log.e("SaveLocationFragment onStateUpdate", state.saves.toString())
+
     }
 
     override fun onDestroy() {
         super.onDestroy()
         adapter = null
     }
+
 }
