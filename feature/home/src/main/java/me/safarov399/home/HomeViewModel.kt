@@ -3,11 +3,10 @@ package me.safarov399.home
 import android.annotation.SuppressLint
 import android.content.Context
 import android.provider.ContactsContract
-import android.provider.MediaStore
 import androidx.lifecycle.viewModelScope
 import androidx.security.crypto.EncryptedSharedPreferences
-import me.safarov399.domain.usecase.GetAllContactsUseCase
-import me.safarov399.domain.usecase.InsertAllContactsUseCase
+import me.safarov399.domain.usecase.contact.GetAllContactsUseCase
+import me.safarov399.domain.usecase.contact.InsertAllContactsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
@@ -19,6 +18,8 @@ import kotlinx.coroutines.launch
 import me.safarov399.SharedPreferencesManager
 import me.safarov399.core.base.BaseViewModel
 import me.safarov399.core.entity.ContactEntity
+import me.safarov399.core.entity.SaveLocationEntity
+import me.safarov399.domain.usecase.save_location.InsertSaveLocationUseCase
 import javax.inject.Inject
 
 @HiltViewModel
@@ -26,7 +27,8 @@ class HomeViewModel @Inject constructor(
     @ApplicationContext private val context: Context,
     private val insertContactsUseCase: InsertAllContactsUseCase,
     private val getAllContactsUseCase: GetAllContactsUseCase,
-    private val sharedPreferences: EncryptedSharedPreferences
+    private val sharedPreferences: EncryptedSharedPreferences,
+    private val insertSaveLocationUseCase: InsertSaveLocationUseCase
 ) : BaseViewModel<HomeState, HomeEffect, HomeEvent>() {
     override fun getInitialState(): HomeState = HomeState(arrayListOf())
 
@@ -45,6 +47,14 @@ class HomeViewModel @Inject constructor(
                         )
                     )
                 }.collect()
+            }
+
+            HomeEvent.InsertSaveLocation -> {
+                viewModelScope.launch(Dispatchers.IO) {
+                    insertSaveLocationUseCase.invoke(SaveLocationEntity(
+                        logo = "add", title = "Device"
+                    ))
+                }
             }
         }
     }
@@ -86,7 +96,7 @@ class HomeViewModel @Inject constructor(
                             contactsList.add(
                                 ContactEntity(
                                     contactsId = id,
-                                    name = name,
+                                    firstName = name,
                                     number = phoneNumber
                                 )
                             )

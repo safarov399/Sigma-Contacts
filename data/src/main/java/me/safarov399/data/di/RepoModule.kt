@@ -7,6 +7,9 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import me.safarov399.data.dao.SaveLocationDao
+import me.safarov399.data.repo.SaveLocationRepository
+import me.safarov399.domain.repo.AbstractSaveLocationRepository
 import javax.inject.Singleton
 
 @Module
@@ -17,5 +20,11 @@ class RepoModule {
     @Provides
     fun provideContactRepository(contactDao: ContactDao): AbstractContactRepository {
         return ContactRepository(contactDao)
+    }
+
+    @Singleton
+    @Provides
+    fun provideSaveLocationRepository(saveLocationDao: SaveLocationDao): AbstractSaveLocationRepository {
+        return SaveLocationRepository(saveLocationDao)
     }
 }

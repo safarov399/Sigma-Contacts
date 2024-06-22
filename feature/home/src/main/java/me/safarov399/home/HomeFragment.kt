@@ -10,14 +10,14 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.widget.PopupMenu
 import androidx.core.content.ContextCompat
 import dagger.hilt.android.AndroidEntryPoint
+import me.safarov399.bottom_sheet.SaveLocationFragment
+import me.safarov399.common.custom_views.SaveLocationDropDownButton
 import me.safarov399.common.dialogs.PermissionRequestDialog
 import me.safarov399.core.adapter.ContactAdapter
+import me.safarov399.core.base.BaseBottomSheet
 import me.safarov399.core.base.BaseFragment
 import me.safarov399.home.databinding.FragmentHomeBinding
 
@@ -34,10 +34,9 @@ class HomeFragment :
                     HomeEvent.ReadContacts
                 )
             } else {
-                if(!shouldShowRequestPermissionRationale(Manifest.permission.READ_CONTACTS)) {
+                if (!shouldShowRequestPermissionRationale(Manifest.permission.READ_CONTACTS)) {
                     goToSettingsDialog()
-                }
-                else {
+                } else {
                     activity?.finish()
 
                 }
@@ -60,12 +59,19 @@ class HomeFragment :
         contactsAdapter = ContactAdapter()
         binding.homeRecyclerView.adapter = contactsAdapter
         askContactsPermission()
-        binding.homeSearchBar.findViewById<ImageView>(me.safarov399.common.R.id.search_bar_three_dots_icon).setOnClickListener {
-            showSelectPopup(it)
-        }
-        binding.homeFab.setOnClickListener {
 
+        binding.homeFab.setOnClickListener {
+            
         }
+
+        binding.homeUtilityBar.findViewById<SaveLocationDropDownButton>(me.safarov399.common.R.id.utility_bar_drop_down).setOnClickListener {
+            val bottomSheet = BaseBottomSheet {
+                SaveLocationFragment()
+            }
+            bottomSheet.show(parentFragmentManager, bottomSheet.tag)
+        }
+
+
     }
 
     private fun askContactsPermissionDialog() {
@@ -84,24 +90,6 @@ class HomeFragment :
         askContactsDialog.show()
     }
 
-
-    private fun showSelectPopup(view: View) {
-        val popup = PopupMenu(requireContext(), view)
-        val popupMenuInflater = popup.menuInflater
-        popupMenuInflater.inflate(me.safarov399.common.R.menu.search_menu, popup.menu)
-        popup.setOnMenuItemClickListener {menuItem ->
-            when(menuItem.itemId) {
-                me.safarov399.common.R.id.select -> {
-                    Toast.makeText(requireContext(), "Select", Toast.LENGTH_SHORT).show()
-                }
-                me.safarov399.common.R.id.select_all -> {
-                    Toast.makeText(requireContext(), "Select all", Toast.LENGTH_SHORT).show()
-                }
-            }
-            true
-        }
-        popup.show()
-    }
 
     private fun goToSettingsDialog() {
         val dialog = PermissionRequestDialog(requireContext())
