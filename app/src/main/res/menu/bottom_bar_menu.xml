@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/home_nav"
+        android:icon="@drawable/bottom_nav_contacts"
+        android:title="Contacts" />
+
+    <item
+        android:id="@+id/highlights_nav"
+        android:icon="@drawable/bottom_nav_highlights"
+        android:title="Highlights" />
+
+    <item
+        android:id="@+id/organize_nav"
+        android:icon="@drawable/bottom_nav_organize"
+        android:title="Organize" />
+</menu>
