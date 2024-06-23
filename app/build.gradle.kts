@@ -11,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId = "me.safarov399.sigmacontacts"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -36,6 +36,9 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -44,6 +47,8 @@ dependencies {
     implementation(project(":feature:add"))
     implementation(project(":domain"))
     implementation(project(":data"))
+    implementation(project(":common"))
+    implementation(project(":core"))
 
 
 

@@ -1,4 +1,4 @@
-package me.safarov399.domain.usecase
+package me.safarov399.domain.usecase.contact
 
 import me.safarov399.domain.repo.AbstractContactRepository
 import javax.inject.Inject

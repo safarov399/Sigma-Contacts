@@ -35,7 +35,7 @@ class ContactAdapter :
 
         @SuppressLint("DiscouragedApi")
         fun bind(contactEntity: ContactEntity) {
-            contactNameTv.text = contactEntity.name
+            contactNameTv.text = contactEntity.firstName
             if(contactEntity.profilePhoto != null) {
                 profilePhotoIv.setImageResource(
                     ctx.resources.getIdentifier(
@@ -63,7 +63,7 @@ class ContactAdapter :
             oldItem: ContactEntity,
             newItem: ContactEntity
         ): Boolean {
-            return (oldItem.name == newItem.name)
+            return (oldItem.firstName == newItem.firstName)
         }
     }
 }

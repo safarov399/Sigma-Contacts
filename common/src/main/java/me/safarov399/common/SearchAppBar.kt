@@ -4,15 +4,15 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
-import me.safarov399.common.databinding.HomeSearchBarBinding
+import me.safarov399.common.databinding.SearchAppBarBinding
 import me.safarov399.common.dialogs.AccountDialog
 
-class HomeSearchBar @JvmOverloads constructor(
+class SearchAppBar @JvmOverloads constructor(
     context: Context,
     attr: AttributeSet? = null,
     defStyleAttr: Int = 0,
 ) : ConstraintLayout(context, attr, defStyleAttr) {
-    private var binding = HomeSearchBarBinding.inflate(
+    private var binding = SearchAppBarBinding.inflate(
         LayoutInflater.from(context), this, true
     )
 

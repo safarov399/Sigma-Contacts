@@ -1,26 +1,63 @@
 package me.safarov399.sigmacontacts
 
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.widget.ImageView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.PopupMenu
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.color.DynamicColors
 import dagger.hilt.android.AndroidEntryPoint
+import me.safarov399.sigmacontacts.databinding.ActivityMainBinding
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
+
+    private var binding: ActivityMainBinding? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(LayoutInflater.from(this))
+        setContentView(binding?.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
         DynamicColors.applyToActivityIfAvailable(this)
+        configureViews()
+    }
 
+
+    private fun configureViews() {
+        binding?.mainAppBar?.findViewById<ImageView>(me.safarov399.common.R.id.search_bar_three_dots_icon)
+            ?.setOnClickListener {
+                showSelectPopup(it)
+            }
+    }
+
+
+    private fun showSelectPopup(view: View) {
+        val popup = PopupMenu(this, view)
+        val popupMenuInflater = popup.menuInflater
+        popupMenuInflater.inflate(me.safarov399.common.R.menu.search_menu, popup.menu)
+        popup.setOnMenuItemClickListener { menuItem ->
+            when (menuItem.itemId) {
+                me.safarov399.common.R.id.select -> {
+                    Toast.makeText(this, "Select", Toast.LENGTH_SHORT).show()
+                }
+
+                me.safarov399.common.R.id.select_all -> {
+                    Toast.makeText(this, "Select all", Toast.LENGTH_SHORT).show()
+                }
+            }
+            true
+        }
+        popup.show()
     }
 }
