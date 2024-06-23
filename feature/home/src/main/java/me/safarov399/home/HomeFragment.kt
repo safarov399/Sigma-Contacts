@@ -1,10 +1,9 @@
 package me.safarov399.home
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.graphics.Color
-import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
@@ -27,7 +26,18 @@ import me.safarov399.home.databinding.FragmentHomeBinding
 
 @AndroidEntryPoint
 class HomeFragment :
-    BaseFragment<FragmentHomeBinding, HomeViewModel, HomeState, HomeEffect, HomeEvent>() {
+    BaseFragment<FragmentHomeBinding, HomeViewModel, HomeState, HomeEffect, HomeEvent>(), AppBottomSheet.AppBottomSheetListener {
+
+        private var listener: AppBottomSheet.AppBottomSheetListener? = null
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        listener = this
+        return super.onCreateView(inflater, container, savedInstanceState)
+    }
 
     private var contactsAdapter: ContactAdapter? = null
     private val requestPermissionLauncher =
@@ -68,35 +78,46 @@ class HomeFragment :
         askContactsPermission()
 
         binding.homeFab.setOnClickListener {
-            
-        }
-
-        binding.homeUtilityBar.findViewById<SaveLocationDropDownButton>(me.safarov399.common.R.id.utility_bar_drop_down).setOnClickListener {
-            val bottomSheet = AppBottomSheet {
-                SaveLocationFragment()
-            }
-            if(!bottomSheet.isAdded) {
-                bottomSheet.show(parentFragmentManager, bottomSheet.tag)
-             selectSaveLocationDropDown()
-            }
 
         }
+
+        binding.homeUtilityBar.findViewById<SaveLocationDropDownButton>(me.safarov399.common.R.id.utility_bar_drop_down)
+            .setOnClickListener {
+                val bottomSheet = AppBottomSheet(listener!!) {
+                    SaveLocationFragment()
+                }
+                if (!bottomSheet.isAdded) {
+                    bottomSheet.show(parentFragmentManager, bottomSheet.tag)
+                    selectSaveLocationDropDown()
+                }
+            }
     }
 
+    @Suppress("DEPRECATION")
+    @SuppressLint("UseCompatLoadingForDrawables")
     fun selectSaveLocationDropDown() {
-        binding.homeUtilityBar.findViewById<ImageView>(me.safarov399.common.R.id.save_location_drop_down_view_down).setImageDrawable(
-            resources.getDrawable(me.safarov399.common.R.drawable.drop_up)
-        )
+        binding.homeUtilityBar.findViewById<ImageView>(me.safarov399.common.R.id.save_location_drop_down_view_down)
+            .setImageDrawable(
+                resources.getDrawable(me.safarov399.common.R.drawable.drop_up)
+            )
         binding.homeUtilityBar.setBackgroundDrawable(resources.getDrawable(me.safarov399.common.R.drawable.savelocation_drop_down_button_background))
     }
 
+    @Suppress("DEPRECATION")
+    @SuppressLint("UseCompatLoadingForDrawables")
     fun unSelectSaveLocationDropDown() {
-        binding.homeUtilityBar.findViewById<ImageView>(me.safarov399.common.R.id.save_location_drop_down_view_down).setImageDrawable(
-            resources.getDrawable(me.safarov399.common.R.drawable.drop_down)
-        )
+        binding.homeUtilityBar.findViewById<ImageView>(me.safarov399.common.R.id.save_location_drop_down_view_down)
+            .setImageDrawable(
+                resources.getDrawable(me.safarov399.common.R.drawable.drop_down)
+            )
         binding.homeUtilityBar.setBackgroundDrawable(null)
 
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+        unSelectSaveLocationDropDown()
     }
 
     private fun askContactsPermissionDialog() {
@@ -164,6 +185,9 @@ class HomeFragment :
         }
 
     override fun getViewModelClass(): Class<HomeViewModel> = HomeViewModel::class.java
+    override fun onBottomSheetClosedOrDismissed() {
+        unSelectSaveLocationDropDown()
+    }
 
 
 }

@@ -22,9 +22,9 @@
 
     <me.safarov399.common.UtilityAppBar
         android:id="@+id/home_utility_bar"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingStart="18dp"
+        android:layout_marginStart="18dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
