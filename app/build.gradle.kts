@@ -45,6 +45,8 @@ dependencies {
 
     implementation(project(":feature:home"))
     implementation(project(":feature:add"))
+    implementation(project(":feature:highlights"))
+    implementation(project(":feature:organize"))
     implementation(project(":domain"))
     implementation(project(":data"))
     implementation(project(":common"))
@@ -63,4 +65,7 @@ dependencies {
 
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
+
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
 }

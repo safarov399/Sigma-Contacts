@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.safarov399.organize.R
 
 class OrganizeFragment : Fragment() {
 

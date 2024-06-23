@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:state_checked="true"
+        android:drawable="@drawable/gs_book_fill1_vd_theme_24"/>
+    <item android:drawable="@drawable/gs_book_vd_theme_24"/>
+</selector>

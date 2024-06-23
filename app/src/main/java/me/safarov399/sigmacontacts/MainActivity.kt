@@ -10,6 +10,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.PopupMenu
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updatePadding
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.color.DynamicColors
 import dagger.hilt.android.AndroidEntryPoint
 import me.safarov399.sigmacontacts.databinding.ActivityMainBinding
@@ -21,18 +24,26 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         binding = ActivityMainBinding.inflate(LayoutInflater.from(this))
         setContentView(binding?.root)
+        enableEdgeToEdge()
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, 0)
             insets
         }
         DynamicColors.applyToActivityIfAvailable(this)
         configureViews()
+        configureBottomNavigationView()
     }
 
+
+    private fun configureBottomNavigationView() {
+        val navController = (supportFragmentManager.findFragmentById(
+            R.id.main_fragment_container_view
+        ) as NavHostFragment).navController
+        binding?.mainBottomNavView?.setupWithNavController(navController)
+    }
 
     private fun configureViews() {
         binding?.mainAppBar?.findViewById<ImageView>(me.safarov399.common.R.id.search_bar_three_dots_icon)
