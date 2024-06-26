@@ -10,7 +10,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.PopupMenu
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.updatePadding
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.color.DynamicColors
@@ -44,6 +43,7 @@ class MainActivity : AppCompatActivity() {
         ) as NavHostFragment).navController
         binding?.mainBottomNavView?.setupWithNavController(navController)
     }
+
 
     private fun configureViews() {
         binding?.mainAppBar?.findViewById<ImageView>(me.safarov399.common.R.id.search_bar_three_dots_icon)

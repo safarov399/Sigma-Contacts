@@ -15,7 +15,7 @@ import android.widget.ImageView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import dagger.hilt.android.AndroidEntryPoint
-import me.safarov399.bottom_sheet.SaveLocationFragment
+import me.safarov399.save_location.SaveLocationFragment
 import me.safarov399.common.custom_views.SaveLocationDropDownButton
 import me.safarov399.common.dialogs.PermissionRequestDialog
 import me.safarov399.core.adapter.ContactAdapter

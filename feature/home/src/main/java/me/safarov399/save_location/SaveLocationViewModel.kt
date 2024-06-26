@@ -1,4 +1,4 @@
-package me.safarov399.bottom_sheet
+package me.safarov399.save_location
 
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -7,7 +7,6 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import me.safarov399.core.base.BaseViewModel
-import me.safarov399.core.entity.SaveLocationEntity
 import me.safarov399.domain.usecase.save_location.GetAllSaveLocationUseCase
 import me.safarov399.domain.usecase.save_location.InsertSaveLocationUseCase
 import javax.inject.Inject
