@@ -11,7 +11,7 @@ import android.view.WindowManager
 import androidx.appcompat.app.ActionBar.LayoutParams
 import me.safarov399.common.databinding.AccountDialogBinding
 
-class AccountDialog(context: Context): Dialog(context) {
+class AccountDialog(context: Context) : Dialog(context) {
     private val binding: AccountDialogBinding
 
 
@@ -35,7 +35,6 @@ class AccountDialog(context: Context): Dialog(context) {
             dismiss()
         }
     }
-
 
 
 }

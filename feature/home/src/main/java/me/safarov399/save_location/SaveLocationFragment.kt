@@ -1,4 +1,4 @@
-package me.safarov399.bottom_sheet
+package me.safarov399.save_location
 
 import android.os.Bundle
 import android.util.Log
@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import dagger.hilt.android.AndroidEntryPoint
 import me.safarov399.core.adapter.SaveLocationBottomSheetAdapter
 import me.safarov399.core.base.BaseFragment
-import me.safarov399.home.HomeFragment
 import me.safarov399.home.databinding.FragmentSaveLocationBinding
 
 @AndroidEntryPoint
