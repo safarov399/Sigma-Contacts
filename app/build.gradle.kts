@@ -47,6 +47,7 @@ dependencies {
     implementation(project(":feature:add"))
     implementation(project(":feature:highlights"))
     implementation(project(":feature:organize"))
+    implementation(project(":feature:details"))
     implementation(project(":domain"))
     implementation(project(":data"))
     implementation(project(":common"))

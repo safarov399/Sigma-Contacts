@@ -1,14 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav_graph"
-    app:startDestination="@id/home_nav"
-    >
+    app:startDestination="@id/home_nav">
 
 
     <include app:graph="@navigation/home_nav" />
     <include app:graph="@navigation/highlights_nav" />
     <include app:graph="@navigation/organize_nav" />
+
+    <fragment
+        android:id="@+id/add_fragment_nav"
+        android:name="me.safarov399.add.AddFragment"
+        tools:layout="@layout/fragment_add">
+
+        <deepLink
+            android:id="@+id/to_add_deeplink"
+            app:uri="sigma-contacts:://add" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/home_fragment_nav"
+        android:name="me.safarov399.home.HomeFragment"
+        tools:layout="@layout/fragment_home">
+        <deepLink
+            android:id="@+id/to_home_nav"
+            app:uri="sigma-contacts:://home"/>
+    </fragment>
 
 
 </navigation>
