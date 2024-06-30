@@ -14,6 +14,9 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
+import androidx.core.net.toUri
+import androidx.navigation.NavDeepLinkRequest
+import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import me.safarov399.save_location.SaveLocationFragment
 import me.safarov399.common.custom_views.SaveLocationDropDownButton
@@ -78,6 +81,10 @@ class HomeFragment :
         askContactsPermission()
 
         binding.homeFab.setOnClickListener {
+            val request = NavDeepLinkRequest.Builder
+                .fromUri("sigma-contacts:://add".toUri())
+                .build()
+            findNavController().navigate(request)
 
         }
 
