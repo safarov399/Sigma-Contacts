@@ -6,10 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import androidx.core.net.toUri
-import androidx.navigation.NavDeepLinkRequest
 import androidx.navigation.fragment.findNavController
 import me.safarov399.add.databinding.FragmentAddBinding
+import me.safarov399.core.NavigationManager
 import me.safarov399.core.base.BaseFragment
 import java.text.SimpleDateFormat
 import java.util.Calendar
@@ -25,11 +24,7 @@ class AddFragment :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.addExitIv.setOnClickListener {
-//            val request = NavDeepLinkRequest.Builder
-//                .fromUri("sigma-contacts:://home".toUri())
-//                .build()
-//            findNavController().navigate(request)
-            findNavController().navigateUp()
+            activity?.onBackPressedDispatcher?.onBackPressed()
         }
     }
 

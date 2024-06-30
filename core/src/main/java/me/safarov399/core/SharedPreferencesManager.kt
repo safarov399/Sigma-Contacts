@@ -1,4 +1,4 @@
-package me.safarov399
+package me.safarov399.core
 
 import android.content.Context
 import androidx.security.crypto.EncryptedSharedPreferences

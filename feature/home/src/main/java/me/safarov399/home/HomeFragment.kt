@@ -21,6 +21,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import me.safarov399.save_location.SaveLocationFragment
 import me.safarov399.common.custom_views.SaveLocationDropDownButton
 import me.safarov399.common.dialogs.PermissionRequestDialog
+import me.safarov399.core.NavigationManager
 import me.safarov399.core.adapter.ContactAdapter
 import me.safarov399.core.base.AppBottomSheet
 import me.safarov399.core.base.BaseFragment
@@ -81,11 +82,8 @@ class HomeFragment :
         askContactsPermission()
 
         binding.homeFab.setOnClickListener {
-            val request = NavDeepLinkRequest.Builder
-                .fromUri("sigma-contacts:://add".toUri())
-                .build()
-            findNavController().navigate(request)
-
+            val context = requireActivity() as NavigationManager
+            context.navigateToFullScreenActivity()
         }
 
         binding.homeUtilityBar.findViewById<SaveLocationDropDownButton>(me.safarov399.common.R.id.utility_bar_drop_down)
