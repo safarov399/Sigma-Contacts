@@ -1,5 +1,6 @@
 package me.safarov399.sigmacontacts
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,10 +15,12 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.color.DynamicColors
 import dagger.hilt.android.AndroidEntryPoint
+import me.safarov399.core.InvalidNavigationTargetException
+import me.safarov399.core.NavigationManager
 import me.safarov399.sigmacontacts.databinding.ActivityMainBinding
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), NavigationManager {
 
     private var binding: ActivityMainBinding? = null
 
@@ -70,5 +73,14 @@ class MainActivity : AppCompatActivity() {
             true
         }
         popup.show()
+    }
+
+    override fun navigateToMainActivity() {
+        throw InvalidNavigationTargetException("Cannot launch MainActivity from MainActivity")
+    }
+
+    override fun navigateToFullScreenActivity() {
+        val intent = Intent(this, FullScreenActivity::class.java)
+        startActivity(intent)
     }
 }

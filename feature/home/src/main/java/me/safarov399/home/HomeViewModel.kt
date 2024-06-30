@@ -3,7 +3,6 @@ package me.safarov399.home
 import android.annotation.SuppressLint
 import android.content.Context
 import android.provider.ContactsContract
-import android.util.Log
 import androidx.lifecycle.viewModelScope
 import androidx.security.crypto.EncryptedSharedPreferences
 import me.safarov399.domain.usecase.contact.GetAllContactsUseCase
@@ -16,7 +15,7 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
-import me.safarov399.SharedPreferencesManager
+import me.safarov399.core.SharedPreferencesManager
 import me.safarov399.core.base.BaseViewModel
 import me.safarov399.core.entity.ContactEntity
 import me.safarov399.core.entity.SaveLocationEntity
