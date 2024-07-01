@@ -10,7 +10,7 @@
     <color name="permission_dialog_background">#FF2F2F2F</color>
     <color name="permission_dialog_title_color">@color/white</color>
     <color name="permission_dialog_text_color">#FFD3D3D3</color>
-    <color name="search_bar_color">@color/material_dynamic_primary10</color>
+    <color name="search_bar_color">@color/material_dynamic_primary20</color>
 
     <color name="account_dialog_background">@color/material_dynamic_primary10</color>
     <color name="account_dialog_text">@color/white</color>
