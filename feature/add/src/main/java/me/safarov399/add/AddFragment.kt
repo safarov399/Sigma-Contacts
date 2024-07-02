@@ -2,10 +2,13 @@ package me.safarov399.add
 
 import android.app.DatePickerDialog
 import android.os.Bundle
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.Toast
+import androidx.appcompat.widget.PopupMenu
 import androidx.navigation.fragment.findNavController
 import me.safarov399.add.databinding.FragmentAddBinding
 import me.safarov399.core.NavigationManager
@@ -25,6 +28,9 @@ class AddFragment :
         super.onViewCreated(view, savedInstanceState)
         binding.addExitIv.setOnClickListener {
             activity?.onBackPressedDispatcher?.onBackPressed()
+        }
+        binding.addThreeDotsIv.setOnClickListener {
+            showHelpAndFeedbackPopUp(it)
         }
     }
 
@@ -48,6 +54,21 @@ class AddFragment :
         binding.addDatePickerActv.setOnClickListener {
             showSignificantDatePicker()
         }
+    }
+
+    private fun showHelpAndFeedbackPopUp(view: View) {
+        val popup = PopupMenu(requireActivity(), view)
+        val popupMenuInflater = popup.menuInflater
+        popupMenuInflater.inflate(me.safarov399.common.R.menu.add_menu, popup.menu)
+        popup.setOnMenuItemClickListener { menuItem ->
+            when (menuItem.itemId) {
+                me.safarov399.common.R.id.add_help_and_feedback -> {
+                    Toast.makeText(requireActivity(), "Select", Toast.LENGTH_SHORT).show()
+                }
+            }
+            true
+        }
+        popup.show()
     }
 
     private fun showSignificantDatePicker() {

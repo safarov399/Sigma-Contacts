@@ -3,6 +3,6 @@
     android:shape="oval"
     >
     <size android:height="120dp" android:width="120dp"/>
-    <solid android:color="@color/material_dynamic_primary20"/>
+    <solid android:color="@color/add_profile_photo_background_color"/>
 
 </shape>
