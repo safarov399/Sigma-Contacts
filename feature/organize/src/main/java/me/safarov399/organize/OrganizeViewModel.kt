@@ -1,4 +1,7 @@
 package me.safarov399.organize
 
-class OrganizeViewModel {
+import me.safarov399.core.base.BaseViewModel
+
+class OrganizeViewModel: BaseViewModel<OrganizeState, OrganizeEffect, OrganizeEvent>() {
+    override fun getInitialState(): OrganizeState = OrganizeState()
 }
