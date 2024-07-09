@@ -25,6 +25,9 @@
 
     <color name="three_dots_vertical">@color/material_dynamic_primary90</color>
 
+    <color name="organize_row_view_title_color">@color/material_dynamic_primary99</color>
+
+
 
 
 

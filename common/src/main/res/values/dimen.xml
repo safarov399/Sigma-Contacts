@@ -2,6 +2,16 @@
 <resources>
     <dimen name="add_contact_til_top_margin">12dp</dimen>
     <dimen name="add_contact_til_top_margin_different_group">20dp</dimen>
+
     <dimen name="add_input_right_margin">24dp</dimen>
     <dimen name="add_input_left_margin">12dp</dimen>
+
+    <dimen name="organize_row_view_title_text_size">16sp</dimen>
+    <dimen name="organize_row_view_description_text_size">14sp</dimen>
+    <dimen name="organize_row_view_double_top_padding">12dp</dimen>
+    <dimen name="organize_row_view_double_bottom_padding">8dp</dimen>
+    <dimen name="organize_row_view_double_title_bottom_padding">1dp</dimen>
+    <dimen name="organize_row_view_double_description_top_padding">1dp</dimen>
+    <dimen name="organize_row_view_single_top_padding">12dp</dimen>
+    <dimen name="organize_row_view_single_bottom_padding">8dp</dimen>
 </resources>
