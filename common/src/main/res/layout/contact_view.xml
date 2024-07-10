@@ -4,7 +4,7 @@
     android:layout_height="60dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".custom_views.ContactView"
+    tools:context=".custom_views.home.ContactView"
     >
 
     <ImageView

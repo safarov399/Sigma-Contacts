@@ -1,8 +1,69 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingHorizontal="16dp"
     tools:context="com.safarov399.highlights.HighlightsFragment">
 
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/highlights_fragment_favorites_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/roboto_semi_bold"
+        android:text="Favorites"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/highlights_fragment_add_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add"
+        android:textColor="@color/highlights_add_tv"
+        android:fontFamily="@font/roboto_semi_bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/highlights_fragment_favorites_tv"
+        app:layout_constraintBottom_toBottomOf="@id/highlights_fragment_favorites_tv"/>
+
+    <me.safarov399.common.custom_views.highlights.HighlightsCardView
+        android:id="@+id/higlights_cardview_favorites_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        app:imageSrc="@drawable/ic_favorites_empty_state"
+        app:title="Quick access to your favorite people"
+        app:description="Add people to Favorites so you can more easily find and contact them"
+        app:btnImgSrc="@drawable/add"
+        app:btnText="Add favorites"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/highlights_fragment_favorites_tv" />
+
+    <TextView
+        android:id="@+id/higlights_cardview_for_you_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/roboto_semi_bold"
+        android:text="For you"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/higlights_cardview_favorites_card"/>
+
+    <me.safarov399.common.custom_views.highlights.HighlightsCardView
+        android:id="@+id/higlights_cardview_for_you_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        app:imageSrc="@drawable/ic_birthday_promo"
+        app:title="Add birthdays"
+        app:description="Save your contacts' birthdays to get notifications and helpful reminders here and across Google services"
+        app:btnImgSrc="@drawable/quantum_gm_ic_cake_add_vd_theme_24"
+        app:btnText="Add birthdays"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/higlights_cardview_for_you_tv" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

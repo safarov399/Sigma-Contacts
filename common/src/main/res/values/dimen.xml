@@ -14,4 +14,6 @@
     <dimen name="organize_row_view_double_description_top_padding">1dp</dimen>
     <dimen name="organize_row_view_single_top_padding">12dp</dimen>
     <dimen name="organize_row_view_single_bottom_padding">8dp</dimen>
+
+    <dimen name="highlights_add_favorites_card_title_start_padding">12dp</dimen>
 </resources>
