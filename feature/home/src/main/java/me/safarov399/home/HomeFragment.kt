@@ -14,12 +14,9 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
-import androidx.core.net.toUri
-import androidx.navigation.NavDeepLinkRequest
-import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import me.safarov399.save_location.SaveLocationFragment
-import me.safarov399.common.custom_views.SaveLocationDropDownButton
+import me.safarov399.common.custom_views.home.SaveLocationDropDownButton
 import me.safarov399.common.dialogs.PermissionRequestDialog
 import me.safarov399.core.NavigationManager
 import me.safarov399.core.adapter.ContactAdapter

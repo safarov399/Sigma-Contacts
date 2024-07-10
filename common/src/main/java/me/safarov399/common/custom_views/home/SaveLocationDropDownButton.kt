@@ -1,6 +1,5 @@
-package me.safarov399.common.custom_views
+package me.safarov399.common.custom_views.home
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater

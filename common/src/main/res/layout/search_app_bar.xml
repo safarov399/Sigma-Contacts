@@ -38,10 +38,10 @@
     <ImageView
         android:id="@+id/search_bar_three_dots_icon"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
+        android:layout_height="0dp"
+        android:paddingHorizontal="12dp"
         android:src="@drawable/three_dots_vertical"
-        app:layout_constraintEnd_toStartOf="@id/search_bar_smartphone_icon"
+        app:layout_constraintEnd_toStartOf="@id/search_bar_device_background"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         />
@@ -51,7 +51,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/search_bar_device_background"
-        android:layout_marginEnd="12dp"
+        android:padding="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>

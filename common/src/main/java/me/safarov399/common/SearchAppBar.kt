@@ -17,7 +17,7 @@ class SearchAppBar @JvmOverloads constructor(
     )
 
     init {
-        binding.searchBarSmartphoneIcon.setOnClickListener {
+        binding.searchBarDeviceBackground.setOnClickListener {
             val dialog = AccountDialog(context)
             dialog.show()
         }
