@@ -27,6 +27,11 @@
 
     <color name="organize_row_view_title_color">@color/material_dynamic_primary99</color>
 
+    <color name="highlights_action_button_background_color">@color/material_dynamic_primary30</color>
+    <color name="highlights_add_favorite_card_background_color">@color/material_dynamic_neutral10</color>
+    <color name="highlights_add_tv">@color/material_dynamic_primary80</color>
+
+
 
 
 

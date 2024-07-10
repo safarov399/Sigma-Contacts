@@ -1,13 +1,39 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingHorizontal="16dp"
     tools:context="com.safarov399.highlights.HighlightsFragment">
+
 
     <TextView
         android:id="@+id/highlights_fragment_favorites_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/roboto_semi_bold"
+        android:text="Favorites"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/highlights_fragment_add_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add"
+        android:textColor="@color/highlights_add_tv"
+        android:fontFamily="@font/roboto_semi_bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/highlights_fragment_favorites_tv"
+        app:layout_constraintBottom_toBottomOf="@id/highlights_fragment_favorites_tv"/>
+
+    <me.safarov399.common.custom_views.highlights.HighlightsAddFavoritesCard
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/highlights_fragment_favorites_tv" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
