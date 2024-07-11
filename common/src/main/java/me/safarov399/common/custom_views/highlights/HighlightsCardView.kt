@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.view.updateLayoutParams
 import me.safarov399.common.R
 import me.safarov399.common.databinding.HighlightsCardViewBinding
 
@@ -44,10 +45,15 @@ class HighlightsCardView @JvmOverloads constructor(
                 binding.higlightsCardviewActionButton.findViewById<TextView>(R.id.highlights_action_tv).text = actionButtonText
 
                 val closeIcon = getBoolean(R.styleable.HighlightsCardView_closeIconEnabled, false)
-                if(closeIcon) {
+                if (closeIcon) {
                     binding.highlightsCardviewCloseButton.visibility = View.VISIBLE
-                }
-                else {
+                    binding.higlightsCardviewDescriptionTv.updateLayoutParams<MarginLayoutParams> {
+                        setMargins(0, 12, 32, 12)
+                    }
+                    binding.highlightsCardviewTitleTv.updateLayoutParams<MarginLayoutParams> {
+                        setMargins(resources.getDimensionPixelSize(R.dimen.highlights_add_favorites_card_title_start_padding), 0, 32, 8)
+                    }
+                } else {
                     binding.highlightsCardviewCloseButton.visibility = View.INVISIBLE
                 }
             } finally {

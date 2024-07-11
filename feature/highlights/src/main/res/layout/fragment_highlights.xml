@@ -58,6 +58,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         app:imageSrc="@drawable/ic_birthday_promo"
+        app:closeIconEnabled="true"
         app:title="Add birthdays"
         app:description="Save your contacts' birthdays to get notifications and helpful reminders here and across Google services"
         app:btnImgSrc="@drawable/quantum_gm_ic_cake_add_vd_theme_24"
