@@ -4,7 +4,7 @@
 
     >
     <solid android:color="@color/account_dialog_device_background_color"/>
-    <size android:height="30dp" android:width="30dp"/>
+    <size android:height="50dp" android:width="50dp"/>
 
 
 
