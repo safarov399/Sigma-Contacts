@@ -19,4 +19,8 @@
 
     <dimen name="home_label_iv_padding_end">24dp</dimen>
     <dimen name="home_filter_iv_padding_end">24dp</dimen>
+
+    <dimen name="label_view_icon_padding_start">16dp</dimen>
+    <dimen name="label_view_name_padding_start">16dp</dimen>
+    <dimen name="label_view_count_padding_end">24dp</dimen>
 </resources>

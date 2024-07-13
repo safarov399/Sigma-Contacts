@@ -1,4 +1,5 @@
 package me.safarov399.label
 
-class LabelEvent {
+sealed class LabelEvent {
+    data object LoadAllLabels: LabelEvent()
 }
