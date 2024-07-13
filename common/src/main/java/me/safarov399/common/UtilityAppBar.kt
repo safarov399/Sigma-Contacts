@@ -12,8 +12,4 @@ class UtilityAppBar @JvmOverloads constructor(
     defStyleAttr: Int = 0,
 ) : ConstraintLayout(context, attr, defStyleAttr) {
     private val binding = UtilityAppBarBinding.inflate(LayoutInflater.from(context), this, true)
-
-    init {
-
-    }
 }
