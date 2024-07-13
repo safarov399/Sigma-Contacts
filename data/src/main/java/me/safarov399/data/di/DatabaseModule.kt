@@ -2,14 +2,15 @@ package me.safarov399.data.di
 
 import android.content.Context
 import androidx.room.Room
-import me.safarov399.data.dao.ContactDao
-import me.safarov399.data.db.AppDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import me.safarov399.data.dao.ContactDao
+import me.safarov399.data.dao.LabelDao
 import me.safarov399.data.dao.SaveLocationDao
+import me.safarov399.data.db.AppDatabase
 import javax.inject.Singleton
 
 @Module
@@ -41,6 +42,13 @@ object DatabaseModule {
         return appDatabase.saveLocationDao()
     }
 
+    @Provides
+    @Singleton
+    fun provideLabelDao(
+        appDatabase: AppDatabase
+    ): LabelDao {
+        return appDatabase.labelDao()
+    }
 
 
 }

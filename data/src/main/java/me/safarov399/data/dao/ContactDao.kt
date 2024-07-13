@@ -5,24 +5,25 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import kotlinx.coroutines.flow.Flow
+import me.safarov399.core.base.BaseDao
 import me.safarov399.core.entity.ContactEntity
 
 @Dao
-interface ContactDao {
+interface ContactDao: BaseDao<ContactEntity> {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(contactEntity: ContactEntity)
+    override fun insert(entity: ContactEntity)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertContacts(contacts: List<ContactEntity>)
 
     @Query("SELECT * FROM contacts WHERE id=:id")
-    fun getById(id: Long): Flow<ContactEntity>
+    override fun getById(id: Long): Flow<ContactEntity>
 
     @Query("SELECT * FROM contacts")
-    fun getAll(): Flow<List<ContactEntity>>
+    override fun getAll(): Flow<List<ContactEntity>>
 
     @Query("DELETE FROM contacts WHERE id=:id")
-    fun deleteById(id: Long)
+    override fun deleteById(id: Long)
 
 }
