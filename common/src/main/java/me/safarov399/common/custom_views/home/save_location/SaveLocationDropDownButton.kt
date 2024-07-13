@@ -1,4 +1,4 @@
-package me.safarov399.common.custom_views.home
+package me.safarov399.common.custom_views.home.save_location
 
 import android.content.Context
 import android.util.AttributeSet

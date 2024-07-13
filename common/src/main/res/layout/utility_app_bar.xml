@@ -4,12 +4,33 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <me.safarov399.common.custom_views.home.SaveLocationDropDownButton
+    <me.safarov399.common.custom_views.home.save_location.SaveLocationDropDownButton
         android:id="@+id/utility_bar_drop_down"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
+    <ImageView
+        android:id="@+id/utility_bar_label_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/gs_label_vd_theme_24"
+        android:paddingEnd="@dimen/home_label_iv_padding_end"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/utility_bar_filter_iv"
+        />
+    <ImageView
+        android:id="@+id/utility_bar_filter_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/gs_filter_list_vd_theme_24"
+        android:paddingEnd="@dimen/home_filter_iv_padding_end"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+
 
 
 

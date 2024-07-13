@@ -3,12 +3,13 @@ package me.safarov399.core.entity
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import me.safarov399.core.base.BaseEntity
 import java.time.LocalDate
 
 @Entity("contacts")
 data class ContactEntity(
 
-    @PrimaryKey(true) @ColumnInfo val id: Long = 0,
+    @PrimaryKey(true) @ColumnInfo override var id: Long = 0,
     @ColumnInfo val contactsId: String,
 
     @ColumnInfo val namePrefix: String = "",
@@ -48,4 +49,4 @@ data class ContactEntity(
     @ColumnInfo val generalLabel: String = "",
 
     @ColumnInfo val profilePhoto: String = ""
-)
+): BaseEntity
