@@ -27,7 +27,11 @@
         <attr name="btnImgSrc" format="reference"/>
         <attr name="btnText" format="string"/>
         <attr name="closeIconEnabled" format="boolean"/>
+    </declare-styleable>
 
+    <declare-styleable name="LabelHeaderView">
+        <attr name="label" format="string"/>
+        <attr name="imageSrc"/>
     </declare-styleable>
 
 </resources>

@@ -68,4 +68,7 @@ dependencies {
     // extension functions for kotlin coroutines
     implementation (libs.alexstyl.contactstore.coroutines)
 
+
+    implementation (libs.androidx.recyclerview)
+
 }
