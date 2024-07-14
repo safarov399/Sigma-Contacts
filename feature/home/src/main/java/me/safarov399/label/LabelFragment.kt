@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.ConcatAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import me.safarov399.core.adapter.label.LabelAdapter
 import me.safarov399.core.adapter.label.LabelHeaderAdapter
+import me.safarov399.core.annotations.MockData
 import me.safarov399.core.base.BaseFragment
 import me.safarov399.core.entity.LabelEntity
 import me.safarov399.core.pojo.LabelHeaderItem
@@ -35,7 +36,6 @@ class LabelFragment : BaseFragment<FragmentLabelBinding, LabelViewModel, LabelSt
         labelHeaderAdapter = LabelHeaderAdapter()
         concatAdapter = ConcatAdapter(labelHeaderAdapter, labelAdapter)
         binding.labelFragmentRecyclerView.adapter = concatAdapter
-        labelAdapter?.submitList(labelsExample())
         labelHeaderAdapter?.submitList(
             listOf(
                 LabelHeaderItem()
@@ -43,16 +43,15 @@ class LabelFragment : BaseFragment<FragmentLabelBinding, LabelViewModel, LabelSt
         )
 
 
-//        labelAdapter?.submitList(listOf())
 
     }
 
     override fun onStateUpdate(state: LabelState) {
-        labelAdapter?.submitList(labelsExample())
-//        labelAdapter?.submitList(state.labels)
+        labelAdapter?.submitList(state.labels)
 
     }
 
+    @MockData
     private fun labelsExample(): List<LabelEntity> {
         val label = LabelEntity(
             name = "Family",
