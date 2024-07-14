@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:minHeight="300dp">
-
+>
 
     <View
         android:id="@+id/label_fragment_horizontal_line"
