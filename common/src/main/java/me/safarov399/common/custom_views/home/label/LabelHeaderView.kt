@@ -4,13 +4,14 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
-import me.safarov399.common.databinding.LabelViewBinding
+import me.safarov399.common.databinding.LabelHeaderViewBinding
 
-class LabelView @JvmOverloads constructor(
+class LabelHeaderView @JvmOverloads constructor(
     context: Context,
     attr: AttributeSet? = null,
     defStyleAttr: Int = 0
 ) : ConstraintLayout(context, attr, defStyleAttr) {
-    private val binding = LabelViewBinding.inflate(
-        LayoutInflater.from(context), this, true)
+    private val binding = LabelHeaderViewBinding.inflate(
+        LayoutInflater.from(context), this, true
+    )
 }

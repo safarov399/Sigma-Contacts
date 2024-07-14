@@ -31,6 +31,8 @@
     <color name="highlights_add_favorite_card_background_color">@color/material_dynamic_neutral10</color>
     <color name="highlights_add_tv">@color/material_dynamic_primary80</color>
 
+    <color name="label_header">@color/material_dynamic_primary70</color>
+
 
 
 

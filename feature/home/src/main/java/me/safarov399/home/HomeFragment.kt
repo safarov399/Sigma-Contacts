@@ -15,7 +15,6 @@ import android.widget.ImageView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import dagger.hilt.android.AndroidEntryPoint
-import me.safarov399.common.custom_views.home.label.LabelView
 import me.safarov399.save_location.SaveLocationFragment
 import me.safarov399.common.custom_views.home.save_location.SaveLocationDropDownButton
 import me.safarov399.common.dialogs.PermissionRequestDialog

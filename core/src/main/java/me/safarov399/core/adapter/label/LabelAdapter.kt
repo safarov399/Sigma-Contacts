@@ -1,4 +1,4 @@
-package me.safarov399.core.adapter
+package me.safarov399.core.adapter.label
 
 import android.view.LayoutInflater
 import android.view.View
