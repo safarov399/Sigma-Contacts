@@ -33,6 +33,9 @@
 
     <color name="label_header">@color/material_dynamic_primary40</color>
 
+    <color name="settings_fragment_header_color">@color/material_dynamic_primary40</color>
+
+
 
 
 
