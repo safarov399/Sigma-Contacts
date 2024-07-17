@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="16dp"
+    tools:context=".SettingsFragment">
+
+    <ImageView
+        android:id="@+id/settings_fragment_back_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:src="@drawable/abc_ic_ab_back_material"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/settings_fragment_title_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="Settings"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@id/settings_fragment_back_btn"
+        app:layout_constraintStart_toEndOf="@id/settings_fragment_back_btn"
+        app:layout_constraintTop_toTopOf="@id/settings_fragment_back_btn" />
+
+    <me.safarov399.common.custom_views.SimpleDoubleRowView
+        android:id="@+id/settings_fragment_sdr_sync"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        app:description="Control how contacts back up &amp; sync"
+        app:layout_constraintStart_toStartOf="@id/settings_fragment_title_tv"
+        app:layout_constraintTop_toBottomOf="@id/settings_fragment_title_tv"
+        app:title="Google Contacts sync settings" />
+
+    <me.safarov399.common.custom_views.SimpleOneRowView
+        android:id="@+id/settings_fragment_your_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/settings_fragment_title_tv"
+        app:layout_constraintTop_toBottomOf="@id/settings_fragment_sdr_sync"
+        app:title="Your info" />
+
+    <me.safarov399.common.custom_views.SimpleOneRowView
+        android:id="@+id/settings_fragment_accounts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/settings_fragment_title_tv"
+        app:layout_constraintTop_toBottomOf="@id/settings_fragment_your_info"
+        app:title="Accounts" />
+
+    <View
+        android:id="@+id/settings_fragment_horizontal_line_1"
+        android:layout_width="match_parent"
+        android:layout_height="0.3dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/settings_horizontal_line_view"
+        app:layout_constraintTop_toBottomOf="@id/settings_fragment_accounts" />
+
+    <TextView
+        android:id="@+id/settings_fragment_display_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Display"
+        android:textColor="@color/settings_fragment_header_color"
+        app:layout_constraintStart_toStartOf="@id/settings_fragment_sdr_sync"
+        app:layout_constraintTop_toBottomOf="@id/settings_fragment_horizontal_line_1" />
+
+    <me.safarov399.common.custom_views.SimpleDoubleRowView
+        android:id="@+id/settings_fragment_sort_by"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:description="First name"
+        app:layout_constraintStart_toStartOf="@id/settings_fragment_sdr_sync"
+        app:layout_constraintTop_toBottomOf="@id/settings_fragment_display_tv"
+        app:title="Sort by" />
+
+    <me.safarov399.common.custom_views.SimpleDoubleRowView
+        android:id="@+id/settings_fragment_name_format"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:description="First name first"
+        app:layout_constraintStart_toStartOf="@id/settings_fragment_sdr_sync"
+        app:layout_constraintTop_toBottomOf="@id/settings_fragment_sort_by"
+        app:title="Name format" />
+
+    <me.safarov399.common.custom_views.SimpleDoubleRowView
+        android:id="@+id/settings_fragment_theme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:description="System default"
+        app:layout_constraintStart_toStartOf="@id/settings_fragment_sdr_sync"
+        app:layout_constraintTop_toBottomOf="@id/settings_fragment_name_format"
+        app:title="Theme" />
+
+    <View
+        android:id="@+id/settings_fragment_horizontal_line_2"
+        android:layout_width="match_parent"
+        android:layout_height="0.3dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/settings_horizontal_line_view"
+        app:layout_constraintTop_toBottomOf="@id/settings_fragment_theme" />
+
+    <TextView
+        android:id="@+id/settings_fragment_edit_contacts_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Edit contacts"
+        android:textColor="@color/settings_fragment_header_color"
+        app:layout_constraintStart_toStartOf="@id/settings_fragment_sdr_sync"
+        app:layout_constraintTop_toBottomOf="@id/settings_fragment_horizontal_line_2" />
+
+    <me.safarov399.common.custom_views.SimpleDoubleRowView
+        android:id="@+id/settings_fragment_default_account"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        app:description="No default set"
+        app:layout_constraintStart_toStartOf="@id/settings_fragment_sdr_sync"
+        app:layout_constraintTop_toBottomOf="@id/settings_fragment_edit_contacts_tv"
+        app:title="Default account for new contacts" />
+
+    <me.safarov399.common.custom_views.SimpleDoubleRowView
+        android:id="@+id/settings_fragment_phonetic_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:description="Hide if empty"
+        app:layout_constraintStart_toStartOf="@id/settings_fragment_sdr_sync"
+        app:layout_constraintTop_toBottomOf="@id/settings_fragment_default_account"
+        app:title="Phonetic name" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
