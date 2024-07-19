@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <me.safarov399.common.SearchAppBar
+    <me.safarov399.core.appbars.SearchAppBar
         android:id="@+id/main_app_bar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
