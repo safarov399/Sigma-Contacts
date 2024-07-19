@@ -41,9 +41,6 @@ class LabelFragment : BaseFragment<FragmentLabelBinding, LabelViewModel, LabelSt
                 LabelHeaderItem()
             )
         )
-
-
-
     }
 
     override fun onStateUpdate(state: LabelState) {

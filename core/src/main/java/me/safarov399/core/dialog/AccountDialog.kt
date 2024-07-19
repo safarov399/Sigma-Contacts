@@ -1,4 +1,4 @@
-package me.safarov399.common.dialogs
+package me.safarov399.core.dialog
 
 import android.app.Dialog
 import android.content.Context
@@ -10,6 +10,8 @@ import android.view.Window
 import android.view.WindowManager
 import androidx.appcompat.app.ActionBar.LayoutParams
 import me.safarov399.common.databinding.AccountDialogBinding
+import me.safarov399.core.navigation.NavigationDestinationHandler.NAVIGATE_TO_SETTINGS
+import me.safarov399.core.navigation.NavigationManager
 
 class AccountDialog(context: Context) : Dialog(context) {
     private val binding: AccountDialogBinding
@@ -32,6 +34,11 @@ class AccountDialog(context: Context) : Dialog(context) {
         window?.setLayout(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT)
 
         binding.xButtonIv.setOnClickListener {
+            dismiss()
+        }
+        binding.accountDialogContactSettings.setOnClickListener {
+            val ctx = context as NavigationManager
+            ctx.navigateToFullScreenActivity(NAVIGATE_TO_SETTINGS)
             dismiss()
         }
     }

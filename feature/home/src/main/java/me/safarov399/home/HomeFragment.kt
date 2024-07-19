@@ -18,10 +18,11 @@ import dagger.hilt.android.AndroidEntryPoint
 import me.safarov399.save_location.SaveLocationFragment
 import me.safarov399.common.custom_views.home.save_location.SaveLocationDropDownButton
 import me.safarov399.common.dialogs.PermissionRequestDialog
-import me.safarov399.core.NavigationManager
+import me.safarov399.core.navigation.NavigationManager
 import me.safarov399.core.adapter.ContactAdapter
 import me.safarov399.core.base.AppBottomSheet
 import me.safarov399.core.base.BaseFragment
+import me.safarov399.core.navigation.NavigationDestinationHandler.NAVIGATE_TO_ADD
 import me.safarov399.home.databinding.FragmentHomeBinding
 import me.safarov399.label.LabelFragment
 
@@ -30,7 +31,7 @@ import me.safarov399.label.LabelFragment
 class HomeFragment :
     BaseFragment<FragmentHomeBinding, HomeViewModel, HomeState, HomeEffect, HomeEvent>(), AppBottomSheet.AppBottomSheetListener {
 
-        private var listener: AppBottomSheet.AppBottomSheetListener? = null
+    private var listener: AppBottomSheet.AppBottomSheetListener? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -81,7 +82,7 @@ class HomeFragment :
 
         binding.homeFab.setOnClickListener {
             val context = requireActivity() as NavigationManager
-            context.navigateToFullScreenActivity()
+            context.navigateToFullScreenActivity(NAVIGATE_TO_ADD)
         }
 
         binding.homeUtilityBar.findViewById<SaveLocationDropDownButton>(me.safarov399.common.R.id.utility_bar_drop_down)
@@ -99,7 +100,7 @@ class HomeFragment :
             val bottomSheet = AppBottomSheet(listener!!) {
                 LabelFragment()
             }
-            if(!bottomSheet.isAdded) {
+            if (!bottomSheet.isAdded) {
                 bottomSheet.show(parentFragmentManager, bottomSheet.tag)
             }
         }

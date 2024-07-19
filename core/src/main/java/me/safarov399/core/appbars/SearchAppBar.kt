@@ -1,11 +1,10 @@
-package me.safarov399.common
+package me.safarov399.core.appbars
 
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
 import me.safarov399.common.databinding.SearchAppBarBinding
-import me.safarov399.common.dialogs.AccountDialog
 
 class SearchAppBar @JvmOverloads constructor(
     context: Context,
@@ -18,7 +17,7 @@ class SearchAppBar @JvmOverloads constructor(
 
     init {
         binding.searchBarDeviceBackground.setOnClickListener {
-            val dialog = AccountDialog(context)
+            val dialog = me.safarov399.core.dialog.AccountDialog(context)
             dialog.show()
         }
     }
