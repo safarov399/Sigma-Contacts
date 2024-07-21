@@ -2,8 +2,10 @@ package me.safarov399.core.dialog
 
 import android.app.Dialog
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.net.Uri
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.Window
@@ -39,6 +41,13 @@ class AccountDialog(context: Context) : Dialog(context) {
         binding.accountDialogContactSettings.setOnClickListener {
             val ctx = context as NavigationManager
             ctx.navigateToFullScreenActivity(NAVIGATE_TO_SETTINGS)
+            dismiss()
+        }
+        binding.accountDialogHelpAndFeedback.setOnClickListener {
+            val link = "https://support.google.com/nexus/topic/6118711"
+            val browserIntent = Intent(Intent.ACTION_VIEW)
+            browserIntent.setData(Uri.parse(link))
+            context.startActivity(browserIntent)
             dismiss()
         }
     }
