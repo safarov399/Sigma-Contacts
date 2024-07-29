@@ -50,6 +50,22 @@ class AccountDialog(context: Context) : Dialog(context) {
             context.startActivity(browserIntent)
             dismiss()
         }
+
+        binding.accountDialogPrivacyPolicyTv.setOnClickListener {
+            val link = "https://policies.google.com/privacy"
+            val browserIntent = Intent(Intent.ACTION_VIEW)
+            browserIntent.setData(Uri.parse(link))
+            context.startActivity(browserIntent)
+            dismiss()
+        }
+
+        binding.accountDialogTermsOfService.setOnClickListener {
+            val link = "https://policies.google.com/terms"
+            val browserIntent = Intent(Intent.ACTION_VIEW)
+            browserIntent.setData(Uri.parse(link))
+            context.startActivity(browserIntent)
+            dismiss()
+        }
     }
 
 
