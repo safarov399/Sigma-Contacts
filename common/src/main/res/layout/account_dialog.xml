@@ -142,7 +142,7 @@
                 android:fontFamily="@font/roboto_regular"
                 android:text="Privacy Policy"
                 android:textColor="@color/default_color_inverse"
-                android:textSize="10sp" />
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/account_dialog_dot"
@@ -161,7 +161,7 @@
                 android:fontFamily="@font/roboto_regular"
                 android:text="Terms of Service"
                 android:textColor="@color/default_color_inverse"
-                android:textSize="10sp" />
+                android:textSize="12sp" />
 
         </LinearLayout>
 
