@@ -10,7 +10,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import dagger.hilt.android.AndroidEntryPoint
 import me.safarov399.add.AddFragment
-import me.safarov399.core.navigation.InvalidNavigationTargetException
+import me.safarov399.core.exception.InvalidNavigationTargetException
 import me.safarov399.core.navigation.NavigationDestinationHandler.NAVIGATE_TO_ADD
 import me.safarov399.core.navigation.NavigationDestinationHandler.NAVIGATE_TO_SETTINGS
 import me.safarov399.core.navigation.NavigationManager
@@ -31,19 +31,15 @@ class FullScreenActivity : AppCompatActivity(), NavigationManager {
         setContentView(binding?.root)
 
         val navId = intent.getIntExtra(NAVIGATION_ID, 0)
-        when(navId) {
+        when (navId) {
             NAVIGATE_TO_ADD -> {
-                supportFragmentManager
-                    .beginTransaction()
-                    .replace(binding!!.fullContainerView.id, AddFragment())
-                    .commit()
+                supportFragmentManager.beginTransaction().replace(binding!!.fullContainerView.id, AddFragment()).commit()
             }
+
             NAVIGATE_TO_SETTINGS -> {
-                supportFragmentManager
-                    .beginTransaction()
-                    .replace(binding!!.fullContainerView.id, SettingsFragment())
-                    .commit()
+                supportFragmentManager.beginTransaction().replace(binding!!.fullContainerView.id, SettingsFragment()).commit()
             }
+
             else -> {
                 throw RuntimeException("Some shit happened")
             }
@@ -53,8 +49,6 @@ class FullScreenActivity : AppCompatActivity(), NavigationManager {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, 0)
             insets
         }
-
-
 
 
     }

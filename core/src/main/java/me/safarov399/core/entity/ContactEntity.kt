@@ -10,7 +10,7 @@ import java.time.LocalDate
 data class ContactEntity(
 
     @PrimaryKey(true) @ColumnInfo override var id: Long = 0,
-    @ColumnInfo val contactsId: String,
+    @ColumnInfo val contactsId: String = "",
 
     @ColumnInfo val namePrefix: String = "",
     @ColumnInfo val firstName: String = "",
