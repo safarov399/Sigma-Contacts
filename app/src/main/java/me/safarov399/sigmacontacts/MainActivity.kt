@@ -15,7 +15,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.color.DynamicColors
 import dagger.hilt.android.AndroidEntryPoint
-import me.safarov399.core.navigation.InvalidNavigationTargetException
+import me.safarov399.core.exception.InvalidNavigationTargetException
 import me.safarov399.core.navigation.NavigationManager
 import me.safarov399.core.navigation.NavigationDestinationHandler.NAVIGATION_ID
 import me.safarov399.sigmacontacts.databinding.ActivityMainBinding
@@ -56,7 +56,6 @@ class MainActivity : AppCompatActivity(), NavigationManager {
             }
     }
 
-
     private fun showSelectPopup(view: View) {
         val popup = PopupMenu(this, view)
         val popupMenuInflater = popup.menuInflater
@@ -85,6 +84,4 @@ class MainActivity : AppCompatActivity(), NavigationManager {
         intent.putExtra(NAVIGATION_ID, id)
         startActivity(intent)
     }
-
-
 }

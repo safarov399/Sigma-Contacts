@@ -1,4 +1,7 @@
 package me.safarov399.add
 
-class AddEvent {
+import me.safarov399.core.entity.ContactEntity
+
+sealed class AddEvent {
+    data class InsertContact(val contactEntity: ContactEntity): AddEvent()
 }
