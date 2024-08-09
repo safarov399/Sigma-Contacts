@@ -1,7 +1,6 @@
 package me.safarov399.home
 
 import android.Manifest
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
@@ -14,6 +13,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
 import dagger.hilt.android.AndroidEntryPoint
 import me.safarov399.save_location.SaveLocationFragment
 import me.safarov399.common.custom_views.home.save_location.SaveLocationDropDownButton
@@ -29,7 +29,6 @@ import me.safarov399.label.LabelFragment
 
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel, HomeState, HomeEffect, HomeEvent>(), AppBottomSheet.AppBottomSheetListener {
-
 
     private val requiredPermissions = arrayOf(
         Manifest.permission.READ_CONTACTS, Manifest.permission.WRITE_CONTACTS
@@ -63,11 +62,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel, HomeState,
                 goToSettingsDialog()
             } else {
                 activity?.finish()
-
             }
-
         }
-
     }
 
     override fun onStateUpdate(state: HomeState) {
@@ -78,11 +74,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel, HomeState,
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         configureViews()
-//        postEvent(
-//            HomeEvent.InsertSaveLocation
-//        )
-
-
     }
 
     private fun configureViews() {
@@ -116,22 +107,18 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel, HomeState,
         }
     }
 
-    @Suppress("DEPRECATION")
-    @SuppressLint("UseCompatLoadingForDrawables")
-    fun selectSaveLocationDropDown() {
+    private fun selectSaveLocationDropDown() {
         binding.homeUtilityBar.findViewById<ImageView>(me.safarov399.common.R.id.save_location_drop_down_view_down).setImageDrawable(
-            resources.getDrawable(me.safarov399.common.R.drawable.drop_up)
+            ResourcesCompat.getDrawable(resources, me.safarov399.common.R.drawable.drop_up, null)
         )
-        binding.homeUtilityBar.findViewById<SaveLocationDropDownButton>(me.safarov399.common.R.id.utility_bar_drop_down).setBackgroundDrawable(resources.getDrawable(me.safarov399.common.R.drawable.savelocation_drop_down_button_background))
+        binding.homeUtilityBar.findViewById<SaveLocationDropDownButton>(me.safarov399.common.R.id.utility_bar_drop_down).background = ResourcesCompat.getDrawable(resources, me.safarov399.common.R.drawable.savelocation_drop_down_button_background, null)
     }
 
-    @Suppress("DEPRECATION")
-    @SuppressLint("UseCompatLoadingForDrawables")
-    fun unSelectSaveLocationDropDown() {
+    private fun unSelectSaveLocationDropDown() {
         binding.homeUtilityBar.findViewById<ImageView>(me.safarov399.common.R.id.save_location_drop_down_view_down).setImageDrawable(
-            resources.getDrawable(me.safarov399.common.R.drawable.drop_down)
+            ResourcesCompat.getDrawable(resources, me.safarov399.common.R.drawable.drop_down, null)
         )
-        binding.homeUtilityBar.findViewById<SaveLocationDropDownButton>(me.safarov399.common.R.id.utility_bar_drop_down).setBackgroundDrawable(null)
+        binding.homeUtilityBar.findViewById<SaveLocationDropDownButton>(me.safarov399.common.R.id.utility_bar_drop_down).background = null
 
 
     }
