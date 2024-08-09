@@ -114,37 +114,37 @@ class AddFragment : BaseFragment<FragmentAddBinding, AddViewModel, AddState, Add
                 ContentProviderOperation.newInsert(
                     ContactsContract.Data.CONTENT_URI
                 ).withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0).withValue(
-                        ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.StructuredName.CONTENT_ITEM_TYPE
-                    ).withValue(
-                        ContactsContract.CommonDataKinds.StructuredName.DISPLAY_NAME, fullName
-                    ).build()
+                    ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.StructuredName.CONTENT_ITEM_TYPE
+                ).withValue(
+                    ContactsContract.CommonDataKinds.StructuredName.DISPLAY_NAME, fullName
+                ).build()
             )
         }
 //        TODO("Add support for company types");
         if (company.isNotBlank()) {
             contentProviderOperation.add(
                 ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI).withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0).withValue(
-                        ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.Organization.CONTENT_ITEM_TYPE
-                    ).withValue(ContactsContract.CommonDataKinds.Organization.COMPANY, company).withValue(ContactsContract.CommonDataKinds.Organization.TYPE, ContactsContract.CommonDataKinds.Organization.TYPE_WORK).build()
-            );
+                    ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.Organization.CONTENT_ITEM_TYPE
+                ).withValue(ContactsContract.CommonDataKinds.Organization.COMPANY, company).withValue(ContactsContract.CommonDataKinds.Organization.TYPE, ContactsContract.CommonDataKinds.Organization.TYPE_WORK).build()
+            )
         }
 
         if (phoneNumber.isNotBlank()) {
             contentProviderOperation.add(
                 ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI).withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0).withValue(
-                        ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.Phone.CONTENT_ITEM_TYPE
-                    ).withValue(ContactsContract.CommonDataKinds.Phone.NUMBER, phoneNumber).withValue(
-                        ContactsContract.CommonDataKinds.Phone.TYPE, phoneLabel
-                    ).build()
+                    ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.Phone.CONTENT_ITEM_TYPE
+                ).withValue(ContactsContract.CommonDataKinds.Phone.NUMBER, phoneNumber).withValue(
+                    ContactsContract.CommonDataKinds.Phone.TYPE, phoneLabel
+                ).build()
             )
         }
 
         if (email.isNotBlank()) {
             contentProviderOperation.add(
                 ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI).withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0).withValue(
-                        ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.Email.CONTENT_ITEM_TYPE
-                    ).withValue(ContactsContract.CommonDataKinds.Email.DATA, email).withValue(ContactsContract.CommonDataKinds.Email.TYPE, emailLabel).build()
-            );
+                    ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.Email.CONTENT_ITEM_TYPE
+                ).withValue(ContactsContract.CommonDataKinds.Email.DATA, email).withValue(ContactsContract.CommonDataKinds.Email.TYPE, emailLabel).build()
+            )
         }
 
         try {
@@ -152,6 +152,7 @@ class AddFragment : BaseFragment<FragmentAddBinding, AddViewModel, AddState, Add
             postEvent(
                 AddEvent.InsertContact(contactEntity)
             )
+            activity?.onBackPressedDispatcher?.onBackPressed()
         } catch (e: Exception) {
             e.printStackTrace()
             Toast.makeText(requireContext(), "Exception: " + e.message, Toast.LENGTH_SHORT).show()

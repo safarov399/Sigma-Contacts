@@ -45,10 +45,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel, HomeState,
 
     private var contactsAdapter: ContactAdapter? = null
     private val requestPermissionLauncher = registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { permissions ->
-        var allGranted = true
         for (permission in permissions) {
             if (!permission.value) {
-                allGranted = false
                 break
             }
         }
