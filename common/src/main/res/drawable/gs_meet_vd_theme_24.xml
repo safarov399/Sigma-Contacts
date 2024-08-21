@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:height="24dp"
+    android:width="24dp"
+    android:viewportWidth="960"
+    android:viewportHeight="960">
+    <path
+        android:fillColor="@color/details_nested_icon_color"
+        android:pathData="M160,800q-33,0 -56.5,-23.5T80,720L80,360L280,160L640,160q33,0 56.5,23.5T720,240v180L880,260v440L720,540v180q0,33 -23.5,56.5T640,800L160,800ZM160,720L640,720L640,240L320,240L160,400v320ZM400,480Z"/>
+</vector>

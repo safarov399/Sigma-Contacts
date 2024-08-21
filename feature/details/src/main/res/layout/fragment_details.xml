@@ -1,14 +1,305 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     tools:context=".DetailsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/details_padded_cl"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="12dp"
+        android:paddingTop="16dp"
+        app:layout_constraintTop_toTopOf="parent">
 
-</FrameLayout>
+        <ImageView
+            android:id="@+id/details_back_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/abc_ic_ab_back_material"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/details_three_dots_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/details_header_button_margins"
+            android:src="@drawable/three_dots_vertical"
+            app:layout_constraintBottom_toBottomOf="@id/details_back_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/details_back_button" />
+
+        <ImageView
+            android:id="@+id/details_favorite_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/details_header_button_margins"
+            android:src="@drawable/quantum_gm_ic_star_outline_vd_theme_24"
+            app:layout_constraintBottom_toBottomOf="@id/details_back_button"
+            app:layout_constraintEnd_toStartOf="@id/details_three_dots_iv"
+            app:layout_constraintTop_toTopOf="@id/details_back_button" />
+
+        <ImageView
+            android:id="@+id/details_edit_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/gs_edit_vd_theme_24"
+            app:layout_constraintBottom_toBottomOf="@id/details_back_button"
+            app:layout_constraintEnd_toStartOf="@id/details_favorite_iv"
+            app:layout_constraintTop_toTopOf="@id/details_back_button" />
+
+        <me.safarov399.common.custom_views.BackgroundAndTextViewBig
+            android:id="@+id/details_profile_photo_background_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="65dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/details_contact_name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_semi_bold"
+            android:paddingTop="24dp"
+            android:text="Sultanmurad Safarov"
+            android:textSize="28sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/details_profile_photo_background_iv"
+            tools:text="Sultanmurad Safarov" />
+
+        <ImageView
+            android:id="@+id/details_dial_iv"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/image_background_small"
+            android:padding="@dimen/details_nested_iv_padding"
+            android:src="@drawable/dial_phone"
+            app:layout_constraintEnd_toStartOf="@+id/details_message_iv"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/details_contact_name_tv" />
+
+        <TextView
+            android:id="@+id/details_dial_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Call"
+            android:textColor="@color/details_nested_icon_text_color"
+            app:layout_constraintEnd_toEndOf="@id/details_dial_iv"
+            app:layout_constraintStart_toStartOf="@id/details_dial_iv"
+            app:layout_constraintTop_toBottomOf="@id/details_dial_iv" />
+
+        <ImageView
+            android:id="@+id/details_message_iv"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/image_background_small"
+            android:padding="@dimen/details_nested_iv_padding"
+            android:src="@drawable/quantum_gm_ic_message_vd_theme_24"
+            app:layout_constraintBottom_toBottomOf="@id/details_dial_iv"
+            app:layout_constraintEnd_toStartOf="@+id/details_meet_iv"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/details_dial_iv"
+            app:layout_constraintTop_toTopOf="@id/details_dial_iv" />
+
+        <TextView
+            android:id="@+id/details_message_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Text"
+            android:textColor="@color/details_nested_icon_text_color"
+            app:layout_constraintEnd_toEndOf="@id/details_message_iv"
+            app:layout_constraintStart_toStartOf="@id/details_message_iv"
+            app:layout_constraintTop_toBottomOf="@id/details_message_iv" />
+
+        <ImageView
+            android:id="@+id/details_meet_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/image_background_small"
+            android:padding="@dimen/details_nested_iv_padding"
+            android:src="@drawable/gs_meet_vd_theme_24"
+            app:layout_constraintBottom_toBottomOf="@id/details_dial_iv"
+            app:layout_constraintEnd_toStartOf="@id/details_email_iv"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/details_message_iv"
+            app:layout_constraintTop_toTopOf="@id/details_dial_iv" />
+
+        <TextView
+            android:id="@+id/details_meet_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Set up"
+            android:textColor="@color/details_nested_icon_text_color"
+            app:layout_constraintEnd_toEndOf="@id/details_meet_iv"
+            app:layout_constraintStart_toStartOf="@id/details_meet_iv"
+            app:layout_constraintTop_toBottomOf="@id/details_meet_iv" />
+
+        <ImageView
+            android:id="@+id/details_email_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/image_background_small"
+            android:padding="@dimen/details_nested_iv_padding"
+            android:src="@drawable/email"
+            app:layout_constraintBottom_toBottomOf="@id/details_dial_iv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@id/details_meet_iv"
+            app:layout_constraintTop_toTopOf="@id/details_dial_iv" />
+
+        <TextView
+            android:id="@+id/details_email_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Email"
+            android:textColor="@color/details_nested_icon_text_color"
+            app:layout_constraintEnd_toEndOf="@id/details_email_iv"
+            app:layout_constraintStart_toStartOf="@id/details_email_iv"
+            app:layout_constraintTop_toBottomOf="@id/details_email_iv" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/details_contact_info_cl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/details_contact_info_background"
+            android:padding="16dp"
+            app:layout_constraintTop_toBottomOf="@id/details_dial_tv">
+
+            <TextView
+                android:id="@+id/details_contact_info_cl_contact_info_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_semi_bold"
+                android:text="Contact info"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/details_contact_info_cl_dial_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:src="@drawable/dial_phone"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/details_contact_info_cl_contact_info_tv" />
+
+            <TextView
+                android:id="@+id/details_contact_info_cl_contact_number_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="46dp"
+                android:text="+994 50 999 99 99"
+                android:textColor="@color/default_color_inverse"
+                android:textSize="16sp"
+                app:layout_constraintStart_toEndOf="@id/details_contact_info_cl_dial_iv"
+                app:layout_constraintTop_toTopOf="@id/details_contact_info_cl_contact_info_tv" />
+
+            <TextView
+                android:id="@+id/details_contact_info_cl_contact_info_type_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mobile · Default"
+                app:layout_constraintStart_toStartOf="@id/details_contact_info_cl_contact_number_tv"
+                app:layout_constraintTop_toBottomOf="@id/details_contact_info_cl_contact_number_tv" />
+
+            <ImageView
+                android:id="@+id/details_contact_info_cl_message_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/quantum_gm_ic_message_vd_theme_24"
+                app:layout_constraintBottom_toBottomOf="@id/details_contact_info_cl_dial_iv"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/details_contact_info_cl_dial_iv" />
+
+            <ImageView
+                android:id="@+id/details_contact_info_cl_email_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:src="@drawable/email"
+                app:layout_constraintStart_toStartOf="@id/details_contact_info_cl_dial_iv"
+                app:layout_constraintTop_toBottomOf="@id/details_contact_info_cl_contact_info_type_tv" />
+
+            <TextView
+                android:id="@+id/details_contact_info_cl_email_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="example@gmail.com"
+                android:textColor="@color/default_color_inverse"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@id/details_contact_info_cl_contact_number_tv"
+                app:layout_constraintTop_toBottomOf="@id/details_contact_info_cl_contact_info_type_tv" />
+
+            <TextView
+                android:id="@+id/details_contact_info_cl_email_type_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Default"
+                app:layout_constraintStart_toStartOf="@id/details_contact_info_cl_email_tv"
+                app:layout_constraintTop_toBottomOf="@id/details_contact_info_cl_email_tv" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:id="@+id/details_horizontal_line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/horizontal_line_background"
+        app:layout_constraintTop_toBottomOf="@id/details_padded_cl" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        app:layout_constraintTop_toBottomOf="@id/details_horizontal_line">
+
+
+        <TextView
+            android:id="@+id/details_contact_settings_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/roboto_semi_bold"
+            android:text="Contact settings"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <me.safarov399.common.custom_views.AccountDialogTile
+            android:id="@+id/details_block_numbers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:imageSrc="@drawable/quantum_gm_ic_block_vd_theme_24"
+            app:layout_constraintTop_toBottomOf="@id/details_contact_settings_tv"
+            app:text="Block numbers" />
+        <me.safarov399.common.custom_views.AccountDialogTile
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:imageSrc="@drawable/gs_voicemail_vd_theme_24"
+            app:text="Route to voicemail"
+            app:layout_constraintTop_toBottomOf="@id/details_block_numbers"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

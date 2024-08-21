@@ -26,4 +26,7 @@
 
     <dimen name="label_header_iv_padding_start">16dp</dimen>
     <dimen name="label_header_tv_padding_start">16dp</dimen>
+
+    <dimen name="details_header_button_margins">16dp</dimen>
+    <dimen name="details_nested_iv_padding">13dp</dimen>
 </resources>

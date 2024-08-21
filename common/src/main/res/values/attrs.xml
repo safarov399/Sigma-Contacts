@@ -40,5 +40,8 @@
     <declare-styleable name="SimpleOneRowView">
         <attr name="title" />
     </declare-styleable>
+    <declare-styleable name="BackgroundAndImageViewSmall">
+        <attr name="imageSrc"/>
+    </declare-styleable>
 
 </resources>

@@ -12,9 +12,11 @@ import dagger.hilt.android.AndroidEntryPoint
 import me.safarov399.add.AddFragment
 import me.safarov399.core.exception.InvalidNavigationTargetException
 import me.safarov399.core.navigation.NavigationDestinationHandler.NAVIGATE_TO_ADD
+import me.safarov399.core.navigation.NavigationDestinationHandler.NAVIGATE_TO_DETAILS
 import me.safarov399.core.navigation.NavigationDestinationHandler.NAVIGATE_TO_SETTINGS
 import me.safarov399.core.navigation.NavigationManager
 import me.safarov399.core.navigation.NavigationDestinationHandler.NAVIGATION_ID
+import me.safarov399.details.DetailsFragment
 import me.safarov399.settings.SettingsFragment
 import me.safarov399.sigmacontacts.databinding.ActivityFullScreenBinding
 
@@ -38,6 +40,10 @@ class FullScreenActivity : AppCompatActivity(), NavigationManager {
 
             NAVIGATE_TO_SETTINGS -> {
                 supportFragmentManager.beginTransaction().replace(binding!!.fullContainerView.id, SettingsFragment()).commit()
+            }
+
+            NAVIGATE_TO_DETAILS -> {
+                supportFragmentManager.beginTransaction().replace(binding!!.fullContainerView.id, DetailsFragment()).commit()
             }
 
             else -> {
