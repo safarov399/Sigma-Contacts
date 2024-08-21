@@ -29,8 +29,6 @@ class OneImageOneTextView @JvmOverloads constructor(
                 if (!text.isNullOrEmpty()) {
                     binding.oneImageOneTextViewTv.text = text
                 }
-                val dimension = getDimension(R.styleable.OneImageOneTextView_textSize, 14f)
-                binding.oneImageOneTextViewTv.textSize = dimension
             } finally {
                 recycle()
             }

@@ -19,6 +19,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto_regular"
         android:paddingStart="16dp"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@id/one_image_one_text_view_iv"
         app:layout_constraintStart_toEndOf="@id/one_image_one_text_view_iv"
         app:layout_constraintTop_toTopOf="@id/one_image_one_text_view_iv" />

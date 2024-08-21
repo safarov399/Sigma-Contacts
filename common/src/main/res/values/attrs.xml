@@ -10,7 +10,6 @@
     <declare-styleable name="OneImageOneTextView">
         <attr name="imageSrc" />
         <attr name="text" />
-        <attr name="textSize" />
     </declare-styleable>
 
 
