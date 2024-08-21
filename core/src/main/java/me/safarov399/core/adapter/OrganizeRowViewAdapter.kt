@@ -13,8 +13,8 @@ class OrganizeRowViewAdapter(
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     inner class SingleRowViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val icon = itemView.findViewById<ImageView>(me.safarov399.common.R.id.organize_row_view_iv)
-        private val title = itemView.findViewById<TextView>(me.safarov399.common.R.id.organize_row_view_title_tv)
+        private val icon = itemView.findViewById<ImageView>(me.safarov399.common.R.id.one_image_one_text_view_iv)
+        private val title = itemView.findViewById<TextView>(me.safarov399.common.R.id.one_image_one_text_view_tv)
 
         fun bind(item: OrganizeListItem.OrganizeRowSingleLineModel) {
             icon.setImageResource(item.icon)
@@ -23,14 +23,14 @@ class OrganizeRowViewAdapter(
     }
 
     inner class DoubleRowViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val icon = itemView.findViewById<ImageView>(me.safarov399.common.R.id.organize_row_view_iv)
-        private val title = itemView.findViewById<TextView>(me.safarov399.common.R.id.organize_row_view_title_tv)
-        private val description = itemView.findViewById<TextView>(me.safarov399.common.R.id.organize_row_view_description_tv)
+        private val icon = itemView.findViewById<ImageView>(me.safarov399.common.R.id.one_image_two_text_view_iv)
+        private val title = itemView.findViewById<TextView>(me.safarov399.common.R.id.one_image_two_text_view_title_tv)
+        private val subTitle = itemView.findViewById<TextView>(me.safarov399.common.R.id.one_image_two_text_view_subtitle_tv)
 
         fun bind(item: OrganizeListItem.OrganizeRowDoubleLineModel) {
             icon.setImageResource(item.icon)
             title.text = item.title
-            description.text = item.description
+            subTitle.text = item.description
         }
     }
 
@@ -46,13 +46,13 @@ class OrganizeRowViewAdapter(
         return when (viewType) {
             0 -> SingleRowViewHolder(
                 LayoutInflater.from(parent.context).inflate(
-                    me.safarov399.common.R.layout.organize_row_single_line_view, parent, false
+                    me.safarov399.common.R.layout.one_image_one_text_view, parent, false
                 )
             )
 
             1 -> DoubleRowViewHolder(
                 LayoutInflater.from(parent.context).inflate(
-                    me.safarov399.common.R.layout.organize_row_double_line_view, parent, false
+                    me.safarov399.common.R.layout.one_image_two_text_view, parent, false
                 )
             )
 

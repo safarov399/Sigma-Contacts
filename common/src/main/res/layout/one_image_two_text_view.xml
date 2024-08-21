@@ -9,7 +9,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <ImageView
-        android:id="@+id/organize_row_view_iv"
+        android:id="@+id/one_image_two_text_view_iv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:src="@drawable/account_dialog_phone"
@@ -18,26 +18,25 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
     <TextView
-        android:id="@+id/organize_row_view_title_tv"
+        android:id="@+id/one_image_two_text_view_title_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="Merge &amp;Fix"
         android:textColor="@color/organize_row_view_title_color"
         android:paddingBottom="@dimen/organize_row_view_double_title_bottom_padding"
         android:textSize="@dimen/organize_row_view_title_text_size"
-        app:layout_constraintStart_toEndOf="@id/organize_row_view_iv"
+        app:layout_constraintStart_toEndOf="@id/one_image_two_text_view_iv"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/organize_row_view_description_tv"
+        app:layout_constraintBottom_toTopOf="@id/one_image_two_text_view_subtitle_tv"
         />
     <TextView
-        android:id="@+id/organize_row_view_description_tv"
+        android:id="@+id/one_image_two_text_view_subtitle_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="@dimen/organize_row_view_description_text_size"
         android:paddingTop="@dimen/organize_row_view_double_description_top_padding"
         tools:text="Easy ways to fix up your contacts"
-        app:layout_constraintStart_toEndOf="@id/organize_row_view_iv"
-        app:layout_constraintTop_toBottomOf="@id/organize_row_view_title_tv"
+        app:layout_constraintStart_toEndOf="@id/one_image_two_text_view_iv"
+        app:layout_constraintTop_toBottomOf="@id/one_image_two_text_view_title_tv"
         app:layout_constraintBottom_toBottomOf="parent"/>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

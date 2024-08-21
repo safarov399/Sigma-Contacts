@@ -35,6 +35,14 @@
 
     <color name="settings_fragment_header_color">@color/material_dynamic_primary90</color>
 
+    <color name="image_background_small_color">@color/material_dynamic_secondary30</color>
+    <color name="details_nested_icon_color">@color/material_dynamic_secondary90</color>
+    <color name="details_nested_icon_text_color">@color/material_dynamic_secondary90</color>
+    <color name="details_contact_info_background_color">@color/material_dynamic_primary10</color>
+
+
+
+
 
 
 

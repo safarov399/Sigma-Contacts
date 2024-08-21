@@ -5,4 +5,5 @@ object NavigationDestinationHandler {
 
     const val NAVIGATE_TO_ADD = 1
     const val NAVIGATE_TO_SETTINGS = 2
+    const val NAVIGATE_TO_DETAILS = 3
 }
