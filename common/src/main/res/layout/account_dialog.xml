@@ -86,7 +86,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/account_dialog_first_row">
 
-            <me.safarov399.common.custom_views.AccountDialogTile
+            <me.safarov399.common.custom_views.OneImageOneTextView
                 android:id="@+id/account_dialog_add_another_account_tile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -96,7 +96,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:text="Add another account" />
 
-            <me.safarov399.common.custom_views.AccountDialogTile
+            <me.safarov399.common.custom_views.OneImageOneTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingBottom="6dp"
@@ -106,7 +106,7 @@
                 app:text="Manage accounts on this device" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <me.safarov399.common.custom_views.AccountDialogTile
+        <me.safarov399.common.custom_views.OneImageOneTextView
             android:id="@+id/account_dialog_contact_settings"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -117,7 +117,7 @@
             app:layout_constraintTop_toBottomOf="@id/account_dialog_second_row"
             app:text="Contacts settings" />
 
-        <me.safarov399.common.custom_views.AccountDialogTile
+        <me.safarov399.common.custom_views.OneImageOneTextView
             android:id="@+id/account_dialog_help_and_feedback"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

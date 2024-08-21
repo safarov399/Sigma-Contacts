@@ -284,19 +284,24 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <me.safarov399.common.custom_views.AccountDialogTile
+        <me.safarov399.common.custom_views.OneImageOneTextView
             android:id="@+id/details_block_numbers"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             app:imageSrc="@drawable/quantum_gm_ic_block_vd_theme_24"
             app:layout_constraintTop_toBottomOf="@id/details_contact_settings_tv"
-            app:text="Block numbers" />
-        <me.safarov399.common.custom_views.AccountDialogTile
+            app:text="Block numbers"
+            app:textSize="@dimen/details_one_image_one_text_text_size" />
+
+        <me.safarov399.common.custom_views.OneImageOneTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             app:imageSrc="@drawable/gs_voicemail_vd_theme_24"
+            app:layout_constraintTop_toBottomOf="@id/details_block_numbers"
             app:text="Route to voicemail"
-            app:layout_constraintTop_toBottomOf="@id/details_block_numbers"/>
+            app:textSize="@dimen/details_one_image_one_text_text_size" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

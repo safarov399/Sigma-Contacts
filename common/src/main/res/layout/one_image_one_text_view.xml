@@ -2,10 +2,11 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="40dp">
+    android:layout_height="40dp"
+    android:paddingLeft="16dp">
 
     <ImageView
-        android:id="@+id/account_dialog_tile_iv"
+        android:id="@+id/one_image_one_text_view_iv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -13,14 +14,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/account_dialog_tile_tv"
+        android:id="@+id/one_image_one_text_view_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto_regular"
         android:paddingStart="16dp"
-        android:textColor="@color/default_color_inverse"
-        app:layout_constraintBottom_toBottomOf="@id/account_dialog_tile_iv"
-        app:layout_constraintStart_toEndOf="@id/account_dialog_tile_iv"
-        app:layout_constraintTop_toTopOf="@id/account_dialog_tile_iv" />
+        app:layout_constraintBottom_toBottomOf="@id/one_image_one_text_view_iv"
+        app:layout_constraintStart_toEndOf="@id/one_image_one_text_view_iv"
+        app:layout_constraintTop_toTopOf="@id/one_image_one_text_view_iv" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
