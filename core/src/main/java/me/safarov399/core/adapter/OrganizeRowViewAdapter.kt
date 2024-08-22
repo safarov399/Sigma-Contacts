@@ -1,5 +1,6 @@
 package me.safarov399.core.adapter
 
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,6 +20,7 @@ class OrganizeRowViewAdapter(
         fun bind(item: OrganizeListItem.OrganizeRowSingleLineModel) {
             icon.setImageResource(item.icon)
             title.text = item.title
+            title.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16f)
         }
     }
 
