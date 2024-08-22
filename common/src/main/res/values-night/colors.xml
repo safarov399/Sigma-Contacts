@@ -12,9 +12,9 @@
     <color name="permission_dialog_text_color">#FFD3D3D3</color>
     <color name="search_bar_color">@color/material_dynamic_primary20</color>
 
-    <color name="account_dialog_background">@color/material_dynamic_primary10</color>
     <color name="account_dialog_text">@color/white</color>
-    <color name="account_dialog_row_background_color">@color/material_dynamic_primary0</color>
+    <color name="account_dialog_background">@color/material_dynamic_primary20</color>
+    <color name="account_dialog_row_background_color">@color/material_dynamic_primary10</color>
     <color name="account_dialog_device_background_color">#FFBBBBBB</color>
     <color name="account_dialog_device_color">#FF000000</color>
 
@@ -25,7 +25,7 @@
 
     <color name="three_dots_vertical">@color/material_dynamic_primary90</color>
 
-    <color name="organize_row_view_title_color">@color/material_dynamic_primary99</color>
+    <color name="one_image_two_text_title_color">@color/material_dynamic_primary99</color>
 
     <color name="highlights_action_button_background_color">@color/material_dynamic_primary30</color>
     <color name="highlights_add_favorite_card_background_color">@color/material_dynamic_primary10</color>
