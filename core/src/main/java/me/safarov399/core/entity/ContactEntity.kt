@@ -1,5 +1,6 @@
 package me.safarov399.core.entity
 
+import androidx.annotation.ColorInt
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -48,5 +49,7 @@ data class ContactEntity(
 
     @ColumnInfo val generalLabel: String = "",
 
-    @ColumnInfo val profilePhoto: String = ""
+    @ColumnInfo val profilePhoto: String = "",
+
+    @ColumnInfo @ColorInt val color: Int?
 ): BaseEntity

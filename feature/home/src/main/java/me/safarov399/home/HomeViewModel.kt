@@ -97,7 +97,8 @@ class HomeViewModel @Inject constructor(
                                 ContactEntity(
                                     contactsId = id,
                                     firstName = name,
-                                    number = phoneNumber
+                                    number = phoneNumber,
+                                    color = null
                                 )
                             )
                         }
