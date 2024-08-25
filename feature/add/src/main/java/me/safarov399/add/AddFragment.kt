@@ -16,6 +16,7 @@ import me.safarov399.core.base.BaseFragment
 import me.safarov399.core.entity.ContactEntity
 import me.safarov399.core.exception.InvalidEmailTypeException
 import me.safarov399.core.exception.InvalidPhoneNumberTypeException
+import me.safarov399.core.pojo.ContactColors
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
@@ -46,7 +47,7 @@ class AddFragment : BaseFragment<FragmentAddBinding, AddViewModel, AddState, Add
                 val emailType = addEmailActv.text.toString()
 
                 val contactEntity = ContactEntity(
-                    firstName = firstName, lastName = lastname, company = company, number = phoneNumber, phoneLabel = phoneType, email = email, emailLabel = emailType
+                    firstName = firstName, lastName = lastname, company = company, number = phoneNumber, phoneLabel = phoneType, email = email, emailLabel = emailType, color = ContactColors.COLORS.random()
                 )
                 insertContact(contactEntity)
             }
