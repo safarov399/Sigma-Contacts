@@ -23,6 +23,7 @@ import java.util.Locale
 
 @AndroidEntryPoint
 class AddFragment : BaseFragment<FragmentAddBinding, AddViewModel, AddState, AddEffect, AddEvent>() {
+
     override val getViewBinding: (LayoutInflater, ViewGroup?, Boolean) -> FragmentAddBinding = { inflater, viewGroup, value ->
         FragmentAddBinding.inflate(inflater, viewGroup, value)
     }
