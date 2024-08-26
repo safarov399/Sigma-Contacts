@@ -20,16 +20,14 @@ import me.safarov399.core.base.BaseViewModel
 import me.safarov399.core.entity.ContactEntity
 import me.safarov399.core.entity.SaveLocationEntity
 import me.safarov399.domain.usecase.save_location.InsertSaveLocationUseCase
+import java.util.Locale
 import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    @ApplicationContext private val context: Context,
-    private val insertContactsUseCase: InsertAllContactsUseCase,
-    private val getAllContactsUseCase: GetAllContactsUseCase,
-    private val sharedPreferences: EncryptedSharedPreferences,
-    private val insertSaveLocationUseCase: InsertSaveLocationUseCase
+    @ApplicationContext private val context: Context, private val insertContactsUseCase: InsertAllContactsUseCase, private val getAllContactsUseCase: GetAllContactsUseCase, private val sharedPreferences: EncryptedSharedPreferences, private val insertSaveLocationUseCase: InsertSaveLocationUseCase
 ) : BaseViewModel<HomeState, HomeEffect, HomeEvent>() {
+
     override fun getInitialState(): HomeState = HomeState(arrayListOf())
 
     override fun onEventUpdate(event: HomeEvent) {
@@ -37,8 +35,7 @@ class HomeViewModel @Inject constructor(
             HomeEvent.ReadContacts -> viewModelScope.launch(Dispatchers.IO) {
                 if (sharedPreferences.getBoolean(SharedPreferencesManager.IS_FIRST_LAUNCH, true)) {
                     insertContactsToDatabase()
-                    sharedPreferences.edit()
-                        .putBoolean(SharedPreferencesManager.IS_FIRST_LAUNCH, false).apply()
+                    sharedPreferences.edit().putBoolean(SharedPreferencesManager.IS_FIRST_LAUNCH, false).apply()
                 }
                 getAllContactsUseCase.invoke().onEach {
                     setState(
@@ -51,9 +48,11 @@ class HomeViewModel @Inject constructor(
 
             HomeEvent.InsertSaveLocation -> {
                 viewModelScope.launch(Dispatchers.IO) {
-                    insertSaveLocationUseCase.invoke(SaveLocationEntity(
-                        logo = "add", title = "Device"
-                    ))
+                    insertSaveLocationUseCase.invoke(
+                        SaveLocationEntity(
+                            logo = "add", title = "Device"
+                        )
+                    )
                 }
             }
         }
@@ -65,28 +64,17 @@ class HomeViewModel @Inject constructor(
 
         val contactsList = arrayListOf<ContactEntity>()
         val cursor = context.contentResolver.query(
-            ContactsContract.Contacts.CONTENT_URI,
-            null,
-            null,
-            null,
-            ContactsContract.Contacts.DISPLAY_NAME + " ASC"
+            ContactsContract.Contacts.CONTENT_URI, null, null, null, ContactsContract.Contacts.DISPLAY_NAME + " ASC"
         )
         if ((cursor?.count ?: 0) > 0) {
             while (cursor!!.moveToNext()) {
 
                 val id = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts._ID))
-                val name =
-                    cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME))
-                val phoneNumber =
-                    cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER))
-                        .toInt()
+                val name = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME))
+                val phoneNumber = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER)).toInt()
                 if (phoneNumber > 0) {
                     val cursorPhoneNumber = context.contentResolver.query(
-                        ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
-                        null,
-                        ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " =?",
-                        arrayOf(id),
-                        null
+                        ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " =?", arrayOf(id), null
                     )
                     if ((cursorPhoneNumber?.count ?: 0) > 0) {
                         while (cursorPhoneNumber!!.moveToNext()) {
@@ -95,10 +83,7 @@ class HomeViewModel @Inject constructor(
                             )
                             contactsList.add(
                                 ContactEntity(
-                                    contactsId = id,
-                                    firstName = name,
-                                    number = phoneNumber,
-                                    color = null
+                                    contactsId = id, firstName = name, number = phoneNumber, color = null
                                 )
                             )
                         }
@@ -108,9 +93,14 @@ class HomeViewModel @Inject constructor(
             }
         }
         cursor?.close()
+        val azerbaijaniComparator = compareBy<ContactEntity> { it.firstName.lowercase(Locale("az")) }
+
+        contactsList.sortWith(azerbaijaniComparator)
+
         return flow {
             emit(contactsList)
         }
+
     }
 
     private fun insertContactsToDatabase() {
