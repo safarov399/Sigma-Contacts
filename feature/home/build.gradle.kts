@@ -65,7 +65,6 @@ dependencies {
 
     implementation (libs.alexstyl.contactstore)
 
-    // extension functions for kotlin coroutines
     implementation (libs.alexstyl.contactstore.coroutines)
 
 

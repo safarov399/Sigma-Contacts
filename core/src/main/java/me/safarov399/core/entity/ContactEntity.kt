@@ -31,7 +31,7 @@ data class ContactEntity(
     @ColumnInfo val numbers: MutableList<String> = mutableListOf(),
     @ColumnInfo val phoneLabel: String = "",
 
-    @ColumnInfo val email: String = "",
+    @ColumnInfo val emails: MutableList<String> = mutableListOf(),
     @ColumnInfo val emailLabel: String = "",
 
     @ColumnInfo val address: String = "",
@@ -52,5 +52,5 @@ data class ContactEntity(
 
     @ColumnInfo val profilePhoto: String = "",
 
-    @ColumnInfo @ColorInt val color: Int?
+    @ColumnInfo @ColorInt val color: Int? = null
 ): BaseEntity

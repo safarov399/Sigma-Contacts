@@ -48,7 +48,7 @@ class AddFragment : BaseFragment<FragmentAddBinding, AddViewModel, AddState, Add
                 val emailType = addEmailActv.text.toString()
 
                 val contactEntity = ContactEntity(
-                    firstName = firstName, lastName = lastname, company = company, numbers = mutableListOf(phoneNumber), phoneLabel = phoneType, email = email, emailLabel = emailType, color = ContactColors.COLORS.random()
+                    firstName = firstName, lastName = lastname, company = company, numbers = mutableListOf(phoneNumber), phoneLabel = phoneType, emails = mutableListOf(email), emailLabel = emailType, color = ContactColors.COLORS.random()
                 )
                 insertContact(contactEntity)
             }
@@ -69,7 +69,7 @@ class AddFragment : BaseFragment<FragmentAddBinding, AddViewModel, AddState, Add
         val fullName = (contactEntity.firstName.trim() + " " + contactEntity.lastName.trim()).trim()
         val company = contactEntity.company
         val phoneNumbers = contactEntity.numbers
-        val email = contactEntity.email
+        val emails = contactEntity.emails
 
         val phoneLabel: Int = when (contactEntity.phoneLabel) {
             "Mobile" -> ContactsContract.CommonDataKinds.Phone.TYPE_MOBILE
@@ -141,11 +141,11 @@ class AddFragment : BaseFragment<FragmentAddBinding, AddViewModel, AddState, Add
             )
         }
 
-        if (email.isNotBlank()) {
+        if (emails.first().isNotBlank()) {
             contentProviderOperation.add(
                 ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI).withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0).withValue(
                     ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.Email.CONTENT_ITEM_TYPE
-                ).withValue(ContactsContract.CommonDataKinds.Email.DATA, email).withValue(ContactsContract.CommonDataKinds.Email.TYPE, emailLabel).build()
+                ).withValue(ContactsContract.CommonDataKinds.Email.DATA, emails).withValue(ContactsContract.CommonDataKinds.Email.TYPE, emailLabel).build()
             )
         }
 

@@ -11,6 +11,7 @@ import androidx.core.view.WindowInsetsCompat
 import dagger.hilt.android.AndroidEntryPoint
 import me.safarov399.add.AddFragment
 import me.safarov399.core.exception.InvalidNavigationTargetException
+import me.safarov399.core.navigation.NavigationDestinationHandler.DATA_ID
 import me.safarov399.core.navigation.NavigationDestinationHandler.NAVIGATE_TO_ADD
 import me.safarov399.core.navigation.NavigationDestinationHandler.NAVIGATE_TO_DETAILS
 import me.safarov399.core.navigation.NavigationDestinationHandler.NAVIGATE_TO_SETTINGS
@@ -33,6 +34,7 @@ class FullScreenActivity : AppCompatActivity(), NavigationManager {
         setContentView(binding?.root)
 
         val navId = intent.getIntExtra(NAVIGATION_ID, 0)
+        val dataId = intent.getLongExtra(DATA_ID, 0)
         when (navId) {
             NAVIGATE_TO_ADD -> {
                 supportFragmentManager.beginTransaction().replace(binding!!.fullContainerView.id, AddFragment()).commit()
@@ -43,7 +45,9 @@ class FullScreenActivity : AppCompatActivity(), NavigationManager {
             }
 
             NAVIGATE_TO_DETAILS -> {
-                supportFragmentManager.beginTransaction().replace(binding!!.fullContainerView.id, DetailsFragment()).commit()
+                val detailsFragment = DetailsFragment()
+                detailsFragment.setDataId(dataId)
+                supportFragmentManager.beginTransaction().replace(binding!!.fullContainerView.id, detailsFragment).commit()
             }
 
             else -> {
@@ -66,7 +70,7 @@ class FullScreenActivity : AppCompatActivity(), NavigationManager {
 
     }
 
-    override fun navigateToFullScreenActivity(id: Int) {
+    override fun navigateToFullScreenActivity(destinationId: Int, dataId: Long) {
         throw InvalidNavigationTargetException("Cannot launch FullScreenActivity from FullScreenActivity")
 
     }

@@ -16,6 +16,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.color.DynamicColors
 import dagger.hilt.android.AndroidEntryPoint
 import me.safarov399.core.exception.InvalidNavigationTargetException
+import me.safarov399.core.navigation.NavigationDestinationHandler.DATA_ID
 import me.safarov399.core.navigation.NavigationManager
 import me.safarov399.core.navigation.NavigationDestinationHandler.NAVIGATION_ID
 import me.safarov399.sigmacontacts.databinding.ActivityMainBinding
@@ -79,9 +80,10 @@ class MainActivity : AppCompatActivity(), NavigationManager {
         throw InvalidNavigationTargetException("Cannot launch MainActivity from MainActivity")
     }
 
-    override fun navigateToFullScreenActivity(id: Int) {
+    override fun navigateToFullScreenActivity(destinationId: Int, dataId: Long) {
         val intent = Intent(this, FullScreenActivity::class.java)
-        intent.putExtra(NAVIGATION_ID, id)
+        intent.putExtra(NAVIGATION_ID, destinationId)
+        intent.putExtra(DATA_ID, dataId)
         startActivity(intent)
     }
 }

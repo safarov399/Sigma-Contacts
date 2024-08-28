@@ -1,32 +1,61 @@
 package me.safarov399.details
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import dagger.hilt.android.AndroidEntryPoint
+import me.safarov399.core.base.BaseFragment
+import me.safarov399.core.exception.InvalidContactIdException
 import me.safarov399.details.databinding.FragmentDetailsBinding
 
-class DetailsFragment : Fragment() {
+@AndroidEntryPoint
+class DetailsFragment : BaseFragment<FragmentDetailsBinding, DetailsViewModel, DetailsState, DetailsEffect, DetailsEvent>() {
 
-    private var binding: FragmentDetailsBinding? = null
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = FragmentDetailsBinding.inflate(inflater, container, false)
-        return binding!!.root
+    override val getViewBinding: (LayoutInflater, ViewGroup?, Boolean) -> FragmentDetailsBinding = { inflater, viewGroup, value ->
+        FragmentDetailsBinding.inflate(inflater, viewGroup, value)
     }
+    private var dataId: Long = 0
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding?.apply {
+        binding.apply {
             detailsBackButton.setOnClickListener {
                 requireActivity().onBackPressedDispatcher.onBackPressed()
             }
             detailsHorizontalLine.setBackgroundColor(resources.getColor(me.safarov399.common.R.color.gray, null))
         }
+
+        if (dataId != 0.toLong()) {
+            loadContactData(dataId)
+        } else {
+            @Suppress("KotlinConstantConditions") throw InvalidContactIdException("Contact with id $dataId does not exist")
+        }
     }
 
+    override fun getViewModelClass(): Class<DetailsViewModel> = DetailsViewModel::class.java
+    override fun onStateUpdate(state: DetailsState) {
+        binding.apply {
+            detailsContactNameTv.text = state.contact.firstName
+            detailsContactInfoClContactNumberTv.text = state.contact.numbers.first()
+            if (state.contact.emails.isNotEmpty()) {
+                detailsContactInfoClEmailTv.text = state.contact.emails.first()
+            } else {
+                detailsContactInfoClEmailIv.visibility = View.GONE
+                detailsContactInfoClEmailTv.visibility = View.GONE
+                detailsContactInfoClEmailTypeTv.visibility = View.GONE
+            }
+
+        }
+    }
+
+    private fun loadContactData(dataId: Long) {
+        postEvent(DetailsEvent.LoadContact(dataId))
+    }
+
+    fun setDataId(id: Long) {
+        dataId = id
+    }
 }

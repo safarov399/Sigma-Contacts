@@ -83,7 +83,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel, HomeState,
             object: OnClickListener {
                 override fun onClick(position: Int, model: ContactEntity) {
                     val context = requireActivity() as NavigationManager
-                    context.navigateToFullScreenActivity(NAVIGATE_TO_DETAILS)
+                    context.navigateToFullScreenActivity(NAVIGATE_TO_DETAILS, model.id)
                 }
             }
         )
