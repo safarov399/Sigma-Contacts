@@ -59,33 +59,98 @@ class HomeViewModel @Inject constructor(
     }
 
 
+//    @SuppressLint("Range")
+//    private fun readContacts(): Flow<ArrayList<ContactEntity>> {
+//
+//        val contactsList = arrayListOf<ContactEntity>()
+//        val cursor = context.contentResolver.query(
+//            ContactsContract.Contacts.CONTENT_URI, null, null, null, ContactsContract.Contacts.DISPLAY_NAME + " ASC"
+//        )
+//        if ((cursor?.count ?: 0) > 0) {
+//            while (cursor!!.moveToNext()) {
+//
+//                val id = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts._ID))
+//                val name = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME))
+//                val phoneNumber = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER)).toInt()
+//                if (phoneNumber > 0) {
+//                    val cursorPhoneNumber = context.contentResolver.query(
+//                        ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " =?", arrayOf(id), null
+//                    )
+//                    if ((cursorPhoneNumber?.count ?: 0) > 0) {
+//                        while (cursorPhoneNumber!!.moveToNext()) {
+//                            val phoneNumber = cursorPhoneNumber.getString(
+//                                cursorPhoneNumber.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER)
+//                            )
+//                            contactsList.add(
+//                                ContactEntity(
+//                                    contactsId = id, firstName = name, number = phoneNumber, color = null
+//                                )
+//                            )
+//                        }
+//                    }
+//                    cursorPhoneNumber?.close()
+//                }
+//            }
+//        }
+//        cursor?.close()
+//        val azerbaijaniComparator = compareBy<ContactEntity> { it.firstName.lowercase(Locale("az")) }
+//
+//        contactsList.sortWith(azerbaijaniComparator)
+//
+//        return flow {
+//            emit(contactsList)
+//        }
+//
+//    }
+
     @SuppressLint("Range")
     private fun readContacts(): Flow<ArrayList<ContactEntity>> {
+        val contactsMap = mutableMapOf<String, ContactEntity>() // Use a map to store contacts by ID
 
-        val contactsList = arrayListOf<ContactEntity>()
         val cursor = context.contentResolver.query(
-            ContactsContract.Contacts.CONTENT_URI, null, null, null, ContactsContract.Contacts.DISPLAY_NAME + " ASC"
+            ContactsContract.Contacts.CONTENT_URI,
+            null,
+            null,
+            null,
+            ContactsContract.Contacts.DISPLAY_NAME + " ASC"
         )
+
         if ((cursor?.count ?: 0) > 0) {
             while (cursor!!.moveToNext()) {
-
                 val id = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts._ID))
                 val name = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME))
-                val phoneNumber = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER)).toInt()
-                if (phoneNumber > 0) {
+                val hasPhoneNumber = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER)).toInt()
+
+                if (hasPhoneNumber > 0) {
                     val cursorPhoneNumber = context.contentResolver.query(
-                        ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " =?", arrayOf(id), null
+                        ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
+                        null,
+                        ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = ?",
+                        arrayOf(id),
+                        null
                     )
+
                     if ((cursorPhoneNumber?.count ?: 0) > 0) {
                         while (cursorPhoneNumber!!.moveToNext()) {
                             val phoneNumber = cursorPhoneNumber.getString(
                                 cursorPhoneNumber.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER)
                             )
-                            contactsList.add(
-                                ContactEntity(
-                                    contactsId = id, firstName = name, number = phoneNumber, color = null
+
+                            // Check if the contact already exists in the map
+                            val contactEntity = contactsMap[id]
+                            if (contactEntity != null) {
+                                // If it exists, add the new phone number to the existing contact
+                                contactEntity.numbers.add(phoneNumber)
+                            } else {
+                                // If it doesn't exist, create a new contact and add it to the map
+                                val newContact = ContactEntity(
+                                    contactsId = id,
+                                    firstName = name,
+                                    numbers = mutableListOf(phoneNumber), // Initialize with the first phone number
+                                    color = null
                                 )
-                            )
+                                contactsMap[id] = newContact
+                            }
                         }
                     }
                     cursorPhoneNumber?.close()
@@ -93,14 +158,19 @@ class HomeViewModel @Inject constructor(
             }
         }
         cursor?.close()
-        val azerbaijaniComparator = compareBy<ContactEntity> { it.firstName.lowercase(Locale("az")) }
+
+        // Convert the map values to a list
+        val contactsList = ArrayList(contactsMap.values)
+
+        // Sort the contactsList
+        val azerbaijaniComparator = compareBy<ContactEntity> { it.firstName }
+            .thenBy { it.firstName.lowercase(Locale("az")) }
 
         contactsList.sortWith(azerbaijaniComparator)
 
         return flow {
             emit(contactsList)
         }
-
     }
 
     private fun insertContactsToDatabase() {

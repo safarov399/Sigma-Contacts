@@ -27,7 +27,8 @@ data class ContactEntity(
     @ColumnInfo val department: String = "",
     @ColumnInfo val companyTitle: String = "",
 
-    @ColumnInfo val number: String = "",
+//    @ColumnInfo val number: String = "",
+    @ColumnInfo val numbers: MutableList<String> = mutableListOf(),
     @ColumnInfo val phoneLabel: String = "",
 
     @ColumnInfo val email: String = "",

@@ -48,7 +48,7 @@ class AddFragment : BaseFragment<FragmentAddBinding, AddViewModel, AddState, Add
                 val emailType = addEmailActv.text.toString()
 
                 val contactEntity = ContactEntity(
-                    firstName = firstName, lastName = lastname, company = company, number = phoneNumber, phoneLabel = phoneType, email = email, emailLabel = emailType, color = ContactColors.COLORS.random()
+                    firstName = firstName, lastName = lastname, company = company, numbers = mutableListOf(phoneNumber), phoneLabel = phoneType, email = email, emailLabel = emailType, color = ContactColors.COLORS.random()
                 )
                 insertContact(contactEntity)
             }
@@ -68,7 +68,7 @@ class AddFragment : BaseFragment<FragmentAddBinding, AddViewModel, AddState, Add
 
         val fullName = (contactEntity.firstName.trim() + " " + contactEntity.lastName.trim()).trim()
         val company = contactEntity.company
-        val phoneNumber = contactEntity.number
+        val phoneNumbers = contactEntity.numbers
         val email = contactEntity.email
 
         val phoneLabel: Int = when (contactEntity.phoneLabel) {
@@ -131,11 +131,11 @@ class AddFragment : BaseFragment<FragmentAddBinding, AddViewModel, AddState, Add
             )
         }
 
-        if (phoneNumber.isNotBlank()) {
+        if (phoneNumbers.first().isNotBlank()) {
             contentProviderOperation.add(
                 ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI).withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0).withValue(
                     ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.Phone.CONTENT_ITEM_TYPE
-                ).withValue(ContactsContract.CommonDataKinds.Phone.NUMBER, phoneNumber).withValue(
+                ).withValue(ContactsContract.CommonDataKinds.Phone.NUMBER, phoneNumbers.first()).withValue(
                     ContactsContract.CommonDataKinds.Phone.TYPE, phoneLabel
                 ).build()
             )
