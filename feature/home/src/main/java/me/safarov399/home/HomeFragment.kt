@@ -20,9 +20,12 @@ import me.safarov399.common.custom_views.home.save_location.SaveLocationDropDown
 import me.safarov399.common.dialogs.PermissionRequestDialog
 import me.safarov399.core.navigation.NavigationManager
 import me.safarov399.core.adapter.ContactAdapter
+import me.safarov399.core.adapter.OnClickListener
 import me.safarov399.core.base.AppBottomSheet
 import me.safarov399.core.base.BaseFragment
+import me.safarov399.core.entity.ContactEntity
 import me.safarov399.core.navigation.NavigationDestinationHandler.NAVIGATE_TO_ADD
+import me.safarov399.core.navigation.NavigationDestinationHandler.NAVIGATE_TO_DETAILS
 import me.safarov399.home.databinding.FragmentHomeBinding
 import me.safarov399.label.LabelFragment
 
@@ -76,6 +79,14 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel, HomeState,
 
     private fun configureViews() {
         contactsAdapter = ContactAdapter()
+        contactsAdapter?.setOnClickListener(
+            object: OnClickListener {
+                override fun onClick(position: Int, model: ContactEntity) {
+                    val context = requireActivity() as NavigationManager
+                    context.navigateToFullScreenActivity(NAVIGATE_TO_DETAILS)
+                }
+            }
+        )
         binding.homeRecyclerView.adapter = contactsAdapter
         askContactsPermission()
 

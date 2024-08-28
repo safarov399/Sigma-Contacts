@@ -14,8 +14,9 @@ import androidx.recyclerview.widget.RecyclerView
 import me.safarov399.core.entity.ContactEntity
 import me.safarov399.core.pojo.ContactColors
 
-class ContactAdapter :
-    ListAdapter<ContactEntity, ContactAdapter.ContactViewHolder>(ContactViewDiffCallback()) {
+class ContactAdapter : ListAdapter<ContactEntity, ContactAdapter.ContactViewHolder>(ContactViewDiffCallback()) {
+
+    private var onClickListener: OnClickListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContactViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -26,19 +27,23 @@ class ContactAdapter :
     override fun onBindViewHolder(holder: ContactViewHolder, position: Int) {
         val contact = getItem(position)
         holder.bind(contact)
+
+        holder.itemView.setOnClickListener {
+            onClickListener?.onClick(position, contact)
+        }
+    }
+    fun setOnClickListener(listener: OnClickListener?) {
+        this.onClickListener = listener
     }
 
     class ContactViewHolder(itemView: View, private val ctx: Context) :
         RecyclerView.ViewHolder(itemView) {
 
-        private val contactNameTv: TextView =
-            itemView.findViewById(me.safarov399.common.R.id.contact_name)
+        private val contactNameTv: TextView = itemView.findViewById(me.safarov399.common.R.id.contact_name)
 
-        private val profilePhotoIv: ImageView =
-            itemView.findViewById(me.safarov399.common.R.id.profile_photo)
+        private val profilePhotoIv: ImageView = itemView.findViewById(me.safarov399.common.R.id.profile_photo)
 
-        private val profilePhotoLetterTv: TextView =
-            itemView.findViewById(me.safarov399.common.R.id.profile_photo_letter_tv)
+        private val profilePhotoLetterTv: TextView = itemView.findViewById(me.safarov399.common.R.id.profile_photo_letter_tv)
 
         @SuppressLint("DiscouragedApi")
         fun bind(contactEntity: ContactEntity) {
@@ -76,9 +81,9 @@ class ContactAdapter :
                 profilePhotoIv.background = drawable
             }
 
-
         }
     }
+
 
     class ContactViewDiffCallback : DiffUtil.ItemCallback<ContactEntity>() {
 
