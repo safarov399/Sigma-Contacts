@@ -16,6 +16,8 @@ import me.safarov399.core.pojo.ContactColors
 
 class ContactAdapter : ListAdapter<ContactEntity, ContactAdapter.ContactViewHolder>(ContactViewDiffCallback()) {
 
+    private var onClickListener: OnClickListener? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContactViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(me.safarov399.common.R.layout.contact_view, parent, false)
@@ -25,9 +27,17 @@ class ContactAdapter : ListAdapter<ContactEntity, ContactAdapter.ContactViewHold
     override fun onBindViewHolder(holder: ContactViewHolder, position: Int) {
         val contact = getItem(position)
         holder.bind(contact)
+
+        holder.itemView.setOnClickListener {
+            onClickListener?.onClick(position, contact)
+        }
+    }
+    fun setOnClickListener(listener: OnClickListener?) {
+        this.onClickListener = listener
     }
 
-    class ContactViewHolder(itemView: View, private val ctx: Context) : RecyclerView.ViewHolder(itemView) {
+    class ContactViewHolder(itemView: View, private val ctx: Context) :
+        RecyclerView.ViewHolder(itemView) {
 
         private val contactNameTv: TextView = itemView.findViewById(me.safarov399.common.R.id.contact_name)
 
@@ -71,9 +81,9 @@ class ContactAdapter : ListAdapter<ContactEntity, ContactAdapter.ContactViewHold
                 profilePhotoIv.background = drawable
             }
 
-
         }
     }
+
 
     class ContactViewDiffCallback : DiffUtil.ItemCallback<ContactEntity>() {
 
