@@ -7,3 +7,13 @@
 <h2 align="center">📜 Note to Google 📜</h2>
 <p>This application is developed solely for self-improvement and educational purposes. I do not intend to monetize or commercially distribute this app. Please understand that this is a personal learning project, and I fully respect Google’s intellectual property rights. All icons have been taken from the original Google Contacts app by decompiling.</p>
 
+<h2 align="center">Screenshots</h2>
+<div style="text-align: center;">
+  <img src="https://i.imgur.com/NzARRzc.png" width="200" style="display: inline-block;"/>
+  <img src="https://i.imgur.com/W0zKqE1.png" width="200" style="display: inline-block;"/>
+  <img src="https://i.imgur.com/lXnsoUx.png" width="200" style="display: inline-block;"/>
+  <img src="https://i.imgur.com/lvoo7Lx.png" width="200" style="display: inline-block;"/>  
+</div>
+
+
+
