@@ -4,6 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.appcompat.widget.PopupMenu
+import androidx.core.view.MenuCompat
 import dagger.hilt.android.AndroidEntryPoint
 import me.safarov399.core.base.BaseFragment
 import me.safarov399.core.exception.InvalidContactIdException
@@ -26,13 +29,57 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding, DetailsViewModel, D
                 requireActivity().onBackPressedDispatcher.onBackPressed()
             }
             detailsHorizontalLine.setBackgroundColor(resources.getColor(me.safarov399.common.R.color.gray, null))
+            detailsThreeDotsIv.setOnClickListener {
+                showEditPopUp(it)
+            }
         }
+
 
         if (dataId != 0.toLong()) {
             loadContactData(dataId)
         } else {
             @Suppress("KotlinConstantConditions") throw InvalidContactIdException("Contact with id $dataId does not exist")
         }
+    }
+
+    private fun showEditPopUp(view: View) {
+        val popup = PopupMenu(requireContext(), view)
+        val popupInflater = popup.menuInflater
+        popupInflater.inflate(me.safarov399.common.R.menu.contact_details_menu, popup.menu)
+        MenuCompat.setGroupDividerEnabled(popup.menu, true);
+        popup.setOnMenuItemClickListener { menuItem ->
+            when (menuItem.itemId) {
+                me.safarov399.common.R.id.contact_details_menu_share -> {
+
+                }
+
+                me.safarov399.common.R.id.contact_details_menu_sim -> {
+
+                }
+
+                me.safarov399.common.R.id.contact_details_menu_ringtone -> {
+
+                }
+
+                me.safarov399.common.R.id.contact_details_menu_add_home_screen -> {
+
+                }
+
+                me.safarov399.common.R.id.contact_details_menu_move_to_another_account -> {
+
+                }
+
+                me.safarov399.common.R.id.contact_details_menu_delete -> {
+
+                }
+
+                me.safarov399.common.R.id.contact_details_menu_help_and_feedback -> {
+
+                }
+            }
+            true
+        }
+        popup.show()
     }
 
     override fun getViewModelClass(): Class<DetailsViewModel> = DetailsViewModel::class.java
