@@ -47,7 +47,8 @@ class ContactAdapter : ListAdapter<ContactEntity, ContactAdapter.ContactViewHold
 
         @SuppressLint("DiscouragedApi")
         fun bind(contactEntity: ContactEntity) {
-            contactNameTv.text = contactEntity.firstName
+            val displayName = contactEntity.firstName.trim() + " " + contactEntity.lastName.trim()
+            contactNameTv.text = displayName
             if (contactEntity.profilePhoto.isNotBlank()) {
                 profilePhotoIv.setImageResource(
                     ctx.resources.getIdentifier(
