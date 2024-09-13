@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:id="@+id/contact_details_menu_grp1">
+        <item
+            android:id="@+id/contact_details_menu_share"
+            android:title="Share" />
+    </group>
+    <group android:id="@+id/contact_details_menu_grp2">
+        <item
+            android:id="@+id/contact_details_menu_sim"
+            android:title="Set calling SIM" />
+        <item
+            android:id="@+id/contact_details_menu_ringtone"
+            android:title="Set ringtone" />
+        <item
+            android:id="@+id/contact_details_menu_add_home_screen"
+            android:title="Add to home screen" />
+    </group>
+
+    <group android:id="@+id/contact_details_menu_grp3">
+        <item
+            android:id="@+id/contact_details_menu_move_to_another_account"
+            android:title="Move to another account" />
+        <item
+            android:id="@+id/contact_details_menu_delete"
+            android:title="Delete" />
+    </group>
+    <group android:id="@+id/contact_details_menu_grp4">
+        <item
+            android:id="@+id/contact_details_menu_help_and_feedback"
+            android:title="Help &amp;feedback" />
+    </group>
+
+
+</menu>
