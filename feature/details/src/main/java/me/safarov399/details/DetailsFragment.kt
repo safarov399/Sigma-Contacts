@@ -12,6 +12,7 @@ import me.safarov399.core.base.BaseFragment
 import me.safarov399.core.exception.InvalidContactIdException
 import me.safarov399.details.databinding.FragmentDetailsBinding
 
+
 @AndroidEntryPoint
 class DetailsFragment : BaseFragment<FragmentDetailsBinding, DetailsViewModel, DetailsState, DetailsEffect, DetailsEvent>() {
 
@@ -46,35 +47,35 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding, DetailsViewModel, D
         val popup = PopupMenu(requireContext(), view)
         val popupInflater = popup.menuInflater
         popupInflater.inflate(me.safarov399.common.R.menu.contact_details_menu, popup.menu)
-        MenuCompat.setGroupDividerEnabled(popup.menu, true);
+        MenuCompat.setGroupDividerEnabled(popup.menu, true)
         popup.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
                 me.safarov399.common.R.id.contact_details_menu_share -> {
-
+                    // To be implemented
                 }
 
                 me.safarov399.common.R.id.contact_details_menu_sim -> {
-
+                    // To be implemented
                 }
 
                 me.safarov399.common.R.id.contact_details_menu_ringtone -> {
-
+                    // To be implemented
                 }
 
                 me.safarov399.common.R.id.contact_details_menu_add_home_screen -> {
-
+                    // To be implemented
                 }
 
                 me.safarov399.common.R.id.contact_details_menu_move_to_another_account -> {
-
+                    // To be implemented
                 }
 
                 me.safarov399.common.R.id.contact_details_menu_delete -> {
-
+                    deleteContact()
                 }
 
                 me.safarov399.common.R.id.contact_details_menu_help_and_feedback -> {
-
+                    // To be implemented
                 }
             }
             true
@@ -84,19 +85,31 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding, DetailsViewModel, D
 
     override fun getViewModelClass(): Class<DetailsViewModel> = DetailsViewModel::class.java
     override fun onStateUpdate(state: DetailsState) {
-        binding.apply {
-            detailsContactNameTv.text = state.contact.firstName
-            detailsContactInfoClContactNumberTv.text = state.contact.numbers.first()
-            if (state.contact.emails.isNotEmpty()) {
-                detailsContactInfoClEmailTv.text = state.contact.emails.first()
-            } else {
-                detailsContactInfoClEmailIv.visibility = View.GONE
-                detailsContactInfoClEmailTv.visibility = View.GONE
-                detailsContactInfoClEmailTypeTv.visibility = View.GONE
+        if (state.contact != null) {
+            binding.apply {
+                val displayName = (state.contact.firstName.trim() + " " + state.contact.lastName.trim()).trim()
+                detailsContactNameTv.text = displayName
+                detailsContactInfoClContactNumberTv.text = state.contact.numbers.first()
+                if (state.contact.emails.isNotEmpty()) {
+                    detailsContactInfoClEmailTv.text = state.contact.emails.first()
+                } else {
+                    detailsContactInfoClEmailIv.visibility = View.GONE
+                    detailsContactInfoClEmailTv.visibility = View.GONE
+                    detailsContactInfoClEmailTypeTv.visibility = View.GONE
+                }
             }
-
         }
+
     }
+
+    private fun deleteContact() {
+        val number = binding.detailsContactInfoClContactNumberTv.text.toString()
+        val displayName = binding.detailsContactNameTv.text.toString()
+        postEvent(DetailsEvent.DeleteContact(dataId, number, displayName))
+        Toast.makeText(requireContext(), "Contact $displayName has been deleted", Toast.LENGTH_SHORT).show()
+        requireActivity().onBackPressedDispatcher.onBackPressed()
+    }
+
 
     private fun loadContactData(dataId: Long) {
         postEvent(DetailsEvent.LoadContact(dataId))

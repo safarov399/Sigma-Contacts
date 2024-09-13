@@ -50,7 +50,12 @@ class AddFragment : BaseFragment<FragmentAddBinding, AddViewModel, AddState, Add
                 val contactEntity = ContactEntity(
                     firstName = firstName, lastName = lastname, company = company, numbers = mutableListOf(phoneNumber), phoneLabel = phoneType, emails = mutableListOf(email), emailLabel = emailType, color = ContactColors.COLORS.random()
                 )
-                insertContact(contactEntity)
+                if(phoneNumber.isNotEmpty()) {
+                    insertContact(contactEntity)
+                }
+                else {
+                    Toast.makeText(requireContext(), "Please add a phone number", Toast.LENGTH_SHORT).show()
+                }
             }
         }
     }
