@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.PopupMenu
 import androidx.core.view.MenuCompat
@@ -90,6 +91,10 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding, DetailsViewModel, D
                 val displayName = (state.contact.firstName.trim() + " " + state.contact.lastName.trim()).trim()
                 detailsContactNameTv.text = displayName
                 detailsContactInfoClContactNumberTv.text = state.contact.numbers.first()
+                if(displayName.isNotEmpty()) {
+                    detailsProfilePhotoBackgroundIv.findViewById<TextView>(me.safarov399.common.R.id.details_profile_image_view_letter_tv).text = displayName[0].toString()
+                }
+
                 if (state.contact.emails.isNotEmpty()) {
                     detailsContactInfoClEmailTv.text = state.contact.emails.first()
                 } else {
