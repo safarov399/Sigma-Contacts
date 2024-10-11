@@ -177,7 +177,7 @@
             app:layout_constraintTop_toBottomOf="@id/add_company_til">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/add_call_tiet"
+                android:id="@+id/add_phone_tiet"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>

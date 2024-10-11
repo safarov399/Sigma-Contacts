@@ -11,6 +11,8 @@ import androidx.core.view.MenuCompat
 import dagger.hilt.android.AndroidEntryPoint
 import me.safarov399.core.base.BaseFragment
 import me.safarov399.core.exception.InvalidContactIdException
+import me.safarov399.core.navigation.NavigationDestinationHandler
+import me.safarov399.core.navigation.NavigationManager
 import me.safarov399.details.databinding.FragmentDetailsBinding
 
 
@@ -33,6 +35,10 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding, DetailsViewModel, D
             detailsHorizontalLine.setBackgroundColor(resources.getColor(me.safarov399.common.R.color.gray, null))
             detailsThreeDotsIv.setOnClickListener {
                 showEditPopUp(it)
+            }
+            detailsEditButton.setOnClickListener {
+                val context = requireActivity() as NavigationManager
+                context.navigateToFullScreenActivity(NavigationDestinationHandler.NAVIGATE_TO_ADD, dataId)
             }
         }
 

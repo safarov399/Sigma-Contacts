@@ -24,8 +24,30 @@ import java.util.Locale
 @AndroidEntryPoint
 class AddFragment : BaseFragment<FragmentAddBinding, AddViewModel, AddState, AddEffect, AddEvent>() {
 
+    private var dataId: Long = 0
+
     override val getViewBinding: (LayoutInflater, ViewGroup?, Boolean) -> FragmentAddBinding = { inflater, viewGroup, value ->
         FragmentAddBinding.inflate(inflater, viewGroup, value)
+    }
+
+    override fun onStateUpdate(state: AddState) {
+        binding.apply {
+            addFirstNameTiet.setText(state.contact.firstName)
+            addLastNameTiet.setText(state.contact.lastName)
+            addCompanyTiet.setText(state.contact.company)
+            addPhoneActv.setText(state.contact.phoneLabel)
+            addEmailActv.setText(state.contact.emailLabel)
+            if (state.contact.significantDateAndLabel.isNotEmpty()) {
+                addDateTypeActv.setText(state.contact.significantDateAndLabel[1].second)
+                addDatePickerActv.setText(state.contact.significantDateAndLabel.first().first.toString())
+            }
+            if (state.contact.emails.isNotEmpty()) {
+                addEmailTiet.setText(state.contact.emails.first())
+            }
+            if (state.contact.numbers.isNotEmpty()) {
+                addPhoneTiet.setText(state.contact.numbers.first())
+            }
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -42,22 +64,24 @@ class AddFragment : BaseFragment<FragmentAddBinding, AddViewModel, AddState, Add
                 val firstName = addFirstNameTiet.text.toString()
                 val lastname = addLastNameTiet.text.toString()
                 val company = addCompanyTiet.text.toString()
-                val phoneNumber = addCallTiet.text.toString()
+                val phoneNumber = addPhoneTiet.text.toString()
                 val phoneType = addPhoneActv.text.toString()
                 val email = addEmailTiet.text.toString()
                 val emailType = addEmailActv.text.toString()
 
                 val contactEntity = ContactEntity(
-                    firstName = firstName, lastName = lastname, company = company, numbers = mutableListOf(phoneNumber), phoneLabel = phoneType, emails = mutableListOf(email), emailLabel = emailType, color = ContactColors.COLORS.random()
+                    id = dataId, firstName = firstName, lastName = lastname, company = company, numbers = mutableListOf(phoneNumber), phoneLabel = phoneType, emails = mutableListOf(email), emailLabel = emailType, color = ContactColors.COLORS.random()
                 )
-                if(phoneNumber.isNotEmpty()) {
+                if (phoneNumber.isNotEmpty()) {
                     insertContact(contactEntity)
-                }
-                else {
+                } else {
                     Toast.makeText(requireContext(), "Please add a phone number", Toast.LENGTH_SHORT).show()
                 }
             }
         }
+        postEvent(
+            AddEvent.LoadContact(dataId)
+        )
     }
 
     override fun onResume() {
@@ -165,7 +189,6 @@ class AddFragment : BaseFragment<FragmentAddBinding, AddViewModel, AddState, Add
             Toast.makeText(requireContext(), "Exception: " + e.message, Toast.LENGTH_SHORT).show()
         }
 
-
     }
 
     private fun initDateTypeSpinner() {
@@ -221,6 +244,10 @@ class AddFragment : BaseFragment<FragmentAddBinding, AddViewModel, AddState, Add
         val adapter = ArrayAdapter(requireContext(), me.safarov399.common.R.layout.drop_down, phoneTypes)
         binding.addPhoneActv.setAdapter(adapter)
         binding.addPhoneActv.setText(phoneTypes[0], false)
+    }
+
+    fun setDataId(id: Long) {
+        dataId = id
     }
 
 

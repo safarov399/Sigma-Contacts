@@ -37,7 +37,9 @@ class FullScreenActivity : AppCompatActivity(), NavigationManager {
         val dataId = intent.getLongExtra(DATA_ID, 0)
         when (navId) {
             NAVIGATE_TO_ADD -> {
-                supportFragmentManager.beginTransaction().replace(binding!!.fullContainerView.id, AddFragment()).commit()
+                val addFragment = AddFragment()
+                addFragment.setDataId(dataId)
+                supportFragmentManager.beginTransaction().replace(binding!!.fullContainerView.id, addFragment).commit()
             }
 
             NAVIGATE_TO_SETTINGS -> {
@@ -71,7 +73,10 @@ class FullScreenActivity : AppCompatActivity(), NavigationManager {
     }
 
     override fun navigateToFullScreenActivity(destinationId: Int, dataId: Long) {
-        throw InvalidNavigationTargetException("Cannot launch FullScreenActivity from FullScreenActivity")
+        val intent = Intent(this, FullScreenActivity::class.java)
+        intent.putExtra(NAVIGATION_ID, destinationId)
+        intent.putExtra(DATA_ID, dataId)
+        startActivity(intent)
 
     }
 }

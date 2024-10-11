@@ -4,4 +4,5 @@ import me.safarov399.core.entity.ContactEntity
 
 sealed class AddEvent {
     data class InsertContact(val contactEntity: ContactEntity): AddEvent()
+    data class LoadContact(val dataId: Long): AddEvent()
 }

@@ -1,4 +1,5 @@
 package me.safarov399.add
 
-class AddState {
-}
+import me.safarov399.core.entity.ContactEntity
+
+data class AddState(val contact: ContactEntity)
