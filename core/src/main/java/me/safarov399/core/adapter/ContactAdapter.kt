@@ -48,7 +48,12 @@ class ContactAdapter : ListAdapter<ContactEntity, ContactAdapter.ContactViewHold
         @SuppressLint("DiscouragedApi")
         fun bind(contactEntity: ContactEntity) {
             val displayName = contactEntity.firstName.trim() + " " + contactEntity.lastName.trim()
-            contactNameTv.text = displayName
+            val isNameEmpty = displayName.isBlank()
+            contactNameTv.text = if(!isNameEmpty) displayName else contactEntity.numbers[0]
+
+            /**
+             * If the profile photo attribute has other photo set as the profile photo, that photo will be set. Otherwise, if that field is blank, the default one(account photo) will be left as it is
+             */
             if (contactEntity.profilePhoto.isNotBlank()) {
                 profilePhotoIv.setImageResource(
                     ctx.resources.getIdentifier(
@@ -56,7 +61,10 @@ class ContactAdapter : ListAdapter<ContactEntity, ContactAdapter.ContactViewHold
                     )
                 )
             } else {
-                val firstLetter = contactEntity.firstName.first().toString()
+                val firstLetter = if(isNameEmpty) {
+                    "."
+                } else displayName[0].toString()
+
                 if (firstLetter.matches(Regex("[a-zA-Z\u0400-\u04FF\u011E\u011F\u0130\u0131\u00F6\u00FC\u015E\u015F\u00E7\u0259\u00C7\u018F\u00D6\u00DC]"))) {
                     profilePhotoLetterTv.text = firstLetter.uppercase()
                     profilePhotoIv.setImageResource(0)
