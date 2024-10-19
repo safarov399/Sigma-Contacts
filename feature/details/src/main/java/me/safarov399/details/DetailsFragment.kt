@@ -1,9 +1,11 @@
 package me.safarov399.details
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.PopupMenu
@@ -11,6 +13,7 @@ import androidx.core.view.MenuCompat
 import dagger.hilt.android.AndroidEntryPoint
 import me.safarov399.core.base.BaseFragment
 import me.safarov399.core.exception.InvalidContactIdException
+import me.safarov399.core.utils.StringUtils
 import me.safarov399.details.databinding.FragmentDetailsBinding
 
 
@@ -85,15 +88,37 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding, DetailsViewModel, D
     }
 
     override fun getViewModelClass(): Class<DetailsViewModel> = DetailsViewModel::class.java
+
+    @SuppressLint("DiscouragedApi")
     override fun onStateUpdate(state: DetailsState) {
         if (state.contact != null) {
             binding.apply {
                 val displayName = (state.contact.firstName.trim() + " " + state.contact.lastName.trim()).trim()
-                detailsContactNameTv.text = displayName
+                detailsContactNameTv.text = displayName.ifBlank { state.contact.numbers[0] }
                 detailsContactInfoClContactNumberTv.text = state.contact.numbers.first()
-                if(displayName.isNotEmpty()) {
-                    detailsProfilePhotoBackgroundIv.findViewById<TextView>(me.safarov399.common.R.id.details_profile_image_view_letter_tv).text = displayName[0].toString()
+                if(displayName.isNotBlank()) {
+                    if(displayName[0].toString().matches(Regex(StringUtils.FIRST_LETTER_CHECKING_REGEX))) {
+                        detailsProfilePhotoBackgroundIv.findViewById<ImageView>(me.safarov399.common.R.id.details_profile_image_view_letter_iv).setImageResource(0)
+                        detailsProfilePhotoBackgroundIv.findViewById<TextView>(me.safarov399.common.R.id.details_profile_image_view_letter_tv).text = displayName[0].toString()
+                    }
+                    else {
+                        detailsProfilePhotoBackgroundIv.findViewById<TextView>(me.safarov399.common.R.id.details_profile_image_view_letter_tv).text = ""
+                        detailsProfilePhotoBackgroundIv.findViewById<ImageView>(me.safarov399.common.R.id.details_profile_image_view_letter_iv).setImageResource(
+                            requireContext().resources.getIdentifier(
+                                "profile_people_account_big", "drawable", requireContext().packageName
+                            )
+                        )
+                    }
                 }
+                if(displayName.isBlank()) {
+                    detailsProfilePhotoBackgroundIv.findViewById<TextView>(me.safarov399.common.R.id.details_profile_image_view_letter_tv).text = ""
+                    detailsProfilePhotoBackgroundIv.findViewById<ImageView>(me.safarov399.common.R.id.details_profile_image_view_letter_iv).setImageResource(
+                        requireContext().resources.getIdentifier(
+                            "profile_people_account_big", "drawable", requireContext().packageName
+                        )
+                    )
+                }
+
 
                 if (state.contact.emails.isNotEmpty()) {
                     detailsContactInfoClEmailTv.text = state.contact.emails.first()
