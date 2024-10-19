@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import me.safarov399.core.entity.ContactEntity
 import me.safarov399.core.pojo.ContactColors
+import me.safarov399.core.utils.StringUtils
 
 class ContactAdapter : ListAdapter<ContactEntity, ContactAdapter.ContactViewHolder>(ContactViewDiffCallback()) {
 
@@ -65,7 +66,7 @@ class ContactAdapter : ListAdapter<ContactEntity, ContactAdapter.ContactViewHold
                     "."
                 } else displayName[0].toString()
 
-                if (firstLetter.matches(Regex("[a-zA-Z\u0400-\u04FF\u011E\u011F\u0130\u0131\u00F6\u00FC\u015E\u015F\u00E7\u0259\u00C7\u018F\u00D6\u00DC]"))) {
+                if (firstLetter.matches(Regex(StringUtils.FIRST_LETTER_CHECKING_REGEX))) {
                     profilePhotoLetterTv.text = firstLetter.uppercase()
                     profilePhotoIv.setImageResource(0)
                 } else {

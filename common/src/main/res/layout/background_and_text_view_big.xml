@@ -27,5 +27,15 @@
         app:layout_constraintTop_toTopOf="@id/details_profile_image_view_background_iv"
         app:layout_constraintBottom_toBottomOf="@id/details_profile_image_view_background_iv"/>
 
+    <ImageView
+        android:id="@+id/details_profile_image_view_letter_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/details_profile_image_view_background_iv"
+        app:layout_constraintEnd_toEndOf="@id/details_profile_image_view_background_iv"
+        app:layout_constraintTop_toTopOf="@id/details_profile_image_view_background_iv"
+        app:layout_constraintBottom_toBottomOf="@id/details_profile_image_view_background_iv"/>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
