@@ -15,6 +15,7 @@ import me.safarov399.core.base.BaseFragment
 import me.safarov399.core.exception.InvalidContactIdException
 import me.safarov399.core.utils.StringUtils
 import me.safarov399.details.databinding.FragmentDetailsBinding
+import java.util.Locale
 
 
 @AndroidEntryPoint
@@ -99,7 +100,7 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding, DetailsViewModel, D
                 if(displayName.isNotBlank()) {
                     if(displayName[0].toString().matches(Regex(StringUtils.FIRST_LETTER_CHECKING_REGEX))) {
                         detailsProfilePhotoBackgroundIv.findViewById<ImageView>(me.safarov399.common.R.id.details_profile_image_view_letter_iv).setImageResource(0)
-                        detailsProfilePhotoBackgroundIv.findViewById<TextView>(me.safarov399.common.R.id.details_profile_image_view_letter_tv).text = displayName[0].toString()
+                        detailsProfilePhotoBackgroundIv.findViewById<TextView>(me.safarov399.common.R.id.details_profile_image_view_letter_tv).text = displayName[0].toString().uppercase(Locale.ROOT)
                     }
                     else {
                         detailsProfilePhotoBackgroundIv.findViewById<TextView>(me.safarov399.common.R.id.details_profile_image_view_letter_tv).text = ""
