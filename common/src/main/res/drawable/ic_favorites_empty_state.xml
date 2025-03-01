@@ -8,7 +8,7 @@
     <group>
         <clip-path android:pathData="M0,0h305.24v305.24h-305.24z"/>
         <path
-            android:fillColor="@color/material_dynamic_primary80"
+            android:fillColor="@color/ic_birthday_promo_back"
             android:pathData="M152.62,305.24C236.91,305.24 305.24,236.91 305.24,152.62C305.24,68.33 236.91,0 152.62,0C68.33,0 0,68.33 0,152.62C0,236.91 68.33,305.24 152.62,305.24Z"/>
         <path
             android:fillColor="#f9ba04"
