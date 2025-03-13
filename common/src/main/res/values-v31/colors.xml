@@ -41,5 +41,7 @@
     <color name="details_nested_icon_text_color">@color/black</color>
     <color name="details_contact_info_background_color">@color/material_dynamic_neutral95</color>
     <color name="ic_birthday_promo_back">@color/material_dynamic_primary80</color>
+    <color name="bottom_nav_indicator">@color/material_dynamic_primary90</color>
+    <color name="bottom_nav_background_color">#EBEBEE</color>
 
 </resources>

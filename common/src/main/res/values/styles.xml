@@ -4,6 +4,7 @@
     <style name="BottomNavTheme">
         <item name="android:background">@color/bottom_nav_background_color</item> <!-- The working one -->
         <item name="itemActiveIndicatorStyle">@style/App.Custom.Indicator</item>
+        <item name="itemBackground">@color/bottom_nav_background_color</item>
     </style>
 
     <style name="FABStyle">

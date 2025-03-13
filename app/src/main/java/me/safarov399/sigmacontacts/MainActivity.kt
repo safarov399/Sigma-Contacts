@@ -1,6 +1,7 @@
 package me.safarov399.sigmacontacts
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -63,7 +64,7 @@ class MainActivity : AppCompatActivity(), NavigationManager {
 
     private fun setNavigationBarColor() {
         val navBarColor = getColor(me.safarov399.common.R.color.bottom_nav_background_color)
-        window.navigationBarColor = navBarColor
+        window.navigationBarColor = Color.TRANSPARENT
 
         // 2. Set light/dark icons based on color contrast
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {

@@ -5,7 +5,6 @@
     <color name="default_color">#FFFFFFFF</color>
     <color name="default_color_inverse">#FF000000</color>
     <color name="gray">#FF666666</color>
-    <color name="bottom_nav_background_color">#F5F5FF</color>
     <color name="three_button_navigation_color">@color/bottom_nav_background_color</color>
     <color name="profile_photo_svg_background_color">@color/black</color>
     <color name="profile_photo_svg_line_color">@color/white</color>
@@ -15,7 +14,7 @@
     <color name="permission_dialog_text_color">#FF636363</color>
     <color name="permission_dialog_title_color">@color/black</color>
 
-    <color name="search_bar_color">#FFEEEEFF</color>
+    <color name="search_bar_color">#FFEEEEF6</color>
     <color name="search_bar_hint_color">@color/gray</color>
 
 
@@ -34,7 +33,7 @@
     <color name="one_image_two_text_title_color">@color/black</color>
 
     <color name="highlights_action_button_background_color">#AFD7FF</color>
-    <color name="highlights_add_favorite_card_background_color">#F0F0FF</color>
+    <color name="highlights_add_favorite_card_background_color">#EEEEF6</color>
     <color name="highlights_add_tv">@color/gray</color>
     <color name="ic_birthday_promo_back">@color/white</color>
 
@@ -47,6 +46,7 @@
     <color name="details_nested_icon_text_color">@color/black</color>
     <color name="details_contact_info_background_color">@color/white</color>
 
+    <color name="bottom_nav_background_color">#EBEBEE</color>
     <color name="bottom_nav_indicator">#AFD7FF</color>
     <color name="fab_background">#AFD7FF</color>
 
