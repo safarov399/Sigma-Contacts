@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="BottomNavTheme">
+        <item name="android:background">@color/bottom_nav_background_color</item> <!-- The working one -->
+        <item name="itemActiveIndicatorStyle">@style/App.Custom.Indicator</item>
+    </style>
+
+    <style name="FABStyle">
+        <item name="backgroundTint">@color/fab_background</item>
+    </style>
+
+    <style name="App.Custom.Indicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">@color/bottom_nav_indicator</item>
+    </style>
+</resources>

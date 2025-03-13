@@ -12,7 +12,8 @@
     <color name="permission_dialog_background">#FF2F2F2F</color>
     <color name="permission_dialog_title_color">@color/white</color>
     <color name="permission_dialog_text_color">#FFD3D3D3</color>
-    <color name="search_bar_color">@color/gray</color>
+    <color name="search_bar_color">#26262F</color>
+    <color name="search_bar_hint_color">#CCCCCC</color>
 
     <color name="account_dialog_text">@color/white</color>
     <color name="account_dialog_background">@color/gray</color>
@@ -23,7 +24,6 @@
     <color name="add_profile_photo_background_color">@color/gray</color>
     <color name="add_profile_photo">@color/white</color>
     <color name="add_picture_tv">@color/white</color>
-
 
     <color name="three_dots_vertical">@color/white</color>
 
@@ -42,15 +42,8 @@
     <color name="details_nested_icon_text_color">@color/white</color>
     <color name="details_contact_info_background_color">@color/black</color>
 
-
-
-
-
-
-
-
-
-
-
-
+    <color name="bottom_nav_background_color">#1B1B22</color>
+    <color name="bottom_nav_indicator">#224A88</color>
+    <color name="three_button_navigation_color">@color/bottom_nav_background_color</color>
+    <color name="fab_background">#2233AA</color>
 </resources>

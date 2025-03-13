@@ -42,17 +42,4 @@
     <color name="details_contact_info_background_color">@color/material_dynamic_neutral95</color>
     <color name="ic_birthday_promo_back">@color/material_dynamic_primary80</color>
 
-
-
-
-
-
-    <color name="purple">#FFA32CC4</color>
-    <color name="violet">#FF710193</color>
-    <color name="mauve">#FF7A4988</color>
-    <color name="lavender">#FFE39FF6</color>
-    <color name="light_blue_400">#FF29B6F6</color>
-    <color name="light_blue_600">#FF039BE5</color>
-    <color name="gray_400">#FFBDBDBD</color>
-    <color name="gray_600">#FF757575</color>
 </resources>

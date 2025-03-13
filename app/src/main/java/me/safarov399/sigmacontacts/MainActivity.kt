@@ -1,9 +1,12 @@
 package me.safarov399.sigmacontacts
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.view.WindowInsetsController
+import android.view.WindowManager
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -17,8 +20,8 @@ import com.google.android.material.color.DynamicColors
 import dagger.hilt.android.AndroidEntryPoint
 import me.safarov399.core.exception.InvalidNavigationTargetException
 import me.safarov399.core.navigation.NavigationDestinationHandler.DATA_ID
-import me.safarov399.core.navigation.NavigationManager
 import me.safarov399.core.navigation.NavigationDestinationHandler.NAVIGATION_ID
+import me.safarov399.core.navigation.NavigationManager
 import me.safarov399.sigmacontacts.databinding.ActivityMainBinding
 
 @AndroidEntryPoint
@@ -55,6 +58,29 @@ class MainActivity : AppCompatActivity(), NavigationManager {
             ?.setOnClickListener {
                 showSelectPopup(it)
             }
+        setNavigationBarColor()
+    }
+
+    private fun setNavigationBarColor() {
+        val navBarColor = getColor(me.safarov399.common.R.color.bottom_nav_background_color)
+        window.navigationBarColor = navBarColor
+
+        // 2. Set light/dark icons based on color contrast
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            // For API 30+ (Android 11+)
+            window.insetsController?.setSystemBarsAppearance(
+                WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS,
+                WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS
+            )
+        } else {
+            // For APIs 26-29
+            window.decorView.systemUiVisibility =
+                View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR // Dark icons for light backgrounds
+        }
+
+        // 3. Ensure system draws the navigation bar background (disable edge-to-edge overlap)
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION)
     }
 
     private fun showSelectPopup(view: View) {
