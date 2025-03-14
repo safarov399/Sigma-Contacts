@@ -28,7 +28,7 @@
 
     <color name="one_image_two_text_title_color">@color/material_dynamic_primary10</color>
 
-    <color name="highlights_action_button_background_color">@color/material_dynamic_primary95</color>
+    <color name="highlights_action_button_background_color">@color/material_dynamic_primary90</color>
     <color name="highlights_add_favorite_card_background_color">@color/material_dynamic_neutral95</color>
     <color name="highlights_add_tv">@color/material_dynamic_primary40</color>
 

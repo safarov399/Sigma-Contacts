@@ -13,9 +13,4 @@ class SaveLocationDropDownButton @JvmOverloads constructor(
 ) : ConstraintLayout(context, attr, defStyleAttr) {
     private val binding =
         SaveLocationDropDownButtonBinding.inflate(LayoutInflater.from(context), this, true)
-
-
-
-
-
 }

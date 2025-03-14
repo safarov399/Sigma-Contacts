@@ -64,7 +64,7 @@ class MainActivity : AppCompatActivity(), NavigationManager {
 
     private fun setNavigationBarColor() {
         val navBarColor = getColor(me.safarov399.common.R.color.bottom_nav_background_color)
-        window.navigationBarColor = Color.TRANSPARENT
+
 
         // 2. Set light/dark icons based on color contrast
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
@@ -73,7 +73,9 @@ class MainActivity : AppCompatActivity(), NavigationManager {
                 WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS,
                 WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS
             )
+            window.navigationBarColor = Color.TRANSPARENT
         } else {
+            window.navigationBarColor = navBarColor
             // For APIs 26-29
             window.decorView.systemUiVisibility =
                 View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR // Dark icons for light backgrounds
