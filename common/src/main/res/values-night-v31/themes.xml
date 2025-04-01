@@ -1,0 +1,7 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.SigmaContacts" parent="Theme.Material3.DynamicColors.Dark.NoActionBar">
+
+
+    </style>
+</resources>

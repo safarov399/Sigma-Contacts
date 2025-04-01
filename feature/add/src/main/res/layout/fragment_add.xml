@@ -179,7 +179,9 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/add_call_tiet"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:inputType="phone"
+                />
         </com.google.android.material.textfield.TextInputLayout>
 
         <ImageView

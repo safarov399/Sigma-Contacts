@@ -5,54 +5,51 @@
     <color name="default_color">#FFFFFFFF</color>
     <color name="default_color_inverse">#FF000000</color>
     <color name="gray">#FF666666</color>
-    <color name="my_dark_primary">#000000</color>
+    <color name="three_button_navigation_color">@color/bottom_nav_background_color</color>
     <color name="profile_photo_svg_background_color">@color/black</color>
     <color name="profile_photo_svg_line_color">@color/white</color>
     <color name="profile_photo_svg_line_color_big">@color/black</color>
+
     <color name="permission_dialog_background">@color/default_color</color>
     <color name="permission_dialog_text_color">#FF636363</color>
     <color name="permission_dialog_title_color">@color/black</color>
-    <color name="search_bar_color">@color/material_dynamic_neutral_variant90</color>
 
-    <color name="account_dialog_background">@color/material_dynamic_neutral95</color>
+    <color name="search_bar_color">#FFEEEEF6</color>
+    <color name="search_bar_hint_color">@color/gray</color>
+
+
+    <color name="account_dialog_background">#F6F6FF</color>
     <color name="account_dialog_text">@color/black</color>
-    <color name="account_dialog_row_background_color">@color/material_dynamic_primary99</color>
+    <color name="account_dialog_row_background_color">@color/white</color>
     <color name="account_dialog_device_background_color">#FFBBBBBB</color>
     <color name="account_dialog_device_color">#FF000000</color>
 
-    <color name="add_profile_photo_background_color">@color/material_dynamic_primary90</color>
-    <color name="add_profile_photo">@color/material_dynamic_primary20</color>
-    <color name="add_picture_tv">@color/material_dynamic_primary40</color>
+    <color name="add_profile_photo_background_color">@color/white</color>
+    <color name="add_profile_photo">@color/gray</color>
+    <color name="add_picture_tv">@color/gray</color>
 
-    <color name="three_dots_vertical">@color/material_dynamic_neutral20</color>
+    <color name="three_dots_vertical">@color/gray</color>
 
-    <color name="one_image_two_text_title_color">@color/material_dynamic_primary10</color>
+    <color name="one_image_two_text_title_color">@color/black</color>
 
-    <color name="highlights_action_button_background_color">@color/material_dynamic_primary95</color>
-    <color name="highlights_add_favorite_card_background_color">@color/material_dynamic_neutral95</color>
-    <color name="highlights_add_tv">@color/material_dynamic_primary40</color>
+    <color name="highlights_action_button_background_color">#AFD7FF</color>
+    <color name="highlights_add_favorite_card_background_color">#EEEEF6</color>
+    <color name="highlights_add_tv">@color/gray</color>
+    <color name="ic_birthday_promo_back">@color/white</color>
 
-    <color name="label_header">@color/material_dynamic_primary40</color>
+    <color name="label_header">@color/white</color>
 
-    <color name="settings_fragment_header_color">@color/material_dynamic_primary40</color>
+    <color name="settings_fragment_header_color">@color/gray</color>
 
-    <color name="image_background_small_color">@color/material_dynamic_secondary70</color>
+    <color name="image_background_small_color">@color/white</color>
     <color name="details_nested_icon_color">@color/black</color>
     <color name="details_nested_icon_text_color">@color/black</color>
-    <color name="details_contact_info_background_color">@color/material_dynamic_neutral95</color>
+    <color name="details_contact_info_background_color">@color/white</color>
 
+    <color name="bottom_nav_background_color">#EBEBEE</color>
+    <color name="bottom_nav_indicator">#AFD7FF</color>
+    <color name="fab_background">#AFD7FF</color>
 
-
-
-
-
-
-    <color name="purple">#FFA32CC4</color>
-    <color name="violet">#FF710193</color>
-    <color name="mauve">#FF7A4988</color>
-    <color name="lavender">#FFE39FF6</color>
-    <color name="light_blue_400">#FF29B6F6</color>
-    <color name="light_blue_600">#FF039BE5</color>
-    <color name="gray_400">#FFBDBDBD</color>
     <color name="gray_600">#FF757575</color>
+
 </resources>

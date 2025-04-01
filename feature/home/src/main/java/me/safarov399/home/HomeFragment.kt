@@ -43,6 +43,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel, HomeState,
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         listener = this
+        (requireActivity() as NavigationManager).toggleMoreVertVisibility(View.VISIBLE)
         return super.onCreateView(inflater, container, savedInstanceState)
     }
 
@@ -68,7 +69,15 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel, HomeState,
     }
 
     override fun onStateUpdate(state: HomeState) {
-        contactsAdapter?.submitList(state.contactEntity)
+        if(state.contactEntity.isEmpty()) {
+            binding.homeEmpty.visibility = View.VISIBLE
+            binding.homeRecyclerView.visibility = View.GONE
+        }
+        else {
+            binding.homeEmpty.visibility = View.GONE
+            binding.homeRecyclerView.visibility = View.VISIBLE
+            contactsAdapter?.submitList(state.contactEntity)
+        }
     }
 
 
