@@ -4,9 +4,9 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
+import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.View
-import android.view.WindowInsetsController
 import android.view.WindowManager
 import android.widget.ImageView
 import android.widget.Toast
@@ -18,18 +18,19 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.color.DynamicColors
+import com.google.android.material.shape.MaterialShapeDrawable
 import dagger.hilt.android.AndroidEntryPoint
 import me.safarov399.core.exception.InvalidNavigationTargetException
 import me.safarov399.core.navigation.NavigationDestinationHandler.DATA_ID
 import me.safarov399.core.navigation.NavigationDestinationHandler.NAVIGATION_ID
 import me.safarov399.core.navigation.NavigationManager
+import me.safarov399.core.navigation.NavigationSettings
 import me.safarov399.sigmacontacts.databinding.ActivityMainBinding
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity(), NavigationManager {
 
     private var binding: ActivityMainBinding? = null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(LayoutInflater.from(this))
@@ -43,6 +44,11 @@ class MainActivity : AppCompatActivity(), NavigationManager {
         DynamicColors.applyToActivityIfAvailable(this)
         configureViews()
         configureBottomNavigationView()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        setNavigationBarColor()
     }
 
 
@@ -59,32 +65,38 @@ class MainActivity : AppCompatActivity(), NavigationManager {
             ?.setOnClickListener {
                 showSelectPopup(it)
             }
-        setNavigationBarColor()
     }
 
     private fun setNavigationBarColor() {
-        val navBarColor = getColor(me.safarov399.common.R.color.bottom_nav_background_color)
+        val navigationMode = Settings.Secure.getInt(contentResolver, "navigation_mode", -1)
 
-
-        // 2. Set light/dark icons based on color contrast
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            // For API 30+ (Android 11+)
-            window.insetsController?.setSystemBarsAppearance(
-                WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS,
-                WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS
-            )
-            window.navigationBarColor = Color.TRANSPARENT
-        } else {
-            window.navigationBarColor = navBarColor
-            // For APIs 26-29
-            window.decorView.systemUiVisibility =
-                View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR // Dark icons for light backgrounds
+//        For API 31 (Android 12) and above
+        if(Build.VERSION.SDK_INT > Build.VERSION_CODES.R) {
+            if(navigationMode == NavigationSettings.GESTURE_NAVIGATION) {
+                window.navigationBarColor = Color.TRANSPARENT
+            }
+            else {
+                window.navigationBarColor = (binding!!.mainBottomNavView.background as MaterialShapeDrawable).fillColor!!.defaultColor
+            }
         }
 
-        // 3. Ensure system draws the navigation bar background (disable edge-to-edge overlap)
+        // For API 30 (Android 11) and lower
+        else if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.R ) {
+            if(navigationMode == NavigationSettings.GESTURE_NAVIGATION) {
+                window.navigationBarColor = Color.TRANSPARENT
+            }
+            else {
+                window.navigationBarColor = getColor(me.safarov399.common.R.color.bottom_nav_background_color)
+            }
+
+        }
+
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+        @Suppress("DEPRECATION")
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION)
     }
+
+
 
     private fun showSelectPopup(view: View) {
         val popup = PopupMenu(this, view)
@@ -93,11 +105,11 @@ class MainActivity : AppCompatActivity(), NavigationManager {
         popup.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
                 me.safarov399.common.R.id.select -> {
-                    Toast.makeText(this, "Select", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(me.safarov399.common.R.string.select), Toast.LENGTH_SHORT).show()
                 }
 
                 me.safarov399.common.R.id.select_all -> {
-                    Toast.makeText(this, "Select all", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(me.safarov399.common.R.string.select_all), Toast.LENGTH_SHORT).show()
                 }
             }
             true
@@ -115,4 +127,10 @@ class MainActivity : AppCompatActivity(), NavigationManager {
         intent.putExtra(DATA_ID, dataId)
         startActivity(intent)
     }
+
+    override fun toggleMoreVertVisibility(visibility: Int) {
+        findViewById<ImageView>(me.safarov399.common.R.id.search_bar_three_dots_icon).visibility = visibility
+    }
+
 }
+

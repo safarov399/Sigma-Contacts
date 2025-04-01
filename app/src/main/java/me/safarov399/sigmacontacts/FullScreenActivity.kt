@@ -71,7 +71,10 @@ class FullScreenActivity : AppCompatActivity(), NavigationManager {
     }
 
     override fun navigateToFullScreenActivity(destinationId: Int, dataId: Long) {
-        throw InvalidNavigationTargetException("Cannot launch FullScreenActivity from FullScreenActivity")
+        throw InvalidNavigationTargetException("Cannot launch FullScreenActivity from FullScreenActivity.")
+    }
 
+    override fun toggleMoreVertVisibility(visibility: Int) {
+        throw UnsupportedOperationException("This operation is not valid for FullScreenActivity.")
     }
 }

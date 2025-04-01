@@ -16,8 +16,8 @@
     <color name="search_bar_hint_color">#CCCCCC</color>
 
     <color name="account_dialog_text">@color/white</color>
-    <color name="account_dialog_background">@color/gray</color>
-    <color name="account_dialog_row_background_color">@color/black</color>
+    <color name="account_dialog_background">#FF444444</color>
+    <color name="account_dialog_row_background_color">#FF333333</color>
     <color name="account_dialog_device_background_color">#FFBBBBBB</color>
     <color name="account_dialog_device_color">#FF000000</color>
 
@@ -29,8 +29,8 @@
 
     <color name="one_image_two_text_title_color">@color/white</color>
 
-    <color name="highlights_action_button_background_color">@color/gray</color>
-    <color name="highlights_add_favorite_card_background_color">@color/black</color>
+    <color name="highlights_action_button_background_color">#224A88</color>
+    <color name="highlights_add_favorite_card_background_color">#FF1A1A1F</color>
     <color name="highlights_add_tv">@color/white</color>
 
     <color name="label_header">@color/white</color>
