@@ -20,9 +20,11 @@
     <color name="account_dialog_device_background_color">#FFBBBBBB</color>
     <color name="account_dialog_device_color">#FF000000</color>
 
-    <color name="add_profile_photo_background_color">@color/material_dynamic_primary90</color>
+    <color name="add_profile_photo_background_color">@color/material_dynamic_secondary90</color>
     <color name="add_profile_photo">@color/material_dynamic_primary20</color>
     <color name="add_picture_tv">@color/material_dynamic_primary40</color>
+    <color name="save_btn">@color/material_dynamic_primary40</color>
+
 
     <color name="three_dots_vertical">@color/material_dynamic_neutral20</color>
 
@@ -43,5 +45,10 @@
     <color name="ic_birthday_promo_back">@color/material_dynamic_primary80</color>
     <color name="bottom_nav_indicator">@color/material_dynamic_primary90</color>
     <color name="bottom_nav_background_color">#EBEBEE</color>
+    <color name="more_fields_color">@color/material_dynamic_primary40</color>
+
+    <color name="fab_background">@color/material_dynamic_primary90</color>
+    <color name="cursor">@color/material_dynamic_primary90</color>
+
 
 </resources>

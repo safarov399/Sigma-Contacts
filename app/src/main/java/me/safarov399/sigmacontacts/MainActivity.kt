@@ -27,6 +27,7 @@ import me.safarov399.core.navigation.NavigationManager
 import me.safarov399.core.navigation.NavigationSettings
 import me.safarov399.sigmacontacts.databinding.ActivityMainBinding
 
+@ExperimentalStdlibApi
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity(), NavigationManager {
 
@@ -49,6 +50,7 @@ class MainActivity : AppCompatActivity(), NavigationManager {
     override fun onResume() {
         super.onResume()
         setNavigationBarColor()
+//        println((binding!!.mainBottomNavView.background as MaterialShapeDrawable).fillColor!!.defaultColor.toHexString() + "\n\n\n\n")
     }
 
 

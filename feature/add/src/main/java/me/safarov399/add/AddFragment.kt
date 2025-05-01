@@ -2,14 +2,20 @@ package me.safarov399.add
 
 import android.app.DatePickerDialog
 import android.content.ContentProviderOperation
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
+import android.os.Build
 import android.os.Bundle
 import android.provider.ContactsContract
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.PopupWindow
+import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.widget.PopupMenu
+import androidx.core.content.ContextCompat
 import dagger.hilt.android.AndroidEntryPoint
 import me.safarov399.add.databinding.FragmentAddBinding
 import me.safarov399.core.base.BaseFragment
@@ -36,7 +42,7 @@ class AddFragment : BaseFragment<FragmentAddBinding, AddViewModel, AddState, Add
                 activity?.onBackPressedDispatcher?.onBackPressed()
             }
             addThreeDotsIv.setOnClickListener {
-                showHelpAndFeedbackPopUp(it)
+                showHelpAndFeedbackPopup(it)
             }
             addSaveButton.setOnClickListener {
                 val firstName = addFirstNameTiet.text.toString()
@@ -50,14 +56,15 @@ class AddFragment : BaseFragment<FragmentAddBinding, AddViewModel, AddState, Add
                 val contactEntity = ContactEntity(
                     firstName = firstName, lastName = lastname, company = company, numbers = mutableListOf(phoneNumber), phoneLabel = phoneType, emails = mutableListOf(email), emailLabel = emailType, color = ContactColors.COLORS.random()
                 )
-                if(phoneNumber.isNotEmpty()) {
+                if (phoneNumber.isNotEmpty()) {
                     insertContact(contactEntity)
-                }
-                else {
+                } else {
                     Toast.makeText(requireContext(), "Please add a phone number", Toast.LENGTH_SHORT).show()
                 }
             }
         }
+        setInputColors()
+
     }
 
     override fun onResume() {
@@ -67,6 +74,53 @@ class AddFragment : BaseFragment<FragmentAddBinding, AddViewModel, AddState, Add
         initDatePickerSpinner()
         initDateTypeSpinner()
     }
+
+    private fun setInputColors() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
+            val outlineColors = ContextCompat.getColorStateList(requireContext(), me.safarov399.common.R.color.textfield_outline_color)
+            val labelColor = ContextCompat.getColorStateList(requireContext(), me.safarov399.common.R.color.label_text_color)
+            val arrowColor = ContextCompat.getColorStateList(requireContext(), me.safarov399.common.R.color.drop_down_arrow_color)
+
+            val fields = listOf(
+                binding.addFirstNameTil,
+                binding.addLastNameTil,
+                binding.addCompanyTil,
+                binding.addPhoneTil,
+                binding.addPhoneEdd,
+                binding.addEmailTil,
+                binding.addEmailEdd,
+                binding.addDatePickerTil,
+                binding.addDateTypeTil
+            )
+            fields.forEach {
+                it.setBoxStrokeColorStateList(outlineColors!!)
+                it.hintTextColor = labelColor
+            }
+
+            val dropdowns = listOf(
+                binding.addPhoneActv,
+                binding.addEmailActv,
+                binding.addDatePickerActv,
+                binding.addDateTypeActv
+            )
+
+            dropdowns.forEach {
+                it.setDropDownBackgroundResource(me.safarov399.common.R.color.dropdown_tint)
+            }
+
+            val arrows = listOf(
+                binding.addDateTypeTil,
+                binding.addDatePickerTil,
+                binding.addEmailEdd,
+                binding.addPhoneEdd
+            )
+            arrows.forEach {
+                it.setEndIconTintList(arrowColor)
+            }
+
+        }
+    }
+
 
     private fun insertContact(contactEntity: ContactEntity) {
         val contentProviderOperation: ArrayList<ContentProviderOperation> = arrayListOf()
@@ -181,19 +235,29 @@ class AddFragment : BaseFragment<FragmentAddBinding, AddViewModel, AddState, Add
         }
     }
 
-    private fun showHelpAndFeedbackPopUp(view: View) {
-        val popup = PopupMenu(requireActivity(), view)
-        val popupMenuInflater = popup.menuInflater
-        popupMenuInflater.inflate(me.safarov399.common.R.menu.add_menu, popup.menu)
-        popup.setOnMenuItemClickListener { menuItem ->
-            when (menuItem.itemId) {
-                me.safarov399.common.R.id.add_help_and_feedback -> {
-                    Toast.makeText(requireActivity(), "Select", Toast.LENGTH_SHORT).show()
-                }
-            }
+    private fun showHelpAndFeedbackPopup(anchor: View) {
+        val popupView = layoutInflater.inflate(me.safarov399.common.R.layout.view_popup, null)
+        val popupWindow = PopupWindow(
+            popupView,
+            ViewGroup.LayoutParams.WRAP_CONTENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT,
             true
+        ).apply {
+            isOutsideTouchable = true
+            setBackgroundDrawable(ColorDrawable(Color.WHITE)) // required for outside touch to work
+            elevation = 10f
         }
-        popup.show()
+
+        popupView.findViewById<TextView>(me.safarov399.common.R.id.help_feedback).setOnClickListener {
+            Toast.makeText(requireContext(), "Help clicked", Toast.LENGTH_SHORT).show()
+            popupWindow.dismiss()
+        }
+
+        val location = IntArray(2)
+        anchor.getLocationOnScreen(location)
+        val anchorX = location[0]
+
+        popupWindow.showAsDropDown(anchor, anchorX, -anchor.height, Gravity.NO_GRAVITY)
     }
 
     private fun showSignificantDatePicker() {
