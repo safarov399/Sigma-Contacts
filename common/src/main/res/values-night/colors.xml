@@ -21,9 +21,11 @@
     <color name="account_dialog_device_background_color">#FFBBBBBB</color>
     <color name="account_dialog_device_color">#FF000000</color>
 
-    <color name="add_profile_photo_background_color">@color/gray</color>
+    <color name="add_profile_photo_background_color">@color/blue_900</color>
     <color name="add_profile_photo">@color/white</color>
-    <color name="add_picture_tv">@color/white</color>
+    <color name="add_picture_tv">@color/blue_200</color>
+    <color name="save_btn">@color/blue_200</color>
+
 
     <color name="three_dots_vertical">@color/white</color>
 
@@ -46,4 +48,9 @@
     <color name="bottom_nav_indicator">#224A88</color>
     <color name="three_button_navigation_color">@color/bottom_nav_background_color</color>
     <color name="fab_background">#2233AA</color>
+
+    <color name="more_fields_color">@color/blue_200</color>
+    <color name="dropdown_tint">#1A1A22</color>
+
+
 </resources>

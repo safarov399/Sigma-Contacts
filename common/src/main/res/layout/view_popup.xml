@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/popup_background"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/help_feedback"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        android:padding="24dp"
+        android:textSize="16sp"
+        android:text="Help &amp; feedback"
+        android:textColor="@color/default_color_inverse" />
+
+</LinearLayout>
