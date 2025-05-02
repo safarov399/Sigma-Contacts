@@ -64,7 +64,6 @@ class AddFragment : BaseFragment<FragmentAddBinding, AddViewModel, AddState, Add
             }
         }
         setInputColors()
-
     }
 
     override fun onResume() {

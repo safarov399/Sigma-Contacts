@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import com.safarov399.organize.databinding.FragmentOrganizeBinding
 import me.safarov399.core.adapter.OrganizeRowViewAdapter
 import me.safarov399.core.base.BaseFragment
-import me.safarov399.core.navigation.NavigationManager
+import me.safarov399.core.navigation.ActivityController
 import me.safarov399.core.pojo.OrganizeListItem
 
 class OrganizeFragment : BaseFragment<FragmentOrganizeBinding, OrganizeViewModel, OrganizeState, OrganizeEffect, OrganizeEvent>() {
@@ -23,7 +23,7 @@ class OrganizeFragment : BaseFragment<FragmentOrganizeBinding, OrganizeViewModel
         }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        (requireActivity() as NavigationManager).toggleMoreVertVisibility(View.GONE)
+        (requireActivity() as ActivityController).toggleMoreVertVisibility(View.GONE)
         return super.onCreateView(inflater, container, savedInstanceState)
     }
 

@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.highlights.R
-import me.safarov399.core.navigation.NavigationManager
+import me.safarov399.core.navigation.ActivityController
 
 class HighlightsFragment : Fragment() {
 
@@ -14,7 +14,7 @@ class HighlightsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        (requireActivity() as NavigationManager).toggleMoreVertVisibility(View.GONE)
+        (requireActivity() as ActivityController).toggleMoreVertVisibility(View.GONE)
         return inflater.inflate(R.layout.fragment_highlights, container, false)
     }
 

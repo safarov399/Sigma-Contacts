@@ -23,13 +23,13 @@ import dagger.hilt.android.AndroidEntryPoint
 import me.safarov399.core.exception.InvalidNavigationTargetException
 import me.safarov399.core.navigation.NavigationDestinationHandler.DATA_ID
 import me.safarov399.core.navigation.NavigationDestinationHandler.NAVIGATION_ID
-import me.safarov399.core.navigation.NavigationManager
+import me.safarov399.core.navigation.ActivityController
 import me.safarov399.core.navigation.NavigationSettings
 import me.safarov399.sigmacontacts.databinding.ActivityMainBinding
 
 @ExperimentalStdlibApi
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity(), NavigationManager {
+class MainActivity : AppCompatActivity(), ActivityController {
 
     private var binding: ActivityMainBinding? = null
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,7 +50,6 @@ class MainActivity : AppCompatActivity(), NavigationManager {
     override fun onResume() {
         super.onResume()
         setNavigationBarColor()
-//        println((binding!!.mainBottomNavView.background as MaterialShapeDrawable).fillColor!!.defaultColor.toHexString() + "\n\n\n\n")
     }
 
 
@@ -72,7 +71,7 @@ class MainActivity : AppCompatActivity(), NavigationManager {
     private fun setNavigationBarColor() {
         val navigationMode = Settings.Secure.getInt(contentResolver, "navigation_mode", -1)
 
-//        For API 31 (Android 12) and above
+        // For API 31 (Android 12) and above
         if(Build.VERSION.SDK_INT > Build.VERSION_CODES.R) {
             if(navigationMode == NavigationSettings.GESTURE_NAVIGATION) {
                 window.navigationBarColor = Color.TRANSPARENT

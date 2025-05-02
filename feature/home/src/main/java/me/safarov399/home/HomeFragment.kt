@@ -18,7 +18,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import me.safarov399.save_location.SaveLocationFragment
 import me.safarov399.common.custom_views.home.save_location.SaveLocationDropDownButton
 import me.safarov399.common.dialogs.PermissionRequestDialog
-import me.safarov399.core.navigation.NavigationManager
+import me.safarov399.core.navigation.ActivityController
 import me.safarov399.core.adapter.ContactAdapter
 import me.safarov399.core.adapter.OnClickListener
 import me.safarov399.core.base.AppBottomSheet
@@ -43,7 +43,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel, HomeState,
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         listener = this
-        (requireActivity() as NavigationManager).toggleMoreVertVisibility(View.VISIBLE)
+        (requireActivity() as ActivityController).toggleMoreVertVisibility(View.VISIBLE)
         return super.onCreateView(inflater, container, savedInstanceState)
     }
 
@@ -91,7 +91,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel, HomeState,
         contactsAdapter?.setOnClickListener(
             object: OnClickListener {
                 override fun onClick(position: Int, model: ContactEntity) {
-                    val context = requireActivity() as NavigationManager
+                    val context = requireActivity() as ActivityController
                     context.navigateToFullScreenActivity(NAVIGATE_TO_DETAILS, model.id)
                 }
             }
@@ -100,7 +100,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel, HomeState,
         askContactsPermission()
 
         binding.homeFab.setOnClickListener {
-            val context = requireActivity() as NavigationManager
+            val context = requireActivity() as ActivityController
             context.navigateToFullScreenActivity(NAVIGATE_TO_ADD)
         }
 
