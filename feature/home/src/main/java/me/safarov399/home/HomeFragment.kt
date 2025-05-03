@@ -127,14 +127,14 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel, HomeState,
 
     private fun selectSaveLocationDropDown() {
         binding.homeUtilityBar.findViewById<ImageView>(me.safarov399.common.R.id.save_location_drop_down_view_down).setImageDrawable(
-            ResourcesCompat.getDrawable(resources, me.safarov399.common.R.drawable.drop_up, null)
+            ResourcesCompat.getDrawable(resources, me.safarov399.uikit.R.drawable.drop_up, null)
         )
-        binding.homeUtilityBar.findViewById<SaveLocationDropDownButton>(me.safarov399.common.R.id.utility_bar_drop_down).background = ResourcesCompat.getDrawable(resources, me.safarov399.common.R.drawable.savelocation_drop_down_button_background, null)
+        binding.homeUtilityBar.findViewById<SaveLocationDropDownButton>(me.safarov399.common.R.id.utility_bar_drop_down).background = ResourcesCompat.getDrawable(resources, me.safarov399.uikit.R.drawable.savelocation_drop_down_button_background, null)
     }
 
     private fun unSelectSaveLocationDropDown() {
         binding.homeUtilityBar.findViewById<ImageView>(me.safarov399.common.R.id.save_location_drop_down_view_down).setImageDrawable(
-            ResourcesCompat.getDrawable(resources, me.safarov399.common.R.drawable.drop_down, null)
+            ResourcesCompat.getDrawable(resources, me.safarov399.uikit.R.drawable.drop_down, null)
         )
         binding.homeUtilityBar.findViewById<SaveLocationDropDownButton>(me.safarov399.common.R.id.utility_bar_drop_down).background = null
 

@@ -42,6 +42,7 @@ dependencies {
     implementation(project(":common"))
     implementation(project(":core"))
     implementation(project(":domain"))
+    implementation(project(":uikit"))
 
 
     implementation(libs.androidx.core.ktx)
