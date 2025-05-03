@@ -1,11 +1,16 @@
 package me.safarov399.details
 
 import android.annotation.SuppressLint
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
+import android.os.Build
 import android.os.Bundle
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.PopupWindow
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.PopupMenu
@@ -34,9 +39,13 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding, DetailsViewModel, D
             detailsBackButton.setOnClickListener {
                 requireActivity().onBackPressedDispatcher.onBackPressed()
             }
-            detailsHorizontalLine.setBackgroundColor(resources.getColor(me.safarov399.common.R.color.gray, null))
-            detailsThreeDotsIv.setOnClickListener {
-                showEditPopUp(it)
+            detailsHorizontalLine.setBackgroundColor(resources.getColor(me.safarov399.uikit.R.color.gray, null))
+            detailsThreeDotsIv.setOnClickListener { view ->
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                    showEditPopupMaterial(view)
+                } else {
+                    showEditPopupStandard(view)
+                }
             }
         }
 
@@ -48,7 +57,7 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding, DetailsViewModel, D
         }
     }
 
-    private fun showEditPopUp(view: View) {
+    private fun showEditPopupMaterial(view: View) {
         val popup = PopupMenu(requireContext(), view)
         val popupInflater = popup.menuInflater
         popupInflater.inflate(me.safarov399.common.R.menu.contact_details_menu, popup.menu)
@@ -88,6 +97,55 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding, DetailsViewModel, D
         popup.show()
     }
 
+    private fun showEditPopupStandard(anchor: View) {
+        val popupView = layoutInflater.inflate(me.safarov399.common.R.layout.help_feedback_layout, null)
+        val popupWindow = PopupWindow(
+            popupView,
+            ViewGroup.LayoutParams.WRAP_CONTENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT,
+            true
+        ).apply {
+            isOutsideTouchable = true
+            setBackgroundDrawable(ColorDrawable(Color.WHITE))
+            elevation = 10f
+        }
+        popupView.apply {
+            findViewById<TextView>(me.safarov399.common.R.id.help_feedback_share_tv).setOnClickListener {
+                Toast.makeText(requireActivity(), "Share", Toast.LENGTH_SHORT).show()
+                popupWindow.dismiss()
+            }
+            findViewById<TextView>(me.safarov399.common.R.id.help_feedback_calling_sim_tv).setOnClickListener {
+                Toast.makeText(requireActivity(), "Set calling SIM", Toast.LENGTH_SHORT).show()
+                popupWindow.dismiss()
+            }
+            findViewById<TextView>(me.safarov399.common.R.id.help_feedback_ringtone).setOnClickListener {
+                Toast.makeText(requireActivity(), "Set ringtone", Toast.LENGTH_SHORT).show()
+                popupWindow.dismiss()
+            }
+            findViewById<TextView>(me.safarov399.common.R.id.help_feedback_home_screen_tv).setOnClickListener {
+                Toast.makeText(requireActivity(), "Add to home screen", Toast.LENGTH_SHORT).show()
+                popupWindow.dismiss()
+            }
+            findViewById<TextView>(me.safarov399.common.R.id.help_feedback_account).setOnClickListener {
+                Toast.makeText(requireActivity(), "Move to another account", Toast.LENGTH_SHORT).show()
+                popupWindow.dismiss()
+            }
+            findViewById<TextView>(me.safarov399.common.R.id.help_feedback_delete).setOnClickListener {
+                Toast.makeText(requireActivity(), "Delete", Toast.LENGTH_SHORT).show()
+                popupWindow.dismiss()
+            }
+            findViewById<TextView>(me.safarov399.common.R.id.help_feedback_help).setOnClickListener {
+                Toast.makeText(requireActivity(), "Help & feedback", Toast.LENGTH_SHORT).show()
+                popupWindow.dismiss()
+            }
+        }
+
+        val location = IntArray(2)
+        anchor.getLocationOnScreen(location)
+        val anchorX = location[0]
+        popupWindow.showAsDropDown(anchor, anchorX, -anchor.height, Gravity.NO_GRAVITY)
+    }
+
     override fun getViewModelClass(): Class<DetailsViewModel> = DetailsViewModel::class.java
 
     @SuppressLint("DiscouragedApi")
@@ -97,12 +155,11 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding, DetailsViewModel, D
                 val displayName = (state.contact.firstName.trim() + " " + state.contact.lastName.trim()).trim()
                 detailsContactNameTv.text = displayName.ifBlank { state.contact.numbers[0] }
                 detailsContactInfoClContactNumberTv.text = state.contact.numbers.first()
-                if(displayName.isNotBlank()) {
-                    if(displayName[0].toString().matches(Regex(StringUtils.FIRST_LETTER_CHECKING_REGEX))) {
+                if (displayName.isNotBlank()) {
+                    if (displayName[0].toString().matches(Regex(StringUtils.FIRST_LETTER_CHECKING_REGEX))) {
                         detailsProfilePhotoBackgroundIv.findViewById<ImageView>(me.safarov399.common.R.id.details_profile_image_view_letter_iv).setImageResource(0)
                         detailsProfilePhotoBackgroundIv.findViewById<TextView>(me.safarov399.common.R.id.details_profile_image_view_letter_tv).text = displayName[0].toString().uppercase(Locale.ROOT)
-                    }
-                    else {
+                    } else {
                         detailsProfilePhotoBackgroundIv.findViewById<TextView>(me.safarov399.common.R.id.details_profile_image_view_letter_tv).text = ""
                         detailsProfilePhotoBackgroundIv.findViewById<ImageView>(me.safarov399.common.R.id.details_profile_image_view_letter_iv).setImageResource(
                             requireContext().resources.getIdentifier(
@@ -111,7 +168,7 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding, DetailsViewModel, D
                         )
                     }
                 }
-                if(displayName.isBlank()) {
+                if (displayName.isBlank()) {
                     detailsProfilePhotoBackgroundIv.findViewById<TextView>(me.safarov399.common.R.id.details_profile_image_view_letter_tv).text = ""
                     detailsProfilePhotoBackgroundIv.findViewById<ImageView>(me.safarov399.common.R.id.details_profile_image_view_letter_iv).setImageResource(
                         requireContext().resources.getIdentifier(

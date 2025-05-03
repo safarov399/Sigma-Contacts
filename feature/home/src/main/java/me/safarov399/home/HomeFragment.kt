@@ -18,7 +18,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import me.safarov399.save_location.SaveLocationFragment
 import me.safarov399.common.custom_views.home.save_location.SaveLocationDropDownButton
 import me.safarov399.common.dialogs.PermissionRequestDialog
-import me.safarov399.core.navigation.NavigationManager
+import me.safarov399.core.navigation.ActivityController
 import me.safarov399.core.adapter.ContactAdapter
 import me.safarov399.core.adapter.OnClickListener
 import me.safarov399.core.base.AppBottomSheet
@@ -43,6 +43,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel, HomeState,
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         listener = this
+        (requireActivity() as ActivityController).toggleMoreVertVisibility(View.VISIBLE)
         return super.onCreateView(inflater, container, savedInstanceState)
     }
 
@@ -68,7 +69,15 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel, HomeState,
     }
 
     override fun onStateUpdate(state: HomeState) {
-        contactsAdapter?.submitList(state.contactEntity)
+        if(state.contactEntity.isEmpty()) {
+            binding.homeEmpty.visibility = View.VISIBLE
+            binding.homeRecyclerView.visibility = View.GONE
+        }
+        else {
+            binding.homeEmpty.visibility = View.GONE
+            binding.homeRecyclerView.visibility = View.VISIBLE
+            contactsAdapter?.submitList(state.contactEntity)
+        }
     }
 
 
@@ -82,7 +91,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel, HomeState,
         contactsAdapter?.setOnClickListener(
             object: OnClickListener {
                 override fun onClick(position: Int, model: ContactEntity) {
-                    val context = requireActivity() as NavigationManager
+                    val context = requireActivity() as ActivityController
                     context.navigateToFullScreenActivity(NAVIGATE_TO_DETAILS, model.id)
                 }
             }
@@ -91,7 +100,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel, HomeState,
         askContactsPermission()
 
         binding.homeFab.setOnClickListener {
-            val context = requireActivity() as NavigationManager
+            val context = requireActivity() as ActivityController
             context.navigateToFullScreenActivity(NAVIGATE_TO_ADD)
         }
 
@@ -118,14 +127,14 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel, HomeState,
 
     private fun selectSaveLocationDropDown() {
         binding.homeUtilityBar.findViewById<ImageView>(me.safarov399.common.R.id.save_location_drop_down_view_down).setImageDrawable(
-            ResourcesCompat.getDrawable(resources, me.safarov399.common.R.drawable.drop_up, null)
+            ResourcesCompat.getDrawable(resources, me.safarov399.uikit.R.drawable.drop_up, null)
         )
-        binding.homeUtilityBar.findViewById<SaveLocationDropDownButton>(me.safarov399.common.R.id.utility_bar_drop_down).background = ResourcesCompat.getDrawable(resources, me.safarov399.common.R.drawable.savelocation_drop_down_button_background, null)
+        binding.homeUtilityBar.findViewById<SaveLocationDropDownButton>(me.safarov399.common.R.id.utility_bar_drop_down).background = ResourcesCompat.getDrawable(resources, me.safarov399.uikit.R.drawable.savelocation_drop_down_button_background, null)
     }
 
     private fun unSelectSaveLocationDropDown() {
         binding.homeUtilityBar.findViewById<ImageView>(me.safarov399.common.R.id.save_location_drop_down_view_down).setImageDrawable(
-            ResourcesCompat.getDrawable(resources, me.safarov399.common.R.drawable.drop_down, null)
+            ResourcesCompat.getDrawable(resources, me.safarov399.uikit.R.drawable.drop_down, null)
         )
         binding.homeUtilityBar.findViewById<SaveLocationDropDownButton>(me.safarov399.common.R.id.utility_bar_drop_down).background = null
 

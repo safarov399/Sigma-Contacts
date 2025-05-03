@@ -1,6 +1,17 @@
 <resources>
     <string name="app_name">Sigma Contacts</string>
     <string name="profile_photo">Profile Photo</string>
+    <string name="no_contacts">No contacts yet.</string>
+    <string name="add_contacts">Add contacts</string>
+    <string name="select">Select</string>
+    <string name="select_all">Select all</string>
+    <string name="share">Share</string>
+    <string name="set_calling_sim">Set calling SIM</string>
+    <string name="set_ringtone">Set ringtone</string>
+    <string name="add_to_home_screen">Add to home screen</string>
+    <string name="move_another_account">Move to another account</string>
+    <string name="delete">Delete</string>
+    <string name="help_and_feedback">Help &amp; feedback</string>
 
     <string-array name="add_phone_types">
         <item>Mobile</item>
