@@ -87,7 +87,7 @@ class MainActivity : AppCompatActivity(), ActivityController {
                 window.navigationBarColor = Color.TRANSPARENT
             }
             else {
-                window.navigationBarColor = getColor(me.safarov399.common.R.color.bottom_nav_background_color)
+                window.navigationBarColor = getColor(me.safarov399.uikit.R.color.bottom_nav_background_color)
             }
 
         }

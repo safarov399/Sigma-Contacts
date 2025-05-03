@@ -42,6 +42,7 @@ dependencies {
 
     implementation(project(":core"))
     implementation(project(":common"))
+    implementation(project(":uikit"))
     implementation(project(":domain"))
 
 
@@ -61,13 +62,13 @@ dependencies {
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
 
-    implementation (libs.androidx.security.crypto.ktx)
+    implementation(libs.androidx.security.crypto.ktx)
 
-    implementation (libs.alexstyl.contactstore)
+    implementation(libs.alexstyl.contactstore)
 
-    implementation (libs.alexstyl.contactstore.coroutines)
+    implementation(libs.alexstyl.contactstore.coroutines)
 
 
-    implementation (libs.androidx.recyclerview)
+    implementation(libs.androidx.recyclerview)
 
 }

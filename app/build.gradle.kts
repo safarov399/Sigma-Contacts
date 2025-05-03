@@ -53,6 +53,8 @@ dependencies {
     implementation(project(":data"))
     implementation(project(":common"))
     implementation(project(":core"))
+    implementation(project(":uikit"))
+    
 
 
 

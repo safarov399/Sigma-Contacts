@@ -39,7 +39,7 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding, DetailsViewModel, D
             detailsBackButton.setOnClickListener {
                 requireActivity().onBackPressedDispatcher.onBackPressed()
             }
-            detailsHorizontalLine.setBackgroundColor(resources.getColor(me.safarov399.common.R.color.gray, null))
+            detailsHorizontalLine.setBackgroundColor(resources.getColor(me.safarov399.uikit.R.color.gray, null))
             detailsThreeDotsIv.setOnClickListener { view ->
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
                     showEditPopupMaterial(view)

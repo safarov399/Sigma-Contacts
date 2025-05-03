@@ -82,9 +82,9 @@ class AddFragment : BaseFragment<FragmentAddBinding, AddViewModel, AddState, Add
 
     private fun setInputColors() {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
-            val outlineColors = ContextCompat.getColorStateList(requireContext(), me.safarov399.common.R.color.textfield_outline_color)
-            val labelColor = ContextCompat.getColorStateList(requireContext(), me.safarov399.common.R.color.label_text_color)
-            val arrowColor = ContextCompat.getColorStateList(requireContext(), me.safarov399.common.R.color.drop_down_arrow_color)
+            val outlineColors = ContextCompat.getColorStateList(requireContext(), me.safarov399.uikit.R.color.textfield_outline_color)
+            val labelColor = ContextCompat.getColorStateList(requireContext(), me.safarov399.uikit.R.color.label_text_color)
+            val arrowColor = ContextCompat.getColorStateList(requireContext(), me.safarov399.uikit.R.color.drop_down_arrow_color)
 
             val fields = listOf(
                 binding.addFirstNameTil,
@@ -110,7 +110,7 @@ class AddFragment : BaseFragment<FragmentAddBinding, AddViewModel, AddState, Add
             )
 
             dropdowns.forEach {
-                it.setDropDownBackgroundResource(me.safarov399.common.R.color.dropdown_tint)
+                it.setDropDownBackgroundResource(me.safarov399.uikit.R.color.dropdown_tint)
             }
 
             val arrows = listOf(
