@@ -36,7 +36,7 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding, DetailsViewModel, D
             }
             detailsHorizontalLine.setBackgroundColor(resources.getColor(me.safarov399.common.R.color.gray, null))
             detailsThreeDotsIv.setOnClickListener {
-                showEditPopUp(it)
+                showEditPopupMaterial(it)
             }
         }
 
@@ -48,7 +48,7 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding, DetailsViewModel, D
         }
     }
 
-    private fun showEditPopUp(view: View) {
+    private fun showEditPopupMaterial(view: View) {
         val popup = PopupMenu(requireContext(), view)
         val popupInflater = popup.menuInflater
         popupInflater.inflate(me.safarov399.common.R.menu.contact_details_menu, popup.menu)
@@ -86,6 +86,10 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding, DetailsViewModel, D
             true
         }
         popup.show()
+    }
+
+    private fun showEditPopupStandard(view: View) {
+
     }
 
     override fun getViewModelClass(): Class<DetailsViewModel> = DetailsViewModel::class.java
