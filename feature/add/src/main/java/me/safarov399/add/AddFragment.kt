@@ -15,6 +15,7 @@ import android.widget.ArrayAdapter
 import android.widget.PopupWindow
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.widget.PopupMenu
 import androidx.core.content.ContextCompat
 import dagger.hilt.android.AndroidEntryPoint
 import me.safarov399.add.databinding.FragmentAddBinding
@@ -41,8 +42,13 @@ class AddFragment : BaseFragment<FragmentAddBinding, AddViewModel, AddState, Add
             addExitIv.setOnClickListener {
                 activity?.onBackPressedDispatcher?.onBackPressed()
             }
-            addThreeDotsIv.setOnClickListener {
-                showHelpAndFeedbackPopup(it)
+            addThreeDotsIv.setOnClickListener { view ->
+                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                    showHelpAndFeedbackPopupMaterial(view)
+                }
+                else {
+                    showHelpAndFeedbackPopupStandard(view)
+                }
             }
             addSaveButton.setOnClickListener {
                 val firstName = addFirstNameTiet.text.toString()
@@ -234,7 +240,7 @@ class AddFragment : BaseFragment<FragmentAddBinding, AddViewModel, AddState, Add
         }
     }
 
-    private fun showHelpAndFeedbackPopup(anchor: View) {
+    private fun showHelpAndFeedbackPopupStandard(anchor: View) {
         val popupView = layoutInflater.inflate(me.safarov399.common.R.layout.view_popup, null)
         val popupWindow = PopupWindow(
             popupView,
@@ -248,7 +254,7 @@ class AddFragment : BaseFragment<FragmentAddBinding, AddViewModel, AddState, Add
         }
 
         popupView.findViewById<TextView>(me.safarov399.common.R.id.help_feedback).setOnClickListener {
-            Toast.makeText(requireContext(), "Help clicked", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), "Help Standard clicked", Toast.LENGTH_SHORT).show()
             popupWindow.dismiss()
         }
 
@@ -258,6 +264,22 @@ class AddFragment : BaseFragment<FragmentAddBinding, AddViewModel, AddState, Add
 
         popupWindow.showAsDropDown(anchor, anchorX, -anchor.height, Gravity.NO_GRAVITY)
     }
+
+    private fun showHelpAndFeedbackPopupMaterial(view: View) {
+        val popup = PopupMenu(requireContext(), view)
+        val popupInflater = popup.menuInflater
+        popupInflater.inflate(me.safarov399.common.R.menu.help_feedback, popup.menu)
+        popup.setOnMenuItemClickListener { menuItem ->
+            when(menuItem.itemId) {
+                me.safarov399.common.R.id.help_feedback -> {
+                    Toast.makeText(requireContext(), "Help Material clicked.", Toast.LENGTH_SHORT).show()
+                }
+            }
+            true
+        }
+        popup.show()
+    }
+
 
     private fun showSignificantDatePicker() {
         val datePickerDialog = DatePickerDialog(

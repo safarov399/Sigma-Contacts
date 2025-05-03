@@ -10,7 +10,6 @@ import android.util.Log
 import android.util.TypedValue
 import android.view.LayoutInflater
 import androidx.activity.enableEdgeToEdge
-import androidx.annotation.ColorInt
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat

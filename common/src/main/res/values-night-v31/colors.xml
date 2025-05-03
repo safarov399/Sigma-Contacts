@@ -48,6 +48,7 @@
     <color name="fab_background">@color/material_dynamic_primary40</color>
 
     <color name="more_fields_color">@color/material_dynamic_primary80</color>
+    <color name="dropdown_tint">@color/material_dynamic_primary10</color>
 
 
 
