@@ -16,6 +16,7 @@ import android.widget.Toast
 import androidx.appcompat.widget.PopupMenu
 import androidx.core.view.MenuCompat
 import dagger.hilt.android.AndroidEntryPoint
+import me.safarov399.common.StringConstants.RESTORED_CONTACT_ID_KEY
 import me.safarov399.core.base.BaseFragment
 import me.safarov399.core.exception.InvalidContactIdException
 import me.safarov399.core.utils.StringUtils
@@ -32,6 +33,10 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding, DetailsViewModel, D
     }
     private var dataId: Long = 0
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putLong(RESTORED_CONTACT_ID_KEY, dataId)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -48,11 +53,14 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding, DetailsViewModel, D
                 }
             }
         }
-
-
         if (dataId != 0.toLong()) {
             loadContactData(dataId)
-        } else {
+        }
+        else if(savedInstanceState != null) {
+            val restoredId = savedInstanceState.getLong(RESTORED_CONTACT_ID_KEY)
+            loadContactData(restoredId)
+        }
+        else {
             @Suppress("KotlinConstantConditions") throw InvalidContactIdException("Contact with id $dataId does not exist")
         }
     }
