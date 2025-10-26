@@ -14,6 +14,7 @@ import androidx.appcompat.app.ActionBar.LayoutParams
 import me.safarov399.common.databinding.AccountDialogBinding
 import me.safarov399.core.navigation.NavigationDestinationHandler.NAVIGATE_TO_SETTINGS
 import me.safarov399.core.navigation.ActivityController
+import me.safarov399.core.utils.getActivity
 
 class AccountDialog(context: Context) : Dialog(context) {
     private val binding: AccountDialogBinding
@@ -39,7 +40,7 @@ class AccountDialog(context: Context) : Dialog(context) {
             dismiss()
         }
         binding.accountDialogContactSettings.setOnClickListener {
-            val ctx = context as ActivityController
+            val ctx = context.getActivity() as ActivityController
             ctx.navigateToFullScreenActivity(NAVIGATE_TO_SETTINGS)
             dismiss()
         }
